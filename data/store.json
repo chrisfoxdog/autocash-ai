@@ -1,0 +1,2565 @@
+{
+  "users": {
+    "user_creator_default": {
+      "id": "user_creator_default",
+      "email": "chrisfoxdog33@gmail.com",
+      "plan": "free",
+      "credits": 5,
+      "creditsResetAt": "2026-09-30T03:06:10.811Z",
+      "status": "active",
+      "createdAt": "2026-09-29T03:06:10.811Z",
+      "updatedAt": "2026-09-29T03:06:10.811Z"
+    },
+    "user_alice": {
+      "id": "user_alice",
+      "email": "user_alice@whop.user",
+      "plan": "free",
+      "credits": 4,
+      "creditsResetAt": "2026-09-30T03:46:17.303Z",
+      "status": "active",
+      "createdAt": "2026-09-29T03:46:17.303Z",
+      "updatedAt": "2026-09-29T03:46:17.304Z"
+    },
+    "dev_creator_preview": {
+      "id": "dev_creator_preview",
+      "email": "dev_creator_preview@whop.user",
+      "plan": "free",
+      "credits": 0,
+      "creditsResetAt": "2026-10-01T12:20:16.095Z",
+      "status": "active",
+      "createdAt": "2026-09-30T12:20:16.095Z",
+      "updatedAt": "2026-09-30T12:36:25.090Z"
+    },
+    "test_empire_user_1792873740111": {
+      "id": "test_empire_user_1792873740111",
+      "email": "test_empire_user_1792873740111@whop.user",
+      "plan": "empire",
+      "credits": 1,
+      "creditsResetAt": "2026-10-25T20:29:00.111Z",
+      "status": "active",
+      "createdAt": "2026-10-24T20:29:00.111Z",
+      "updatedAt": "2026-10-24T20:29:00.718Z"
+    },
+    "test_empire_user_1792873759948": {
+      "id": "test_empire_user_1792873759948",
+      "email": "test_empire_user_1792873759948@whop.user",
+      "plan": "empire",
+      "credits": 1,
+      "creditsResetAt": "2026-10-25T20:29:19.948Z",
+      "status": "active",
+      "createdAt": "2026-10-24T20:29:19.948Z",
+      "updatedAt": "2026-10-24T20:29:19.950Z"
+    },
+    "test_empire_user_1792873779933": {
+      "id": "test_empire_user_1792873779933",
+      "email": "test_empire_user_1792873779933@whop.user",
+      "plan": "empire",
+      "credits": 1,
+      "creditsResetAt": "2026-10-25T20:29:39.933Z",
+      "status": "active",
+      "createdAt": "2026-10-24T20:29:39.933Z",
+      "updatedAt": "2026-10-24T20:29:39.935Z"
+    },
+    "test_empire_user_1792876650291": {
+      "id": "test_empire_user_1792876650291",
+      "email": "test_empire_user_1792876650291@whop.user",
+      "plan": "empire",
+      "credits": 1,
+      "creditsResetAt": "2026-10-25T21:17:30.291Z",
+      "status": "active",
+      "createdAt": "2026-10-24T21:17:30.291Z",
+      "updatedAt": "2026-10-24T21:17:30.293Z"
+    },
+    "test_pro_user_1792877269140_6x2b": {
+      "id": "test_pro_user_1792877269140_6x2b",
+      "email": "test_pro_user_1792877269140_6x2b@whop.user",
+      "plan": "pro",
+      "credits": 100,
+      "creditsResetAt": "2026-10-25T21:27:49.141Z",
+      "status": "active",
+      "createdAt": "2026-10-24T21:27:49.141Z",
+      "updatedAt": "2026-10-24T21:27:49.142Z",
+      "whopUserId": "test_pro_user_1792877269140_6x2b",
+      "whopMembershipId": "mem_pro_1792877269140",
+      "whopPlanId": "plan_pro_monthly"
+    },
+    "test_empire_user_1792877269143_q2f3": {
+      "id": "test_empire_user_1792877269143_q2f3",
+      "email": "test_empire_user_1792877269143_q2f3@whop.user",
+      "plan": "empire",
+      "credits": 400,
+      "creditsResetAt": "2026-10-25T21:27:49.143Z",
+      "status": "past_due",
+      "createdAt": "2026-10-24T21:27:49.143Z",
+      "updatedAt": "2026-10-24T21:27:49.155Z",
+      "whopUserId": "test_empire_user_1792877269143_q2f3",
+      "whopMembershipId": "pay_shared_cycle_1792877269153",
+      "whopPlanId": "plan_empire_vip"
+    },
+    "test_zero_1792877269157": {
+      "id": "test_zero_1792877269157",
+      "email": "test_zero_1792877269157@whop.user",
+      "plan": "empire",
+      "credits": 0,
+      "creditsResetAt": "2026-10-25T21:27:49.157Z",
+      "status": "active",
+      "createdAt": "2026-10-24T21:27:49.157Z",
+      "updatedAt": "2026-10-24T21:27:49.158Z"
+    },
+    "test_upgrade_user_1792877269158": {
+      "id": "test_upgrade_user_1792877269158",
+      "email": "test_upgrade_user_1792877269158@whop.user",
+      "plan": "empire",
+      "credits": 460,
+      "creditsResetAt": "2026-10-25T21:27:49.158Z",
+      "status": "active",
+      "createdAt": "2026-10-24T21:27:49.158Z",
+      "updatedAt": "2026-10-24T21:27:49.160Z",
+      "whopUserId": "test_upgrade_user_1792877269158",
+      "whopMembershipId": "mem_upg_1792877269160",
+      "whopPlanId": "plan_empire"
+    },
+    "test_pro_user_1792878066201_n291": {
+      "id": "test_pro_user_1792878066201_n291",
+      "email": "test_pro_user_1792878066201_n291@whop.user",
+      "plan": "pro",
+      "credits": 100,
+      "creditsResetAt": "2026-10-25T21:41:06.202Z",
+      "status": "active",
+      "createdAt": "2026-10-24T21:41:06.202Z",
+      "updatedAt": "2026-10-24T21:41:06.204Z",
+      "whopUserId": "test_pro_user_1792878066201_n291",
+      "whopMembershipId": "mem_pro_1792878066201",
+      "whopPlanId": "plan_pro_monthly"
+    },
+    "test_empire_user_1792878066206_v07z": {
+      "id": "test_empire_user_1792878066206_v07z",
+      "email": "test_empire_user_1792878066206_v07z@whop.user",
+      "plan": "empire",
+      "credits": 500,
+      "creditsResetAt": "2026-10-25T21:41:06.206Z",
+      "status": "active",
+      "createdAt": "2026-10-24T21:41:06.206Z",
+      "updatedAt": "2026-10-24T21:41:06.214Z",
+      "whopUserId": "test_empire_user_1792878066206_v07z",
+      "whopMembershipId": "mem_emp_1792878066206",
+      "whopPlanId": "plan_empire_vip"
+    },
+    "test_pro_user_1792878090843_n1fk": {
+      "id": "test_pro_user_1792878090843_n1fk",
+      "email": "test_pro_user_1792878090843_n1fk@whop.user",
+      "plan": "pro",
+      "credits": 100,
+      "creditsResetAt": "2026-10-25T21:41:30.844Z",
+      "status": "active",
+      "createdAt": "2026-10-24T21:41:30.844Z",
+      "updatedAt": "2026-10-24T21:41:30.847Z",
+      "whopUserId": "test_pro_user_1792878090843_n1fk",
+      "whopMembershipId": "mem_pro_1792878090843",
+      "whopPlanId": "plan_pro_monthly"
+    },
+    "test_empire_user_1792878090849_inzi": {
+      "id": "test_empire_user_1792878090849_inzi",
+      "email": "test_empire_user_1792878090849_inzi@whop.user",
+      "plan": "empire",
+      "credits": 400,
+      "creditsResetAt": "2026-10-25T21:41:30.850Z",
+      "status": "past_due",
+      "createdAt": "2026-10-24T21:41:30.850Z",
+      "updatedAt": "2026-10-24T21:41:30.877Z",
+      "whopUserId": "test_empire_user_1792878090849_inzi",
+      "whopMembershipId": "mem_emp_1792878090849",
+      "whopPlanId": "plan_empire_vip"
+    },
+    "test_retry_user_1792878090879": {
+      "id": "test_retry_user_1792878090879",
+      "email": "test_retry_user_1792878090879@whop.user",
+      "plan": "pro",
+      "credits": 100,
+      "creditsResetAt": "2026-10-25T21:41:30.879Z",
+      "status": "active",
+      "createdAt": "2026-10-24T21:41:30.879Z",
+      "updatedAt": "2026-10-24T21:41:30.882Z",
+      "whopUserId": "test_retry_user_1792878090879",
+      "whopMembershipId": "pay_transient_1792878090881"
+    },
+    "test_pro_user_1792878106781_ae0t": {
+      "id": "test_pro_user_1792878106781_ae0t",
+      "email": "test_pro_user_1792878106781_ae0t@whop.user",
+      "plan": "pro",
+      "credits": 100,
+      "creditsResetAt": "2026-10-25T21:41:46.782Z",
+      "status": "active",
+      "createdAt": "2026-10-24T21:41:46.782Z",
+      "updatedAt": "2026-10-24T21:41:46.785Z",
+      "whopUserId": "test_pro_user_1792878106781_ae0t",
+      "whopMembershipId": "mem_pro_1792878106781",
+      "whopPlanId": "plan_pro_monthly"
+    },
+    "test_empire_user_1792878106788_mkmg": {
+      "id": "test_empire_user_1792878106788_mkmg",
+      "email": "test_empire_user_1792878106788_mkmg@whop.user",
+      "plan": "empire",
+      "credits": 400,
+      "creditsResetAt": "2026-10-25T21:41:46.788Z",
+      "status": "past_due",
+      "createdAt": "2026-10-24T21:41:46.788Z",
+      "updatedAt": "2026-10-24T21:41:46.820Z",
+      "whopUserId": "test_empire_user_1792878106788_mkmg",
+      "whopMembershipId": "mem_emp_1792878106788",
+      "whopPlanId": "plan_empire_vip"
+    },
+    "test_conc_renew_1792878106836": {
+      "id": "test_conc_renew_1792878106836",
+      "email": "test_conc_renew_1792878106836@whop.user",
+      "plan": "empire",
+      "credits": 500,
+      "creditsResetAt": "2026-10-25T21:41:46.836Z",
+      "status": "active",
+      "createdAt": "2026-10-24T21:41:46.836Z",
+      "updatedAt": "2026-10-24T21:41:46.841Z",
+      "whopUserId": "test_conc_renew_1792878106836",
+      "whopMembershipId": "pay_conc_1792878106837"
+    },
+    "test_pro_user_1792878151287_gepl": {
+      "id": "test_pro_user_1792878151287_gepl",
+      "email": "test_pro_user_1792878151287_gepl@whop.user",
+      "plan": "pro",
+      "credits": 100,
+      "creditsResetAt": "2026-10-25T21:42:31.288Z",
+      "status": "active",
+      "createdAt": "2026-10-24T21:42:31.288Z",
+      "updatedAt": "2026-10-24T21:42:31.292Z",
+      "whopUserId": "test_pro_user_1792878151287_gepl",
+      "whopMembershipId": "mem_pro_1792878151287",
+      "whopPlanId": "plan_pro_monthly"
+    },
+    "test_empire_user_1792878151294_6717": {
+      "id": "test_empire_user_1792878151294_6717",
+      "email": "test_empire_user_1792878151294_6717@whop.user",
+      "plan": "empire",
+      "credits": 400,
+      "creditsResetAt": "2026-10-25T21:42:31.295Z",
+      "status": "past_due",
+      "createdAt": "2026-10-24T21:42:31.295Z",
+      "updatedAt": "2026-10-24T21:42:31.327Z",
+      "whopUserId": "test_empire_user_1792878151294_6717",
+      "whopMembershipId": "mem_emp_1792878151294",
+      "whopPlanId": "plan_empire_vip"
+    },
+    "test_conc_renew_1792878151344": {
+      "id": "test_conc_renew_1792878151344",
+      "email": "test_conc_renew_1792878151344@whop.user",
+      "plan": "empire",
+      "credits": 500,
+      "creditsResetAt": "2026-10-25T21:42:31.344Z",
+      "status": "active",
+      "createdAt": "2026-10-24T21:42:31.344Z",
+      "updatedAt": "2026-10-24T21:42:31.357Z",
+      "whopUserId": "test_conc_renew_1792878151344",
+      "whopMembershipId": "pay_conc_1792878151345"
+    },
+    "test_upg_user_1792878151359": {
+      "id": "test_upg_user_1792878151359",
+      "email": "test_upg_user_1792878151359@whop.user",
+      "plan": "empire",
+      "credits": 450,
+      "creditsResetAt": "2026-10-25T21:42:31.359Z",
+      "status": "active",
+      "createdAt": "2026-10-24T21:42:31.359Z",
+      "updatedAt": "2026-10-24T21:42:31.364Z",
+      "whopUserId": "test_upg_user_1792878151359",
+      "whopPlanId": "plan_empire_vip"
+    },
+    "test_ref_user_1792878151367": {
+      "id": "test_ref_user_1792878151367",
+      "email": "test_ref_user_1792878151367@whop.user",
+      "plan": "free",
+      "credits": 5,
+      "creditsResetAt": "2026-10-25T21:42:31.367Z",
+      "status": "cancelled",
+      "createdAt": "2026-10-24T21:42:31.367Z",
+      "updatedAt": "2026-10-24T21:42:31.370Z"
+    },
+    "test_canc_user_1792878151375": {
+      "id": "test_canc_user_1792878151375",
+      "email": "test_canc_user_1792878151375@whop.user",
+      "plan": "free",
+      "credits": 5,
+      "creditsResetAt": "2026-10-25T21:42:31.375Z",
+      "status": "cancelled",
+      "createdAt": "2026-10-24T21:42:31.375Z",
+      "updatedAt": "2026-10-24T21:42:31.375Z"
+    },
+    "test_zero_1792878151378": {
+      "id": "test_zero_1792878151378",
+      "email": "test_zero_1792878151378@whop.user",
+      "plan": "empire",
+      "credits": 0,
+      "creditsResetAt": "2026-10-25T21:42:31.378Z",
+      "status": "active",
+      "createdAt": "2026-10-24T21:42:31.378Z",
+      "updatedAt": "2026-10-24T21:42:31.379Z"
+    },
+    "test_pro_user_1792878164757_k3j7": {
+      "id": "test_pro_user_1792878164757_k3j7",
+      "email": "test_pro_user_1792878164757_k3j7@whop.user",
+      "plan": "pro",
+      "credits": 100,
+      "creditsResetAt": "2026-10-25T21:42:44.758Z",
+      "status": "active",
+      "createdAt": "2026-10-24T21:42:44.758Z",
+      "updatedAt": "2026-10-24T21:42:44.762Z",
+      "whopUserId": "test_pro_user_1792878164757_k3j7",
+      "whopMembershipId": "mem_pro_1792878164757",
+      "whopPlanId": "plan_pro_monthly"
+    },
+    "test_empire_user_1792878164764_58iu": {
+      "id": "test_empire_user_1792878164764_58iu",
+      "email": "test_empire_user_1792878164764_58iu@whop.user",
+      "plan": "empire",
+      "credits": 400,
+      "creditsResetAt": "2026-10-25T21:42:44.765Z",
+      "status": "past_due",
+      "createdAt": "2026-10-24T21:42:44.765Z",
+      "updatedAt": "2026-10-24T21:42:44.801Z",
+      "whopUserId": "test_empire_user_1792878164764_58iu",
+      "whopMembershipId": "mem_emp_1792878164764",
+      "whopPlanId": "plan_empire_vip"
+    },
+    "test_conc_renew_1792878164825": {
+      "id": "test_conc_renew_1792878164825",
+      "email": "test_conc_renew_1792878164825@whop.user",
+      "plan": "empire",
+      "credits": 500,
+      "creditsResetAt": "2026-10-25T21:42:44.825Z",
+      "status": "active",
+      "createdAt": "2026-10-24T21:42:44.825Z",
+      "updatedAt": "2026-10-24T21:42:44.830Z",
+      "whopUserId": "test_conc_renew_1792878164825",
+      "whopMembershipId": "pay_conc_1792878164826"
+    },
+    "test_upg_user_1792878164833": {
+      "id": "test_upg_user_1792878164833",
+      "email": "test_upg_user_1792878164833@whop.user",
+      "plan": "empire",
+      "credits": 450,
+      "creditsResetAt": "2026-10-25T21:42:44.833Z",
+      "status": "active",
+      "createdAt": "2026-10-24T21:42:44.833Z",
+      "updatedAt": "2026-10-24T21:42:44.838Z",
+      "whopUserId": "test_upg_user_1792878164833",
+      "whopPlanId": "plan_empire_vip"
+    },
+    "test_ref_user_1792878164841": {
+      "id": "test_ref_user_1792878164841",
+      "email": "test_ref_user_1792878164841@whop.user",
+      "plan": "free",
+      "credits": 5,
+      "creditsResetAt": "2026-10-25T21:42:44.841Z",
+      "status": "cancelled",
+      "createdAt": "2026-10-24T21:42:44.841Z",
+      "updatedAt": "2026-10-24T21:42:44.844Z"
+    },
+    "test_canc_user_1792878164849": {
+      "id": "test_canc_user_1792878164849",
+      "email": "test_canc_user_1792878164849@whop.user",
+      "plan": "free",
+      "credits": 5,
+      "creditsResetAt": "2026-10-25T21:42:44.849Z",
+      "status": "cancelled",
+      "createdAt": "2026-10-24T21:42:44.849Z",
+      "updatedAt": "2026-10-24T21:42:44.850Z"
+    },
+    "test_zero_1792878164853": {
+      "id": "test_zero_1792878164853",
+      "email": "test_zero_1792878164853@whop.user",
+      "plan": "empire",
+      "credits": 0,
+      "creditsResetAt": "2026-10-25T21:42:44.853Z",
+      "status": "active",
+      "createdAt": "2026-10-24T21:42:44.853Z",
+      "updatedAt": "2026-10-24T21:42:44.854Z"
+    },
+    "test_pro_user_1792878191527_ck23": {
+      "id": "test_pro_user_1792878191527_ck23",
+      "email": "test_pro_user_1792878191527_ck23@whop.user",
+      "plan": "pro",
+      "credits": 100,
+      "creditsResetAt": "2026-10-25T21:43:11.528Z",
+      "status": "active",
+      "createdAt": "2026-10-24T21:43:11.528Z",
+      "updatedAt": "2026-10-24T21:43:11.532Z",
+      "whopUserId": "test_pro_user_1792878191527_ck23",
+      "whopMembershipId": "mem_pro_1792878191527",
+      "whopPlanId": "plan_pro_monthly"
+    },
+    "test_empire_user_1792878191535_hndm": {
+      "id": "test_empire_user_1792878191535_hndm",
+      "email": "test_empire_user_1792878191535_hndm@whop.user",
+      "plan": "empire",
+      "credits": 400,
+      "creditsResetAt": "2026-10-25T21:43:11.536Z",
+      "status": "past_due",
+      "createdAt": "2026-10-24T21:43:11.536Z",
+      "updatedAt": "2026-10-24T21:43:11.576Z",
+      "whopUserId": "test_empire_user_1792878191535_hndm",
+      "whopMembershipId": "mem_emp_1792878191535",
+      "whopPlanId": "plan_empire_vip"
+    },
+    "test_conc_renew_1792878191601": {
+      "id": "test_conc_renew_1792878191601",
+      "email": "test_conc_renew_1792878191601@whop.user",
+      "plan": "empire",
+      "credits": 500,
+      "creditsResetAt": "2026-10-25T21:43:11.601Z",
+      "status": "active",
+      "createdAt": "2026-10-24T21:43:11.601Z",
+      "updatedAt": "2026-10-24T21:43:11.607Z",
+      "whopUserId": "test_conc_renew_1792878191601",
+      "whopMembershipId": "pay_conc_1792878191603"
+    },
+    "test_upg_user_1792878191610": {
+      "id": "test_upg_user_1792878191610",
+      "email": "test_upg_user_1792878191610@whop.user",
+      "plan": "empire",
+      "credits": 450,
+      "creditsResetAt": "2026-10-25T21:43:11.610Z",
+      "status": "active",
+      "createdAt": "2026-10-24T21:43:11.610Z",
+      "updatedAt": "2026-10-24T21:43:11.615Z",
+      "whopUserId": "test_upg_user_1792878191610",
+      "whopPlanId": "plan_empire_vip"
+    },
+    "test_ref_user_1792878191619": {
+      "id": "test_ref_user_1792878191619",
+      "email": "test_ref_user_1792878191619@whop.user",
+      "plan": "free",
+      "credits": 5,
+      "creditsResetAt": "2026-10-25T21:43:11.619Z",
+      "status": "cancelled",
+      "createdAt": "2026-10-24T21:43:11.619Z",
+      "updatedAt": "2026-10-24T21:43:11.622Z"
+    },
+    "test_canc_user_1792878191629": {
+      "id": "test_canc_user_1792878191629",
+      "email": "test_canc_user_1792878191629@whop.user",
+      "plan": "free",
+      "credits": 5,
+      "creditsResetAt": "2026-10-25T21:43:11.629Z",
+      "status": "cancelled",
+      "createdAt": "2026-10-24T21:43:11.629Z",
+      "updatedAt": "2026-10-24T21:43:11.630Z"
+    },
+    "test_zero_1792878191633": {
+      "id": "test_zero_1792878191633",
+      "email": "test_zero_1792878191633@whop.user",
+      "plan": "empire",
+      "credits": 0,
+      "creditsResetAt": "2026-10-25T21:43:11.633Z",
+      "status": "active",
+      "createdAt": "2026-10-24T21:43:11.633Z",
+      "updatedAt": "2026-10-24T21:43:11.635Z"
+    }
+  },
+  "settings": {
+    "storeName": "AutoCash Systems Studio",
+    "creatorName": "Chris",
+    "whopStoreUrl": "https://whop.com",
+    "supportEmail": "chrisfoxdog33@gmail.com",
+    "currency": "USD",
+    "whopProCheckoutUrl": "https://whop.com/checkout/plan_pro_growth_29",
+    "whopEmpireCheckoutUrl": "https://whop.com/checkout/plan_empire_autopilot_79",
+    "system_catalog": {
+      "storeName": "AutoCash Systems Studio",
+      "creatorName": "Creator",
+      "whopStoreUrl": "https://whop.com",
+      "supportEmail": "support@whop.com",
+      "currency": "USD",
+      "whopProCheckoutUrl": "",
+      "whopEmpireCheckoutUrl": ""
+    },
+    "dev_creator_preview": {
+      "storeName": "AutoCash Systems Studio",
+      "creatorName": "Creator",
+      "whopStoreUrl": "https://whop.com",
+      "supportEmail": "support@whop.com",
+      "currency": "USD",
+      "whopProCheckoutUrl": "",
+      "whopEmpireCheckoutUrl": ""
+    }
+  },
+  "assets": [
+    {
+      "userId": "user_A_1792878191637",
+      "type": "digital_product",
+      "title": "User A Secret Strategy",
+      "niche": "Finance",
+      "content": {
+        "secret": "strategy_a"
+      },
+      "id": "asset_1792878191637_41ffc1cd",
+      "createdAt": "2026-10-24T21:43:11.637Z"
+    },
+    {
+      "userId": "user_A_1792878164856",
+      "type": "digital_product",
+      "title": "User A Secret Strategy",
+      "niche": "Finance",
+      "content": {
+        "secret": "strategy_a"
+      },
+      "id": "asset_1792878164856_7abcbc52",
+      "createdAt": "2026-10-24T21:42:44.856Z"
+    },
+    {
+      "userId": "user_A_1792878151381",
+      "type": "digital_product",
+      "title": "User A Secret Strategy",
+      "niche": "Finance",
+      "content": {
+        "secret": "strategy_a"
+      },
+      "id": "asset_1792878151381_fdfcbefd",
+      "createdAt": "2026-10-24T21:42:31.381Z"
+    },
+    {
+      "userId": "dev_creator_preview",
+      "type": "affiliate_bridge",
+      "title": "Honest Review: The Top Recurring Software Tools in AI Voice Agents for 2026",
+      "niche": "AI Voice Agents",
+      "content": {
+        "pageTitle": "Honest Review: The Top Recurring Software Tools in AI Voice Agents for 2026",
+        "slug": "top-recurring-tools-ai-voice-agents",
+        "targetNiche": "AI Voice Agents",
+        "verdictRating": "9.7 / 10",
+        "keyBenefitHeadline": "How To Earn 30% to 50% Lifetime Monthly Passive Income Promoting Software People Already Need",
+        "executiveSummary": "Affiliate marketing with high-churn $10 products is dead. The true autopilot income model is recurring SaaS subscriptions: refer a customer once, and receive $30 to $120 every single month for years.",
+        "pros": [
+          "Lifetime recurring commissions paid directly to Stripe/PayPal monthly",
+          "High conversion rate because business owners need these tools daily",
+          "Can be bundled with your Whop membership for 2x retention"
+        ],
+        "cons": [
+          "Takes 30 days for initial payout clearance",
+          "Requires authentic recommendation and honest value"
+        ],
+        "commissionEstimate": "$68/month average payout per active business referral",
+        "recommendedAffiliatePrograms": [
+          {
+            "programName": "All-In-One CRM & Automation Platform",
+            "payout": "40% Recurring Monthly ($39 - $119/mo per user)",
+            "cookieDuration": "90 Days",
+            "pitchAngle": "Replaces 5 expensive separate tools with 1 affordable subscription"
+          },
+          {
+            "programName": "AI Content & Social Auto-Scheduler",
+            "payout": "30% Lifetime Recurring ($18 - $49/mo per user)",
+            "cookieDuration": "60 Days",
+            "pitchAngle": "Saves creators 10+ hours per week on social media posting"
+          }
+        ],
+        "emailBridgeTemplate": {
+          "subjectLine": "The tool that saved me 15 hours this week (and pays my rent)",
+          "body": "Hey friend,\n\nWhen I first started trying to make money online, I wasted weeks doing repetitive tasks manually.\n\nThen I discovered [Recommended Tool]. Not only did it automate my entire workflow, but when I showed 3 friends how to use it, their affiliate program started paying me $140/month on complete autopilot.\n\nCheck out the full breakdown and claim my free bonus setup template here: [Your Affiliate Link]\n\nBest,\nYour Name"
+        },
+        "whopBonusBundleIdea": "Offer a \"Fast-Start Video Walkthrough & Custom Prompt Vault\" as a free Whop bonus exclusively for people who sign up with your affiliate link!"
+      },
+      "id": "asset_1790771787877_db44dfff",
+      "createdAt": "2026-09-30T12:36:27.877Z"
+    },
+    {
+      "userId": "dev_creator_preview",
+      "type": "viral_script",
+      "title": "Viral Script: Turnkey AI Voice Agent Agency Playbook (TikTok/Reels)",
+      "niche": "AI Voice Agents",
+      "content": {
+        "hook": "I was completely broke with $0 in my account. Here is the exact system that changed everything.",
+        "hookVariations": [
+          "Most people will scroll past this, but this 1 workflow made me $2,400 last month.",
+          "Stop doing side hustles that take 6 months. Here is what works in 48 hours."
+        ],
+        "visualDirection": "Film handheld in natural room light. Open your laptop screen showing the dashboard, then flip to front camera with high eye contact. Text on screen appears within 0.5s.",
+        "mainScript": "(0:00 - 0:04) \"If you are struggling financially right now, stop scrolling for 30 seconds.\"\n(0:05 - 0:15) \"Most people tell you to learn coding or start a physical ecommerce store. That takes thousands of dollars and months of work. Instead, I packaged a simple high-value resource guide in AI Voice Agents.\"\n(0:16 - 0:32) \"I used free AI to structure the entire playbook, listed it on Whop in 20 minutes, and used this exact video script formula to get 14 sales in my first 4 days.\"\n(0:33 - 0:45) \"You don't need inventory, you don't need a team, and you don't need ads.\"",
+        "callToActionScript": "Head to the link in my bio, grab the full Turnkey AI Voice Agent Agency Playbook blueprint, and set yours up before this weekend.",
+        "pinnedComment": "Grab the exact step-by-step blueprint here with 20% off using code 'AUTOPILOT': link in bio! 👇",
+        "recommendedAudioStyle": "Low-tempo ambient synth or Lo-Fi deep focus beat at 15% volume.",
+        "hashtags": [
+          "#sidehustle",
+          "#makemoneyonline",
+          "#passiveincome",
+          "#whopcreator",
+          "#entrepreneurship"
+        ]
+      },
+      "id": "asset_1790771787876_aa305242",
+      "createdAt": "2026-09-30T12:36:27.876Z"
+    },
+    {
+      "userId": "dev_creator_preview",
+      "type": "digital_product",
+      "title": "The 2026 AI Voice Agents Autopilot Cashflow Playbook",
+      "niche": "AI Voice Agents",
+      "content": {
+        "title": "The 2026 AI Voice Agents Autopilot Cashflow Playbook",
+        "subtitle": "Step-by-step systems to build a reliable monthly revenue stream in Turnkey AI Voice Agent Agency Playbook",
+        "suggestedPrice": 47,
+        "estimatedTimeToComplete": "60 minutes",
+        "summary": "A complete tactical blueprint designed for Self-directed digital creators, solopreneurs, and remote operators to achieve measurable results in Turnkey AI Voice Agent Agency Playbook without upfront advertising budget.",
+        "whopSalesCopy": {
+          "headline": "Finally: The Exact Blueprint To Monetize AI Voice Agents On Autopilot",
+          "bullets": [
+            "Complete turnkey workflows tested with real paying customers",
+            "Includes copy-paste prompt templates, Notion tracking sheets, and launch checklist",
+            "Pre-configured Whop checkout structure with 1-click delivery",
+            "Direct action roadmap designed for fast execution"
+          ],
+          "guarantee": "14-Day 100% money-back guarantee. If you follow the checklist and do not get value, we refund you immediately.",
+          "faq": [
+            {
+              "question": "Do I need any technical skills?",
+              "answer": "None at all. Every workflow is built with simple copy-paste systems and free tools."
+            },
+            {
+              "question": "How quickly can I launch this on Whop?",
+              "answer": "You can package this guide and list it on your Whop store in under 30 minutes."
+            }
+          ]
+        },
+        "modules": [
+          {
+            "moduleNumber": 1,
+            "title": "Phase 1: Zero-Budget Market Validation & Product Setup",
+            "summary": "How to position and set up your Whop store without spending a dime.",
+            "actionSteps": [
+              "Claim your free Whop creator URL",
+              "Create a single-time digital download product priced at $47",
+              "Set up the automated delivery link"
+            ],
+            "fullContent": "The biggest mistake broke creators make is spending money before validating demand. On Whop, your primary advantage is zero friction. Set up your product container first. Ensure your product title highlights the end result, not the process. People do not buy books; they buy faster money, saved hours, and reduced stress.",
+            "copyPasteResource": "WHOP STORE LISTING TEMPLATE:\nHeadline: Master Turnkey AI Voice Agent Agency Playbook in 7 Days (Zero Ad Spend)\nPrice: $47\nDelivery: Instant PDF & Resource Vault"
+          },
+          {
+            "moduleNumber": 2,
+            "title": "Phase 2: Organic Viral Traffic Engine (0 to 1,000 Views Daily)",
+            "summary": "Turn free short-form video and posts into paying customer checkouts.",
+            "actionSteps": [
+              "Record 3 hook-based videos using the viral script generator",
+              "Place your Whop store link in your bio",
+              "Pin the primary breakdown video with a discount incentive"
+            ],
+            "fullContent": "Organic traffic in 2026 relies on specific problem-solving hooks. Instead of generic advice, show the specific screen, the specific dollar figure, or the exact workflow. In the first 3 seconds, call out the target pain point: \"If you have $0 in your bank account right now, do not start dropshipping or crypto. Do this instead.\"",
+            "copyPasteResource": "TIKTOK/REELS HOOK FORMULA:\n\"Stop doing [Common Hard Method]. Here is the 3-step automation I used to generate my first $1,000 with zero inventory: [Step 1]... [Step 2]... [Step 3]. Link in bio for the full template.\""
+          },
+          {
+            "moduleNumber": 3,
+            "title": "Phase 3: Building The Recurring Subscription Flywheel",
+            "summary": "Converting one-time buyers into monthly recurring Whop community members.",
+            "actionSteps": [
+              "Add a $19/mo VIP Community tier to your Whop product",
+              "Offer the first 30 days free or at a 50% discount for buyers of the playbook",
+              "Host a weekly 30-minute Q&A or drop weekly updated resources"
+            ],
+            "fullContent": "One-time sales provide quick cash, but recurring memberships provide peace of mind and true freedom. By packaging ongoing weekly updates, a Discord/Whop chat room, and monthly Q&As, you can convert 20% to 30% of your digital product buyers into subscribers.",
+            "copyPasteResource": "POST-PURCHASE EMAIL TRIGGER:\n\"Hey [Name], thanks for grabbing the Playbook! As a fast-action bonus, you have an invite to our private Whop mastermind free for 14 days. Claim your invite here: [Whop Community Link]\""
+          }
+        ]
+      },
+      "id": "asset_1790771787875_40387ce4",
+      "createdAt": "2026-09-30T12:36:27.876Z"
+    },
+    {
+      "userId": "dev_creator_preview",
+      "type": "affiliate_bridge",
+      "title": "Honest Review: The Top Recurring Software Tools in Community Gamification & Learning for 2026",
+      "niche": "Community Gamification & Learning",
+      "content": {
+        "pageTitle": "Honest Review: The Top Recurring Software Tools in Community Gamification & Learning for 2026",
+        "slug": "top-recurring-tools-community-gamification---learning",
+        "targetNiche": "Community Gamification & Learning",
+        "verdictRating": "9.7 / 10",
+        "keyBenefitHeadline": "How To Earn 30% to 50% Lifetime Monthly Passive Income Promoting Software People Already Need",
+        "executiveSummary": "Affiliate marketing with high-churn $10 products is dead. The true autopilot income model is recurring SaaS subscriptions: refer a customer once, and receive $30 to $120 every single month for years.",
+        "pros": [
+          "Lifetime recurring commissions paid directly to Stripe/PayPal monthly",
+          "High conversion rate because business owners need these tools daily",
+          "Can be bundled with your Whop membership for 2x retention"
+        ],
+        "cons": [
+          "Takes 30 days for initial payout clearance",
+          "Requires authentic recommendation and honest value"
+        ],
+        "commissionEstimate": "$68/month average payout per active business referral",
+        "recommendedAffiliatePrograms": [
+          {
+            "programName": "All-In-One CRM & Automation Platform",
+            "payout": "40% Recurring Monthly ($39 - $119/mo per user)",
+            "cookieDuration": "90 Days",
+            "pitchAngle": "Replaces 5 expensive separate tools with 1 affordable subscription"
+          },
+          {
+            "programName": "AI Content & Social Auto-Scheduler",
+            "payout": "30% Lifetime Recurring ($18 - $49/mo per user)",
+            "cookieDuration": "60 Days",
+            "pitchAngle": "Saves creators 10+ hours per week on social media posting"
+          }
+        ],
+        "emailBridgeTemplate": {
+          "subjectLine": "The tool that saved me 15 hours this week (and pays my rent)",
+          "body": "Hey friend,\n\nWhen I first started trying to make money online, I wasted weeks doing repetitive tasks manually.\n\nThen I discovered [Recommended Tool]. Not only did it automate my entire workflow, but when I showed 3 friends how to use it, their affiliate program started paying me $140/month on complete autopilot.\n\nCheck out the full breakdown and claim my free bonus setup template here: [Your Affiliate Link]\n\nBest,\nYour Name"
+        },
+        "whopBonusBundleIdea": "Offer a \"Fast-Start Video Walkthrough & Custom Prompt Vault\" as a free Whop bonus exclusively for people who sign up with your affiliate link!"
+      },
+      "id": "asset_1790771456471_9a89e761",
+      "createdAt": "2026-09-30T12:30:56.471Z"
+    },
+    {
+      "userId": "dev_creator_preview",
+      "type": "digital_product",
+      "title": "The 2026 AI Productivity & Automation Autopilot Cashflow Playbook",
+      "niche": "AI Productivity & Automation",
+      "content": {
+        "title": "The 2026 AI Productivity & Automation Autopilot Cashflow Playbook",
+        "subtitle": "Step-by-step systems to build a reliable monthly revenue stream in Automated Lead Generation & Client Onboarding Systems",
+        "suggestedPrice": 39,
+        "estimatedTimeToComplete": "60 minutes",
+        "summary": "A complete tactical blueprint designed for Solopreneurs, remote freelancers, and boutique agencies to achieve measurable results in Automated Lead Generation & Client Onboarding Systems without upfront advertising budget.",
+        "whopSalesCopy": {
+          "headline": "Finally: The Exact Blueprint To Monetize AI Productivity & Automation On Autopilot",
+          "bullets": [
+            "Complete turnkey workflows tested with real paying customers",
+            "Includes copy-paste prompt templates, Notion tracking sheets, and launch checklist",
+            "Pre-configured Whop checkout structure with 1-click delivery",
+            "Direct action roadmap designed for fast execution"
+          ],
+          "guarantee": "14-Day 100% money-back guarantee. If you follow the checklist and do not get value, we refund you immediately.",
+          "faq": [
+            {
+              "question": "Do I need any technical skills?",
+              "answer": "None at all. Every workflow is built with simple copy-paste systems and free tools."
+            },
+            {
+              "question": "How quickly can I launch this on Whop?",
+              "answer": "You can package this guide and list it on your Whop store in under 30 minutes."
+            }
+          ]
+        },
+        "modules": [
+          {
+            "moduleNumber": 1,
+            "title": "Phase 1: Zero-Budget Market Validation & Product Setup",
+            "summary": "How to position and set up your Whop store without spending a dime.",
+            "actionSteps": [
+              "Claim your free Whop creator URL",
+              "Create a single-time digital download product priced at $39",
+              "Set up the automated delivery link"
+            ],
+            "fullContent": "The biggest mistake broke creators make is spending money before validating demand. On Whop, your primary advantage is zero friction. Set up your product container first. Ensure your product title highlights the end result, not the process. People do not buy books; they buy faster money, saved hours, and reduced stress.",
+            "copyPasteResource": "WHOP STORE LISTING TEMPLATE:\nHeadline: Master Automated Lead Generation & Client Onboarding Systems in 7 Days (Zero Ad Spend)\nPrice: $39\nDelivery: Instant PDF & Resource Vault"
+          },
+          {
+            "moduleNumber": 2,
+            "title": "Phase 2: Organic Viral Traffic Engine (0 to 1,000 Views Daily)",
+            "summary": "Turn free short-form video and posts into paying customer checkouts.",
+            "actionSteps": [
+              "Record 3 hook-based videos using the viral script generator",
+              "Place your Whop store link in your bio",
+              "Pin the primary breakdown video with a discount incentive"
+            ],
+            "fullContent": "Organic traffic in 2026 relies on specific problem-solving hooks. Instead of generic advice, show the specific screen, the specific dollar figure, or the exact workflow. In the first 3 seconds, call out the target pain point: \"If you have $0 in your bank account right now, do not start dropshipping or crypto. Do this instead.\"",
+            "copyPasteResource": "TIKTOK/REELS HOOK FORMULA:\n\"Stop doing [Common Hard Method]. Here is the 3-step automation I used to generate my first $1,000 with zero inventory: [Step 1]... [Step 2]... [Step 3]. Link in bio for the full template.\""
+          },
+          {
+            "moduleNumber": 3,
+            "title": "Phase 3: Building The Recurring Subscription Flywheel",
+            "summary": "Converting one-time buyers into monthly recurring Whop community members.",
+            "actionSteps": [
+              "Add a $19/mo VIP Community tier to your Whop product",
+              "Offer the first 30 days free or at a 50% discount for buyers of the playbook",
+              "Host a weekly 30-minute Q&A or drop weekly updated resources"
+            ],
+            "fullContent": "One-time sales provide quick cash, but recurring memberships provide peace of mind and true freedom. By packaging ongoing weekly updates, a Discord/Whop chat room, and monthly Q&As, you can convert 20% to 30% of your digital product buyers into subscribers.",
+            "copyPasteResource": "POST-PURCHASE EMAIL TRIGGER:\n\"Hey [Name], thanks for grabbing the Playbook! As a fast-action bonus, you have an invite to our private Whop mastermind free for 14 days. Claim your invite here: [Whop Community Link]\""
+          }
+        ]
+      },
+      "id": "asset_1790771186903_b317e68d",
+      "createdAt": "2026-09-30T12:26:26.904Z"
+    },
+    {
+      "userId": "user_alice",
+      "type": "digital_product",
+      "title": "The 2026 Real Estate AI Autopilot Cashflow Playbook",
+      "niche": "Real Estate AI",
+      "content": {
+        "title": "The 2026 Real Estate AI Autopilot Cashflow Playbook",
+        "subtitle": "Step-by-step systems to build a reliable monthly revenue stream in Seller Lead Nurture",
+        "suggestedPrice": 49,
+        "estimatedTimeToComplete": "60 minutes",
+        "summary": "A complete tactical blueprint designed for Aspiring entrepreneurs and creators to achieve measurable results in Seller Lead Nurture without upfront advertising budget.",
+        "whopSalesCopy": {
+          "headline": "Finally: The Exact Blueprint To Monetize Real Estate AI On Autopilot",
+          "bullets": [
+            "Complete turnkey workflows tested with real paying customers",
+            "Includes copy-paste prompt templates, Notion tracking sheets, and launch checklist",
+            "Pre-configured Whop checkout structure with 1-click delivery",
+            "Direct action roadmap designed for fast execution"
+          ],
+          "guarantee": "14-Day 100% money-back guarantee. If you follow the checklist and do not get value, we refund you immediately.",
+          "faq": [
+            {
+              "question": "Do I need any technical skills?",
+              "answer": "None at all. Every workflow is built with simple copy-paste systems and free tools."
+            },
+            {
+              "question": "How quickly can I launch this on Whop?",
+              "answer": "You can package this guide and list it on your Whop store in under 30 minutes."
+            }
+          ]
+        },
+        "modules": [
+          {
+            "moduleNumber": 1,
+            "title": "Phase 1: Zero-Budget Market Validation & Product Setup",
+            "summary": "How to position and set up your Whop store without spending a dime.",
+            "actionSteps": [
+              "Claim your free Whop creator URL",
+              "Create a single-time digital download product priced at $49",
+              "Set up the automated delivery link"
+            ],
+            "fullContent": "The biggest mistake broke creators make is spending money before validating demand. On Whop, your primary advantage is zero friction. Set up your product container first. Ensure your product title highlights the end result, not the process. People do not buy books; they buy faster money, saved hours, and reduced stress.",
+            "copyPasteResource": "WHOP STORE LISTING TEMPLATE:\nHeadline: Master Seller Lead Nurture in 7 Days (Zero Ad Spend)\nPrice: $49\nDelivery: Instant PDF & Resource Vault"
+          },
+          {
+            "moduleNumber": 2,
+            "title": "Phase 2: Organic Viral Traffic Engine (0 to 1,000 Views Daily)",
+            "summary": "Turn free short-form video and posts into paying customer checkouts.",
+            "actionSteps": [
+              "Record 3 hook-based videos using the viral script generator",
+              "Place your Whop store link in your bio",
+              "Pin the primary breakdown video with a discount incentive"
+            ],
+            "fullContent": "Organic traffic in 2026 relies on specific problem-solving hooks. Instead of generic advice, show the specific screen, the specific dollar figure, or the exact workflow. In the first 3 seconds, call out the target pain point: \"If you have $0 in your bank account right now, do not start dropshipping or crypto. Do this instead.\"",
+            "copyPasteResource": "TIKTOK/REELS HOOK FORMULA:\n\"Stop doing [Common Hard Method]. Here is the 3-step automation I used to generate my first $1,000 with zero inventory: [Step 1]... [Step 2]... [Step 3]. Link in bio for the full template.\""
+          },
+          {
+            "moduleNumber": 3,
+            "title": "Phase 3: Building The Recurring Subscription Flywheel",
+            "summary": "Converting one-time buyers into monthly recurring Whop community members.",
+            "actionSteps": [
+              "Add a $19/mo VIP Community tier to your Whop product",
+              "Offer the first 30 days free or at a 50% discount for buyers of the playbook",
+              "Host a weekly 30-minute Q&A or drop weekly updated resources"
+            ],
+            "fullContent": "One-time sales provide quick cash, but recurring memberships provide peace of mind and true freedom. By packaging ongoing weekly updates, a Discord/Whop chat room, and monthly Q&As, you can convert 20% to 30% of your digital product buyers into subscribers.",
+            "copyPasteResource": "POST-PURCHASE EMAIL TRIGGER:\n\"Hey [Name], thanks for grabbing the Playbook! As a fast-action bonus, you have an invite to our private Whop mastermind free for 14 days. Claim your invite here: [Whop Community Link]\""
+          }
+        ]
+      },
+      "id": "asset_1790653579557_e6fa89ef",
+      "createdAt": "2026-09-29T03:46:19.557Z"
+    },
+    {
+      "id": "prod_solopreneur_playbook",
+      "userId": "user_creator_default",
+      "type": "digital_product",
+      "title": "The 2026 AI Solopreneur Workflow Playbook: $0 to $5K/Mo With Automated Digital Micro-Services",
+      "niche": "AI Productivity & Automation",
+      "content": {
+        "subtitle": "Complete Step-By-Step Systems To Package, Automate, and Sell In-Demand Digital Workflows on Whop",
+        "suggestedPrice": 39,
+        "estimatedTimeToComplete": "75 minutes to set up, runs permanently",
+        "summary": "A 100% turnkey, battle-tested operational guide designed for someone starting with zero capital. Explains exactly how to package free AI automation tools into high-margin $39–$199 digital products and micro-services, launch on Whop in under 45 minutes, and secure paying clients with zero upfront advertising.",
+        "whopSalesCopy": {
+          "headline": "Stop Trading Hours For Pennies. Deploy The Turnkey AI Systems Generating $3,000–$5,000/Month On Autopilot.",
+          "bullets": [
+            "4 Deep Technical Modules detailing exact copy-paste AI prompt chains and no-code webhook setups",
+            "Complete Whop Store Configuration Checklist: From $0 to live checkout in under 30 minutes",
+            "10 Production-Ready Master Prompts for client enrichment, automated proposal generation, and daily workflow execution",
+            "Zero-Ad-Spend Customer Acquisition Playbook: How to get your first 10 buyers in 72 hours organically",
+            "Includes Commercial Resale License: Rebrand, adapt, and resell as your own digital product"
+          ],
+          "guarantee": "14-Day 100% Action Guarantee. Follow the step-by-step launch checklist. If you do not have your product live and receiving traffic within 14 days, contact support for an immediate, no-questions-asked refund.",
+          "faq": [
+            {
+              "question": "Do I need coding experience or paid software to use this?",
+              "answer": "None whatsoever. Every automation in this playbook utilizes 100% free software tiers (Notion, Google Sheets, Make.com free plan, and standard Gemini/Claude interfaces)."
+            },
+            {
+              "question": "Can I sell this guide or parts of it on my own Whop store?",
+              "answer": "Yes! This product includes full commercial rights. You can adapt the templates, re-brand them with your name, and deliver them directly to your customers."
+            },
+            {
+              "question": "How fast can I start getting sales?",
+              "answer": "Module 3 details the exact 72-hour organic distribution funnel that our students use to secure their first 3 to 10 customers without spending a dime on ads."
+            }
+          ]
+        },
+        "modules": [
+          {
+            "moduleNumber": 1,
+            "title": "Module 1: The Automated High-Value Micro-Service Framework",
+            "summary": "Why clients and creators pay $39 to $497 for packaged automations instead of generic consulting, and how to identify high-converting micro-niche opportunities.",
+            "actionSteps": [
+              "Audit the 5 most requested small-business repetitive tasks (data enrichment, content repurposing, cold outreach personalization, invoice tracking, customer onboarding)",
+              "Choose your primary micro-service container (Playbook, Notion Portal, or Make.com Blueprint)",
+              "Price your offer using the 10x ROI Value Rule: Price at 10% of the client's monthly hours saved"
+            ],
+            "fullContent": "The secret to rapid digital income is eliminating the friction of \"consulting\" or \"hourly work.\" When you sell hours, you are capped at 24 hours per day. When you sell packaged automated systems on Whop, your delivery cost is $0 per customer.\n\nIn 2026, business owners and creator teams are overwhelmed by disconnected tools. They do not want to learn AI prompting; they want a pre-configured solution that solves their bottleneck in under 15 minutes.\n\nYour core strategy is the \"Micro-Solution Stack\":\n1. Select a high-friction pain point (e.g. \"Generating 20 personalized B2B outreach hooks daily\").\n2. Build a streamlined system using a free Google Sheet or Notion template connected to an AI prompt sequence.\n3. Package the workflow as an instant digital download on Whop for $39.\n4. Attach an optional $19/mo community VIP upgrade that drops 2 new workflow upgrades every Tuesday.\n\nThis simple dual-tier offer creates both immediate cashflow ($390 from 10 sales) and compounding recurring subscription revenue ($190/mo recurring from the same 10 buyers).",
+            "copyPasteResource": "CORE VALUE PROPOSITION FORMULA:\n\"I help [Target Customer: e.g. Freelance Designers] eliminate [Core Friction: e.g. 10 hours of unorganized client onboarding] using our turnkey [Product Name: Automated Onboarding Blueprint] in under 15 minutes, with zero technical skills required.\""
+          },
+          {
+            "moduleNumber": 2,
+            "title": "Module 2: The 10 Master AI Workflow Prompts (Production Grade)",
+            "summary": "Copy-paste, multi-variable prompt frameworks engineered to automate market research, lead generation, sales email drafting, and product creation.",
+            "actionSteps": [
+              "Test Prompt #1 (The Competitor Weakness & Gap Extractor) in your chosen niche",
+              "Deploy Prompt #3 (The High-Converting Sales Page Architect) to draft your Whop listing description",
+              "Save all 10 prompts to your personal Notion / AutoCash vault for instant execution"
+            ],
+            "fullContent": "Generic prompts like \"write me a sales email\" produce generic, robotic slop that destroys customer trust. High-converting prompts require context framing, role constraints, negative constraints, and structured output formatting.\n\nBelow is the exact 4-tier prompt structure utilized by top-earning Whop creators:\n\n1. ROLE DEFINITION: Assign the AI the persona of a veteran direct-response copywriter or systems architect.\n2. INPUT DATA: Feed raw user pain points, competitor reviews, and product features.\n3. CONSTRAINTS: Ban corporate jargon (\"revolutionary\", \"delve\", \"game-changer\", \"unleash\"). Require concrete figures and punchy, direct sentences.\n4. FORMAT: Specify JSON or Markdown table output for instant copy-pasting.\n\nBy executing this standardized framework, you can generate comprehensive client deliverables in 4 minutes that previously took 4 hours.",
+            "copyPasteResource": "MASTER PROMPT: B2B DIRECT RESPONSE AUDIT & HOOK GENERATOR\n\nRole: You are an elite direct-response conversion copywriter specializing in digital products and SaaS monetization.\nTask: Analyze the following offer for [Target Niche].\nProduct: [Your Product Title]\nTarget Audience: [Audience Description]\nGoal: Create 5 ultra-compelling, curiosity-driven benefit bullets that focus entirely on tangible business outcomes, not features.\nNegative Constraints: Do NOT use the words \"delve\", \"unleash\", \"revolutionary\", \"game-changing\", or \"holistic\". Write in clear, punchy 8th-grade English.\nOutput: Numbered list with bold outcome headlines followed by 1 concise explanatory sentence."
+          },
+          {
+            "moduleNumber": 3,
+            "title": "Module 3: Zero-Cost Whop Store Deployment in 30 Minutes",
+            "summary": "The exact step-by-step setup to launch your Whop creator store, configure direct checkouts, and automate customer file delivery with $0 upfront fees.",
+            "actionSteps": [
+              "Claim your unique Whop store URL at dash.whop.com",
+              "Create a new Digital Product container priced at $39",
+              "Upload your formatted Markdown or PDF deliverable into Whop Digital Files",
+              "Set up automatic post-checkout redirect to your onboarding guide"
+            ],
+            "fullContent": "Whop is the premier monetization platform for modern creators because it has zero monthly platform subscription fees. Unlike legacy platforms like Shopify or Kajabi that charge $39 to $199/month just to keep your store open, Whop only takes a modest 3% transaction fee when you actually make money.\n\nTo configure your store for maximum conversion:\n1. PRODUCT TITLE: Keep it outcome-centric. Example: \"The 2026 AI Solopreneur Workflow Playbook\" instead of \"AI Guide PDF\".\n2. PRICING PSYCHOLOGY: $39 is the optimal sweet spot for impulsive digital purchases. It feels accessible enough to purchase on a debit card without second-guessing, yet generates substantial revenue ($390 from just 10 checkouts).\n3. FULFILLMENT: Under \"Product Access,\" choose \"File Download\" or \"Software Redirect.\" Upload the standalone HTML or Markdown document provided in AutoCash AI.\n4. ORDER CONFIRMATION MESSAGE: Add a warm personalized note: \"Welcome to the family! Check your inbox for your access credentials, and join our free community chat here.\"",
+            "copyPasteResource": "WHOP POST-PURCHASE ONBOARDING COPY:\n\"Thank you for grabbing the AI Solopreneur Playbook! You now have permanent access to all files and future updates.\n\nNext Steps:\n1. Download your complete master guide below.\n2. Review Module 1 within the next 24 hours to set up your primary workflow.\n3. If you have any questions or need setup help, email support at [Your Email]. Let's get to work!\""
+          },
+          {
+            "moduleNumber": 4,
+            "title": "Module 4: The 72-Hour Organic Customer Acquisition Flywheel",
+            "summary": "How to generate 500 to 2,000 targeted profile visits using simple problem-solving short-form video hooks without ever showing your face or paying for ads.",
+            "actionSteps": [
+              "Pick 3 high-friction questions your audience asks on Reddit, Twitter/X, and TikTok comments",
+              "Record 3 simple 35-second screen-share breakdowns demonstrating the solution",
+              "Place your Whop direct checkout link in your bio with an incentive discount code",
+              "Reply to every comment within 10 minutes sending the direct link"
+            ],
+            "fullContent": "Organic reach in 2026 does not care about dancing, high-end production cameras, or expensive studios. The algorithm prioritizes RETENTION and VALUE DENSITY.\n\nWhen you record a video, follow the 3-part \"Problem-Proof-Push\" formula:\n\n1. THE PROBLEM HOOK (0:00–0:04): \"If you have $0 in your bank account, stop applying to 100 job boards. Here is the exact automated system I used to generate $1,200 last week.\"\n2. THE PROOF BREAKDOWN (0:05–0:25): Show your laptop screen. Walk through 1 concrete step from Module 1. Do not gatekeep the insight—deliver an actual 'aha' moment so the viewer trusts your expertise.\n3. THE PUSH CTA (0:26–0:35): \"I packaged the full 4 modules, prompt vault, and step-by-step templates into a complete guide on Whop. Link in my bio—grab it today and set yours up before tonight.\"\n\nPost 2 videos per day for 3 days (6 total videos). On average, 1 out of 5 videos triggers the algorithm, generating between 800 and 5,000 views, which routinely converts into 5 to 15 paying customers ($195–$585 profit).",
+            "copyPasteResource": "VIRAL BIO LINK TEMPLATE:\n\"Building automated digital systems from $0 ⚡\nGrab the 2026 AI Solopreneur Playbook (Turnkey PDF & Prompts) 👇\n[Your Whop Link Here]\""
+          }
+        ]
+      },
+      "createdAt": "2026-09-29T01:06:10.811Z"
+    },
+    {
+      "id": "prod_b2b_cold_outreach",
+      "userId": "user_creator_default",
+      "type": "digital_product",
+      "title": "High-Ticket B2B Cold Outreach & Client Acquisition Vault",
+      "niche": "Remote Freelancing & Agency",
+      "content": {
+        "subtitle": "Copy-Paste Cold Email Scripts, LinkedIn InMail Sequences, and Loom Audit Formulas That Book $2,000–$5,000 Retainers",
+        "suggestedPrice": 49,
+        "estimatedTimeToComplete": "90 minutes setup",
+        "summary": "A complete, battle-tested client acquisition machine. Contains 12 proven cold email templates, 5 multi-touch LinkedIn follow-up cadences, a 3-minute video audit script framework, and objection handling scripts that convert cold business owners into booked discovery calls.",
+        "whopSalesCopy": {
+          "headline": "Stop Waiting For Referrals. Fill Your Calendar With High-Paying B2B Retainers On Demand.",
+          "bullets": [
+            "12 Proven Cold Email Templates tested across 45,000+ sent emails with 42% average open rates and 18% reply rates",
+            "The 3-Minute \"No-Pitch\" Video Audit Framework that books 1 call out of every 5 sent videos",
+            "Complete 5-Step Follow-Up Sequence that captures 70% of responses that ignore email #1",
+            "Objection Handling Playbook: How to turn \"we don't have budget\" into a signed agreement"
+          ],
+          "guarantee": "100% Satisfaction Guarantee. If these scripts do not get you at least 3 qualified discovery calls after sending 50 personalized outreach messages, email us for a complete refund.",
+          "faq": [
+            {
+              "question": "What niches does this work for?",
+              "answer": "Web designers, software developers, video editors, marketing consultants, SEO specialists, automation builders, and digital agency operators."
+            }
+          ]
+        },
+        "modules": [
+          {
+            "moduleNumber": 1,
+            "title": "Module 1: The \"Specific Observation\" Cold Email Template",
+            "summary": "The cold email framework that bypasses spam filters and gets responses from busy executives and founders.",
+            "actionSteps": [
+              "Find 20 verified prospect emails using free Apollo.io or LinkedIn search",
+              "Fill out the 3 personalization variables for each prospect",
+              "Send in batches of 15 per day to maintain 99% email deliverability"
+            ],
+            "fullContent": "Cold outreach fails when it sounds like a broadcast marketing blast. Executives receive 50 spam emails daily asking for \"15 minutes of your time to discuss our synergy.\"\n\nTo stand out, your email must do 3 things:\n1. Reference a specific, publicly verifiable detail about their business in line 1.\n2. Point out 1 frictionless improvement that saves them money or captures lost revenue.\n3. Make the call to action low-commitment (\"mind if I send a 2-minute screen recording showing what I found?\"). Notice this asks for permission to send value, not for a call!",
+            "copyPasteResource": "COLD EMAIL SCRIPT #1: THE 2-MINUTE AUDIT OFFER\n\nSubject: Quick question regarding [Prospect Company] checkout flow\n\nHey [First Name],\n\nI was browsing [Prospect Company]'s website this morning and noticed that [Specific Observation: e.g. the mobile checkout button has a 3-second delay on Safari].\n\nI recorded a 90-second Loom video showing the exact line of code and how fixing it could prevent lost mobile cart abandonments.\n\nMind if I send the video link over? (No cost or pitch, just figured you'd want to fix it).\n\nBest,\n[Your Name]"
+          },
+          {
+            "moduleNumber": 2,
+            "title": "Module 2: The 5-Touch Follow-Up Cadence",
+            "summary": "80% of sales happen between touchpoints 3 and 5. This automated cadence maintains professional persistence without sounding annoying.",
+            "actionSteps": [
+              "Schedule Touch #2 48 hours after Email #1",
+              "Send Touch #3 with an actionable case study or resource snippet",
+              "Deploy the \"Breakup Email\" on Day 10 to trigger loss aversion"
+            ],
+            "fullContent": "Most beginners send 1 email, receive no response, and assume the prospect hates them. In reality, business owners are simply busy. A polite, value-first follow-up sequence demonstrates professionalism and reliability.",
+            "copyPasteResource": "TOUCH #3 (VALUE-ADD FOLLOW UP):\n\"Hey [First Name], saw you launched [Recent Company Initiative] yesterday—looks great! Just bumping this in case the cart optimization was on your radar for this quarter. Happy to send the 90-second breakdown whenever convenient.\""
+          }
+        ]
+      },
+      "createdAt": "2026-09-29T01:36:10.811Z"
+    },
+    {
+      "id": "prod_faceless_viral_growth",
+      "userId": "user_creator_default",
+      "type": "digital_product",
+      "title": "Faceless Viral Short-Form Growth Machine: 30-Day Script Vault & Retention Blueprint",
+      "niche": "Creator Economy & Social Media",
+      "content": {
+        "subtitle": "The Exact System To Grow 10,000+ Followers and Funnel Paying Customers to Whop Without Ever Showing Your Face",
+        "suggestedPrice": 29,
+        "estimatedTimeToComplete": "45 minutes setup",
+        "summary": "A complete faceless content generation architecture. Includes 30 days of plug-and-play short-form video scripts, viral retention pacing rules, CapCut editing workflows, royalty-free B-roll asset sources, and bio funnel conversion strategies.",
+        "whopSalesCopy": {
+          "headline": "Build A 6-Figure Digital Audience Without Ever Filming Your Face Or Speaking On Camera.",
+          "bullets": [
+            "30 Complete Done-For-You Scripts with visual B-roll cues and on-screen text instructions",
+            "The 3-Second Visual Hook Rule: Stop the endless scroll with psychological pattern interrupts",
+            "Free B-Roll & AI Voiceover Directory: Never pay for expensive stock video or recording equipment",
+            "Whop Bio Link Funnel: Turn casual viewers into paying members with automated pinned comments"
+          ],
+          "guarantee": "14-Day Money Back Guarantee. Post consistently for 14 days using the script vault. If your account does not see noticeable engagement gains, we refund every cent.",
+          "faq": [
+            {
+              "question": "Can I do this entirely from my phone?",
+              "answer": "Yes! All templates are optimized for mobile video editors like CapCut and free social apps."
+            }
+          ]
+        },
+        "modules": [
+          {
+            "moduleNumber": 1,
+            "title": "Module 1: The High-Retention Faceless Video Anatomy",
+            "summary": "Why faceless videos go viral faster than talking head videos when visual pacing is executed correctly.",
+            "actionSteps": [
+              "Set up CapCut free on mobile or desktop",
+              "Download free aesthetic cinematic B-roll clips from Pexels/Unsplash",
+              "Apply the 2.5-second scene transition rule"
+            ],
+            "fullContent": "Short-form algorithms (TikTok, Instagram Reels, YouTube Shorts) measure one metric above all else: AVERAGE PERCENTAGE VIEWED. If your video is 15 seconds long and the average user watches it for 18 seconds (meaning they re-watched it), the algorithm distributes it to tens of thousands of users immediately.",
+            "copyPasteResource": "VIRAL HOOK SCRIPT #1: THE HIDDEN TOOL\nVisual: Hand typing on a backlit keyboard in a dark room. Fast cut to a clean dashboard.\nOn-Screen Text: \"99% of people are broke because they don't know this exists.\"\nVoiceover: \"If you have a laptop and 30 minutes a day, you can build an automated income stream in 2026. Here's the exact framework...\""
+          }
+        ]
+      },
+      "createdAt": "2026-09-29T02:06:10.811Z"
+    },
+    {
+      "id": "prod_whop_community_recurring",
+      "userId": "user_creator_default",
+      "type": "digital_product",
+      "title": "The Recurring Whop Community Launch Playbook: From $0 to $2,000/Mo Recurring Memberships",
+      "niche": "Whop & Community Monetization",
+      "content": {
+        "subtitle": "How To Launch A Paid Subscription Community on Whop That Members Never Cancel",
+        "suggestedPrice": 49,
+        "estimatedTimeToComplete": "60 minutes setup",
+        "summary": "Turn one-time digital product purchasers into predictable monthly recurring revenue. Contains the exact Whop product tier architecture, channel organization, onboarding welcome sequences, weekly event calendars, and churn reduction tactics.",
+        "whopSalesCopy": {
+          "headline": "Escape The Income Rollercoaster. Build A High-Retention $19–$49/Month Whop Community.",
+          "bullets": [
+            "The 3-Tier Whop Offer Structure: Free lead magnet to $39 product to $19/mo VIP Mastermind",
+            "Onboarding Welcome Drip: Cut 30-day member cancellation rates by 65%",
+            "Weekly Ritual Calendar: High engagement with only 2 hours of founder time per week",
+            "Automated Member Retention & Winback Emails"
+          ],
+          "guarantee": "100% Action Guarantee. Follow the launch checklist to set up your Whop community. Full refund within 14 days if unsatisfied.",
+          "faq": [
+            {
+              "question": "Do I need thousands of followers to launch a paid community?",
+              "answer": "No! You only need 20 engaged members at $25/mo to build a recurring $500/month baseline cashflow."
+            }
+          ]
+        },
+        "modules": [
+          {
+            "moduleNumber": 1,
+            "title": "Module 1: High-Retention Community Architecture on Whop",
+            "summary": "The channel layouts and permission structures that foster daily member interaction without feeling chaotic.",
+            "actionSteps": [
+              "Create 4 essential channels: #welcome-start-here, #wins-and-milestones, #weekly-drops, and #ask-the-founder",
+              "Configure automatic role assignment upon Whop payment confirmation",
+              "Set up a pinned \"First 24 Hours Checklist\" for all new members"
+            ],
+            "fullContent": "Members do not stay in communities for information; they can find information on YouTube for free. Members stay for ACCOUNTABILITY, ACCESS, and RECOGNITION. By setting up a #wins-and-milestones channel where members celebrate their progress, your community becomes an indispensable part of their daily routine.",
+            "copyPasteResource": "NEW MEMBER ONBOARDING PROMPT:\n\"Welcome to [Community Name]! 🎉\n\nTo get the most out of your membership, do these 3 things right now:\n1. Drop a quick intro in #introductions (tell us what you're building!)\n2. Grab your starter resource pack from #welcome-start-here\n3. Mark our weekly live Q&A on your calendar (every Thursday at 4 PM EST)\n\nWe're excited to build with you!\""
+          }
+        ]
+      },
+      "createdAt": "2026-09-29T02:36:10.811Z"
+    }
+  ],
+  "webhookLogs": [
+    {
+      "id": "8a8ac308-a9f4-4b12-9b1b-c6027d11f452",
+      "eventId": "evt_out_of_order_1792878191631",
+      "eventType": "membership.updated",
+      "timestamp": "2026-10-24T21:43:11.631Z",
+      "status": "duplicate",
+      "details": "Out-of-order membership update ignored for inactive user test_canc_user_1792878191629 (status: cancelled). Paid access not reactivated."
+    },
+    {
+      "id": "d8f9eeb4-420f-4fb1-a98e-1a9f9e73f0f7",
+      "eventId": "evt_ref_2_different_evt_id_1792878191626",
+      "eventType": "refund.created",
+      "timestamp": "2026-10-24T21:43:11.627Z",
+      "status": "duplicate",
+      "details": "Refund event for user test_ref_user_1792878191619 already processed under key refund_ref_event_1792878191621; duplicate refund prevented."
+    },
+    {
+      "id": "5fd6d838-2f58-4e76-8e2b-3d8e12b79974",
+      "eventId": "evt_ref_1_1792878191621",
+      "eventType": "refund.created",
+      "timestamp": "2026-10-24T21:43:11.624Z",
+      "status": "processed",
+      "details": "Refund processed for user test_ref_user_1792878191619. Downgraded to free tier."
+    },
+    {
+      "id": "14636e71-7103-4b04-9de6-d25c5cca49f3",
+      "eventId": "evt_upg_A_1792878191612",
+      "eventType": "membership.updated",
+      "timestamp": "2026-10-24T21:43:11.617Z",
+      "status": "processed",
+      "details": "Plan upgraded for user test_upg_user_1792878191610 from pro to empire. Added +400 credits (new balance: 450)."
+    },
+    {
+      "id": "73e7aa1a-7bd5-4ce7-8b22-732a3216f03d",
+      "eventId": "evt_upg_B_1792878191612",
+      "eventType": "membership.updated",
+      "timestamp": "2026-10-24T21:43:11.614Z",
+      "status": "duplicate",
+      "details": "Upgrade event for user test_upg_user_1792878191610 (pro -> empire) already processed under key upg_pay_upg_1792878191612; balance preserved at 50."
+    },
+    {
+      "id": "a5109894-b3a8-4172-8bd3-724d10197cc8",
+      "eventId": "evt_conc_A_1792878191603",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:43:11.608Z",
+      "status": "processed",
+      "details": "Renewal payment succeeded: $79 for user test_conc_renew_1792878191601. Quota refreshed to 500 credits."
+    },
+    {
+      "id": "cc836d6d-915a-4a80-bf00-d5c7b9aa0cb5",
+      "eventId": "evt_conc_B_1792878191603",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:43:11.604Z",
+      "status": "duplicate",
+      "details": "Payment succeeded: $79 for user test_conc_renew_1792878191601. Billing key pay_pay_conc_1792878191603 already credited; duplicate credit grant prevented."
+    },
+    {
+      "id": "35efcbb6-5167-4e38-b394-49cbaa79e1db",
+      "eventId": "evt_fail_1792878191575",
+      "eventType": "payment.failed",
+      "timestamp": "2026-10-24T21:43:11.577Z",
+      "status": "processed",
+      "details": "Payment failed for user test_empire_user_1792878191535_hndm. Account flagged as past_due."
+    },
+    {
+      "id": "f539b499-0c5d-43ff-b46c-977dec323681",
+      "eventId": "evt_no_key_1792878191572",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:43:11.573Z",
+      "status": "processed",
+      "details": "Payment succeeded for user test_empire_user_1792878191535_hndm lacks reliable payment or billing-period identifier. Flagged for reconciliation without speculative credit allocation."
+    },
+    {
+      "id": "3084db15-4a56-4fa3-b592-2c7046a5a985",
+      "eventId": "evt_ord_upd_1792878191569",
+      "eventType": "membership.updated",
+      "timestamp": "2026-10-24T21:43:11.570Z",
+      "status": "processed",
+      "details": "Non-billing membership update for user test_empire_user_1792878191535_hndm. Plan empire and balance of 400 credits preserved."
+    },
+    {
+      "id": "4035746f-4ec7-4c33-94f9-625efd8deeaf",
+      "eventId": "evt_event_B_different_1792878191566",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:43:11.567Z",
+      "status": "duplicate",
+      "details": "Payment succeeded: $79 for user test_empire_user_1792878191535_hndm. Billing key pay_pay_shared_cycle_1792878191561 already credited; duplicate credit grant prevented."
+    },
+    {
+      "id": "76101447-5e5f-4ecf-8372-50b1004f4011",
+      "eventId": "evt_event_A_1792878191561",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:43:11.564Z",
+      "status": "processed",
+      "details": "Renewal payment succeeded: $79 for user test_empire_user_1792878191535_hndm. Quota refreshed to 500 credits."
+    },
+    {
+      "id": "d010e4bc-997c-43de-9610-f8fe419e120a",
+      "eventId": "evt_renew_same_1792878191554",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:43:11.560Z",
+      "status": "duplicate",
+      "details": "Duplicate event evt_renew_same_1792878191554 safely ignored."
+    },
+    {
+      "id": "1d4a2783-b8a6-4aff-a0b9-e6791e4eda4e",
+      "eventId": "evt_renew_same_1792878191554",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:43:11.557Z",
+      "status": "processed",
+      "details": "Renewal payment succeeded: $79 for user test_empire_user_1792878191535_hndm. Quota refreshed to 500 credits."
+    },
+    {
+      "id": "572061c4-5bf3-4725-a15d-ac41ef52df66",
+      "eventId": "evt_renew_1_1792878191550",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:43:11.553Z",
+      "status": "processed",
+      "details": "Renewal payment succeeded: $79 for user test_empire_user_1792878191535_hndm. Quota refreshed to 500 credits."
+    },
+    {
+      "id": "c5cfd89e-8ad0-4701-9796-3d5fef30828f",
+      "eventId": "evt_emp_act_dup_1792878191546",
+      "eventType": "membership.went_valid",
+      "timestamp": "2026-10-24T21:43:11.548Z",
+      "status": "duplicate",
+      "details": "Membership valid confirmation for user test_empire_user_1792878191535_hndm: EMPIRE tier (already activated; balance preserved at 200)."
+    },
+    {
+      "id": "706237f9-ddb1-41d6-8623-6a0756c12154",
+      "eventId": "evt_emp_upd_1792878191543",
+      "eventType": "membership.updated",
+      "timestamp": "2026-10-24T21:43:11.545Z",
+      "status": "processed",
+      "details": "Non-billing membership update for user test_empire_user_1792878191535_hndm. Plan empire and balance of 200 credits preserved."
+    },
+    {
+      "id": "e5cdf502-7f78-4612-97a5-a288a06d57c8",
+      "eventId": "evt_emp_act_1792878191535",
+      "eventType": "membership.went_valid",
+      "timestamp": "2026-10-24T21:43:11.540Z",
+      "status": "processed",
+      "details": "Membership activated for user test_empire_user_1792878191535_hndm: EMPIRE tier with 500 credits."
+    },
+    {
+      "id": "5824963b-3072-4d54-9465-afeda5c8c133",
+      "eventId": "evt_pro_act_1792878191527",
+      "eventType": "membership.went_valid",
+      "timestamp": "2026-10-24T21:43:11.533Z",
+      "status": "processed",
+      "details": "Membership activated for user test_pro_user_1792878191527_ck23: PRO tier with 100 credits."
+    },
+    {
+      "id": "e83353c9-0049-405f-8b70-219cbe888771",
+      "eventId": "evt_out_of_order_1792878164851",
+      "eventType": "membership.updated",
+      "timestamp": "2026-10-24T21:42:44.851Z",
+      "status": "duplicate",
+      "details": "Out-of-order membership update ignored for inactive user test_canc_user_1792878164849 (status: cancelled). Paid access not reactivated."
+    },
+    {
+      "id": "03f3f483-35f9-47f9-a486-65f6a0415db4",
+      "eventId": "evt_ref_2_different_evt_id_1792878164847",
+      "eventType": "refund.created",
+      "timestamp": "2026-10-24T21:42:44.847Z",
+      "status": "duplicate",
+      "details": "Refund event for user test_ref_user_1792878164841 already processed under key refund_ref_event_1792878164842; duplicate refund prevented."
+    },
+    {
+      "id": "518505e7-28a2-4ae8-ad58-c7882b401574",
+      "eventId": "evt_ref_1_1792878164842",
+      "eventType": "refund.created",
+      "timestamp": "2026-10-24T21:42:44.845Z",
+      "status": "processed",
+      "details": "Refund processed for user test_ref_user_1792878164841. Downgraded to free tier."
+    },
+    {
+      "id": "d598b8b9-8f7c-4f11-8b76-880579fb9893",
+      "eventId": "evt_upg_A_1792878164834",
+      "eventType": "membership.updated",
+      "timestamp": "2026-10-24T21:42:44.839Z",
+      "status": "processed",
+      "details": "Plan upgraded for user test_upg_user_1792878164833 from pro to empire. Added +400 credits (new balance: 450)."
+    },
+    {
+      "id": "dea85de7-3168-4e01-a135-5b9c4a4947c3",
+      "eventId": "evt_upg_B_1792878164834",
+      "eventType": "membership.updated",
+      "timestamp": "2026-10-24T21:42:44.837Z",
+      "status": "duplicate",
+      "details": "Upgrade event for user test_upg_user_1792878164833 (pro -> empire) already processed under key upg_pay_upg_1792878164834; balance preserved at 50."
+    },
+    {
+      "id": "229eb81e-efc0-4ba4-bf8c-08fb7596dbfe",
+      "eventId": "evt_conc_A_1792878164826",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:42:44.831Z",
+      "status": "processed",
+      "details": "Renewal payment succeeded: $79 for user test_conc_renew_1792878164825. Quota refreshed to 500 credits."
+    },
+    {
+      "id": "f3b007a5-167a-4070-a832-7a2f40801058",
+      "eventId": "evt_conc_B_1792878164826",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:42:44.828Z",
+      "status": "duplicate",
+      "details": "Payment succeeded: $79 for user test_conc_renew_1792878164825. Billing key pay_pay_conc_1792878164826 already credited; duplicate credit grant prevented."
+    },
+    {
+      "id": "fe575ed2-9ea4-4549-8530-469755a1a303",
+      "eventId": "evt_fail_1792878164801",
+      "eventType": "payment.failed",
+      "timestamp": "2026-10-24T21:42:44.802Z",
+      "status": "processed",
+      "details": "Payment failed for user test_empire_user_1792878164764_58iu. Account flagged as past_due."
+    },
+    {
+      "id": "580659bd-fa33-4967-8df5-5d79120dec0d",
+      "eventId": "evt_no_key_1792878164798",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:42:44.799Z",
+      "status": "processed",
+      "details": "Payment succeeded for user test_empire_user_1792878164764_58iu lacks reliable payment or billing-period identifier. Flagged for reconciliation without speculative credit allocation."
+    },
+    {
+      "id": "f6fc0020-1c90-4c81-988f-ebda720409b3",
+      "eventId": "evt_ord_upd_1792878164795",
+      "eventType": "membership.updated",
+      "timestamp": "2026-10-24T21:42:44.796Z",
+      "status": "processed",
+      "details": "Non-billing membership update for user test_empire_user_1792878164764_58iu. Plan empire and balance of 400 credits preserved."
+    },
+    {
+      "id": "277abc8b-4703-400f-bc65-49cdc923efeb",
+      "eventId": "evt_event_B_different_1792878164793",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:42:44.793Z",
+      "status": "duplicate",
+      "details": "Payment succeeded: $79 for user test_empire_user_1792878164764_58iu. Billing key pay_pay_shared_cycle_1792878164787 already credited; duplicate credit grant prevented."
+    },
+    {
+      "id": "96b46b95-27d2-4668-9b66-37490e4c3d10",
+      "eventId": "evt_event_A_1792878164787",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:42:44.790Z",
+      "status": "processed",
+      "details": "Renewal payment succeeded: $79 for user test_empire_user_1792878164764_58iu. Quota refreshed to 500 credits."
+    },
+    {
+      "id": "08dc2521-4a49-4a9a-be66-4fe0e43980a0",
+      "eventId": "evt_renew_same_1792878164782",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:42:44.787Z",
+      "status": "duplicate",
+      "details": "Duplicate event evt_renew_same_1792878164782 safely ignored."
+    },
+    {
+      "id": "c070dadd-e426-48ca-a680-871dfa453c65",
+      "eventId": "evt_renew_same_1792878164782",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:42:44.784Z",
+      "status": "processed",
+      "details": "Renewal payment succeeded: $79 for user test_empire_user_1792878164764_58iu. Quota refreshed to 500 credits."
+    },
+    {
+      "id": "3dd9335a-4e6a-4573-8d48-80bbb9f1eb06",
+      "eventId": "evt_renew_1_1792878164777",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:42:44.780Z",
+      "status": "processed",
+      "details": "Renewal payment succeeded: $79 for user test_empire_user_1792878164764_58iu. Quota refreshed to 500 credits."
+    },
+    {
+      "id": "21414750-8813-4762-b22d-927005ff0703",
+      "eventId": "evt_emp_act_dup_1792878164774",
+      "eventType": "membership.went_valid",
+      "timestamp": "2026-10-24T21:42:44.776Z",
+      "status": "duplicate",
+      "details": "Membership valid confirmation for user test_empire_user_1792878164764_58iu: EMPIRE tier (already activated; balance preserved at 200)."
+    },
+    {
+      "id": "7e18ff1c-1ffb-409b-9f2d-830ab3703ec0",
+      "eventId": "evt_emp_upd_1792878164772",
+      "eventType": "membership.updated",
+      "timestamp": "2026-10-24T21:42:44.773Z",
+      "status": "processed",
+      "details": "Non-billing membership update for user test_empire_user_1792878164764_58iu. Plan empire and balance of 200 credits preserved."
+    },
+    {
+      "id": "5c5fefab-507c-46c2-a77d-12cb94f6a9b6",
+      "eventId": "evt_emp_act_1792878164764",
+      "eventType": "membership.went_valid",
+      "timestamp": "2026-10-24T21:42:44.769Z",
+      "status": "processed",
+      "details": "Membership activated for user test_empire_user_1792878164764_58iu: EMPIRE tier with 500 credits."
+    },
+    {
+      "id": "b129cb4f-b3ad-4af3-bfea-4ee16329dfaa",
+      "eventId": "evt_pro_act_1792878164757",
+      "eventType": "membership.went_valid",
+      "timestamp": "2026-10-24T21:42:44.763Z",
+      "status": "processed",
+      "details": "Membership activated for user test_pro_user_1792878164757_k3j7: PRO tier with 100 credits."
+    },
+    {
+      "id": "7277e7be-9766-493d-b2db-8a49fb9ea548",
+      "eventId": "evt_out_of_order_1792878151376",
+      "eventType": "membership.updated",
+      "timestamp": "2026-10-24T21:42:31.376Z",
+      "status": "duplicate",
+      "details": "Out-of-order membership update ignored for inactive user test_canc_user_1792878151375 (status: cancelled). Paid access not reactivated."
+    },
+    {
+      "id": "1bc30e85-724e-472c-9d75-5afab97dfcee",
+      "eventId": "evt_ref_2_different_evt_id_1792878151373",
+      "eventType": "refund.created",
+      "timestamp": "2026-10-24T21:42:31.373Z",
+      "status": "duplicate",
+      "details": "Refund event for user test_ref_user_1792878151367 already processed under key refund_ref_event_1792878151368; duplicate refund prevented."
+    },
+    {
+      "id": "cbb47f08-a311-49d0-835b-c41598b4acd1",
+      "eventId": "evt_ref_1_1792878151368",
+      "eventType": "refund.created",
+      "timestamp": "2026-10-24T21:42:31.371Z",
+      "status": "processed",
+      "details": "Refund processed for user test_ref_user_1792878151367. Downgraded to free tier."
+    },
+    {
+      "id": "f3279e82-c05d-4ba1-aac0-3cdff9224297",
+      "eventId": "evt_upg_A_1792878151361",
+      "eventType": "membership.updated",
+      "timestamp": "2026-10-24T21:42:31.365Z",
+      "status": "processed",
+      "details": "Plan upgraded for user test_upg_user_1792878151359 from pro to empire. Added +400 credits (new balance: 450)."
+    },
+    {
+      "id": "b6d43865-6d9d-4933-a79c-495809081dd6",
+      "eventId": "evt_upg_B_1792878151361",
+      "eventType": "membership.updated",
+      "timestamp": "2026-10-24T21:42:31.363Z",
+      "status": "duplicate",
+      "details": "Upgrade event for user test_upg_user_1792878151359 (pro -> empire) already processed under key upg_pay_upg_1792878151361; balance preserved at 50."
+    },
+    {
+      "id": "1cd4d738-e3e2-47c2-a64b-673d8c59d622",
+      "eventId": "evt_conc_A_1792878151345",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:42:31.358Z",
+      "status": "processed",
+      "details": "Renewal payment succeeded: $79 for user test_conc_renew_1792878151344. Quota refreshed to 500 credits."
+    },
+    {
+      "id": "91cbea53-5c57-416a-9997-f9e59fc70521",
+      "eventId": "evt_conc_B_1792878151345",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:42:31.355Z",
+      "status": "duplicate",
+      "details": "Payment succeeded: $79 for user test_conc_renew_1792878151344. Billing key pay_pay_conc_1792878151345 already credited; duplicate credit grant prevented."
+    },
+    {
+      "id": "d050168d-c7bc-42f4-a75e-d7cad3cf40ec",
+      "eventId": "evt_fail_1792878151326",
+      "eventType": "payment.failed",
+      "timestamp": "2026-10-24T21:42:31.328Z",
+      "status": "processed",
+      "details": "Payment failed for user test_empire_user_1792878151294_6717. Account flagged as past_due."
+    },
+    {
+      "id": "7f318d05-a14a-4b4d-af6a-80bb73ddd8a6",
+      "eventId": "evt_no_key_1792878151324",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:42:31.325Z",
+      "status": "processed",
+      "details": "Payment succeeded for user test_empire_user_1792878151294_6717 lacks reliable payment or billing-period identifier. Flagged for reconciliation without speculative credit allocation."
+    },
+    {
+      "id": "bd2620af-4463-495d-b0cd-b5b8e9a5dd92",
+      "eventId": "evt_ord_upd_1792878151321",
+      "eventType": "membership.updated",
+      "timestamp": "2026-10-24T21:42:31.322Z",
+      "status": "processed",
+      "details": "Non-billing membership update for user test_empire_user_1792878151294_6717. Plan empire and balance of 400 credits preserved."
+    },
+    {
+      "id": "dac6e0af-76a4-4012-b285-70cd6186fd06",
+      "eventId": "evt_event_B_different_1792878151319",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:42:31.320Z",
+      "status": "duplicate",
+      "details": "Payment succeeded: $79 for user test_empire_user_1792878151294_6717. Billing key pay_pay_shared_cycle_1792878151315 already credited; duplicate credit grant prevented."
+    },
+    {
+      "id": "02a59a39-b333-4b64-bba0-76219585d1a8",
+      "eventId": "evt_event_A_1792878151315",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:42:31.317Z",
+      "status": "processed",
+      "details": "Renewal payment succeeded: $79 for user test_empire_user_1792878151294_6717. Quota refreshed to 500 credits."
+    },
+    {
+      "id": "b48cf385-0e21-426f-8b27-feb2e1d308ec",
+      "eventId": "evt_renew_same_1792878151309",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:42:31.314Z",
+      "status": "duplicate",
+      "details": "Duplicate event evt_renew_same_1792878151309 safely ignored."
+    },
+    {
+      "id": "2099af61-83bc-4b34-9cc9-5a6f655cda38",
+      "eventId": "evt_renew_same_1792878151309",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:42:31.312Z",
+      "status": "processed",
+      "details": "Renewal payment succeeded: $79 for user test_empire_user_1792878151294_6717. Quota refreshed to 500 credits."
+    },
+    {
+      "id": "f2376be3-4f54-4966-ac3f-d4b19b5cbd18",
+      "eventId": "evt_renew_1_1792878151306",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:42:31.308Z",
+      "status": "processed",
+      "details": "Renewal payment succeeded: $79 for user test_empire_user_1792878151294_6717. Quota refreshed to 500 credits."
+    },
+    {
+      "id": "5b8025b7-b483-49d4-b88d-ca3f078fafdb",
+      "eventId": "evt_emp_act_dup_1792878151303",
+      "eventType": "membership.went_valid",
+      "timestamp": "2026-10-24T21:42:31.304Z",
+      "status": "duplicate",
+      "details": "Membership valid confirmation for user test_empire_user_1792878151294_6717: EMPIRE tier (already activated; balance preserved at 200)."
+    },
+    {
+      "id": "cae047ec-e92d-431b-adf5-35dae7cb0274",
+      "eventId": "evt_emp_upd_1792878151300",
+      "eventType": "membership.updated",
+      "timestamp": "2026-10-24T21:42:31.302Z",
+      "status": "processed",
+      "details": "Non-billing membership update for user test_empire_user_1792878151294_6717. Plan empire and balance of 200 credits preserved."
+    },
+    {
+      "id": "6b093a35-1ac6-46be-b706-d6ccc8faba3e",
+      "eventId": "evt_emp_act_1792878151294",
+      "eventType": "membership.went_valid",
+      "timestamp": "2026-10-24T21:42:31.298Z",
+      "status": "processed",
+      "details": "Membership activated for user test_empire_user_1792878151294_6717: EMPIRE tier with 500 credits."
+    },
+    {
+      "id": "0098de6d-6386-4280-9efe-dffff667c030",
+      "eventId": "evt_pro_act_1792878151287",
+      "eventType": "membership.went_valid",
+      "timestamp": "2026-10-24T21:42:31.293Z",
+      "status": "processed",
+      "details": "Membership activated for user test_pro_user_1792878151287_gepl: PRO tier with 100 credits."
+    },
+    {
+      "id": "f4a3d577-620e-4482-af3d-4946b488f2ee",
+      "eventId": "evt_conc_B_1792878106837",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:41:46.843Z",
+      "status": "processed",
+      "details": "Renewal payment succeeded: $79 for user test_conc_renew_1792878106836. Quota refreshed to 500 credits."
+    },
+    {
+      "id": "e0ae87d9-1db4-4207-8ea9-aa9fb69f3ca7",
+      "eventId": "evt_conc_A_1792878106837",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:41:46.842Z",
+      "status": "processed",
+      "details": "Renewal payment succeeded: $79 for user test_conc_renew_1792878106836. Quota refreshed to 500 credits."
+    },
+    {
+      "id": "3b340b0b-fd8f-4321-9259-30d58fde6b11",
+      "eventId": "evt_fail_1792878106819",
+      "eventType": "payment.failed",
+      "timestamp": "2026-10-24T21:41:46.820Z",
+      "status": "processed",
+      "details": "Payment failed for user test_empire_user_1792878106788_mkmg. Account flagged as past_due."
+    },
+    {
+      "id": "667a5b63-44f0-40b6-aad4-561ab1305d31",
+      "eventId": "evt_no_key_1792878106817",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:41:46.818Z",
+      "status": "processed",
+      "details": "Payment succeeded for user test_empire_user_1792878106788_mkmg lacks reliable payment or billing-period identifier. Flagged for reconciliation without speculative credit allocation."
+    },
+    {
+      "id": "e919a19d-d2f3-4bac-a957-fd3c921fb60f",
+      "eventId": "evt_ord_upd_1792878106814",
+      "eventType": "membership.updated",
+      "timestamp": "2026-10-24T21:41:46.815Z",
+      "status": "processed",
+      "details": "Non-billing membership update for user test_empire_user_1792878106788_mkmg. Plan empire and balance of 400 credits preserved."
+    },
+    {
+      "id": "f421b9eb-502a-4650-98f8-1477394e815f",
+      "eventId": "evt_event_B_different_1792878106812",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:41:46.812Z",
+      "status": "duplicate",
+      "details": "Payment succeeded: $79 for user test_empire_user_1792878106788_mkmg. Billing key pay_pay_shared_cycle_1792878106808 already credited; duplicate credit grant prevented."
+    },
+    {
+      "id": "4dd6e66e-bfb4-4536-855b-6aa60f4c39fa",
+      "eventId": "evt_event_A_1792878106808",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:41:46.810Z",
+      "status": "processed",
+      "details": "Renewal payment succeeded: $79 for user test_empire_user_1792878106788_mkmg. Quota refreshed to 500 credits."
+    },
+    {
+      "id": "227ffd25-3b48-4558-bb5c-929ae347efaa",
+      "eventId": "evt_renew_same_1792878106803",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:41:46.807Z",
+      "status": "duplicate",
+      "details": "Duplicate event evt_renew_same_1792878106803 safely ignored."
+    },
+    {
+      "id": "05348f44-e1c0-4872-9323-e243aec48ae6",
+      "eventId": "evt_renew_same_1792878106803",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:41:46.805Z",
+      "status": "processed",
+      "details": "Renewal payment succeeded: $79 for user test_empire_user_1792878106788_mkmg. Quota refreshed to 500 credits."
+    },
+    {
+      "id": "982161fe-a010-4d81-ae25-b6982aa3428b",
+      "eventId": "evt_renew_1_1792878106799",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:41:46.801Z",
+      "status": "processed",
+      "details": "Renewal payment succeeded: $79 for user test_empire_user_1792878106788_mkmg. Quota refreshed to 500 credits."
+    },
+    {
+      "id": "f50362c5-09fe-44b7-8c65-cb78f8095c45",
+      "eventId": "evt_emp_act_dup_1792878106796",
+      "eventType": "membership.went_valid",
+      "timestamp": "2026-10-24T21:41:46.797Z",
+      "status": "duplicate",
+      "details": "Membership valid confirmation for user test_empire_user_1792878106788_mkmg: EMPIRE tier (already activated; balance preserved at 200)."
+    },
+    {
+      "id": "aadcd460-999c-42e5-becb-05c6fecfeed3",
+      "eventId": "evt_emp_upd_1792878106794",
+      "eventType": "membership.updated",
+      "timestamp": "2026-10-24T21:41:46.795Z",
+      "status": "processed",
+      "details": "Non-billing membership update for user test_empire_user_1792878106788_mkmg. Plan empire and balance of 200 credits preserved."
+    },
+    {
+      "id": "3da58c57-7ee2-4619-8bea-72d1c4e69314",
+      "eventId": "evt_emp_act_1792878106788",
+      "eventType": "membership.went_valid",
+      "timestamp": "2026-10-24T21:41:46.791Z",
+      "status": "processed",
+      "details": "Membership activated for user test_empire_user_1792878106788_mkmg: EMPIRE tier with 500 credits."
+    },
+    {
+      "id": "68f70121-247c-4629-b7f9-8ee42de5aa5a",
+      "eventId": "evt_pro_act_1792878106781",
+      "eventType": "membership.went_valid",
+      "timestamp": "2026-10-24T21:41:46.786Z",
+      "status": "processed",
+      "details": "Membership activated for user test_pro_user_1792878106781_ae0t: PRO tier with 100 credits."
+    },
+    {
+      "id": "53ff4a91-1ccb-4db9-992e-c5b7aaa603e3",
+      "eventId": "evt_transient_1792878090881",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:41:30.883Z",
+      "status": "processed",
+      "details": "Renewal payment succeeded: $29 for user test_retry_user_1792878090879. Quota refreshed to 100 credits."
+    },
+    {
+      "id": "1fcf7018-9372-4abb-9048-f3e89fa22a44",
+      "eventId": "evt_fail_1792878090877",
+      "eventType": "payment.failed",
+      "timestamp": "2026-10-24T21:41:30.877Z",
+      "status": "processed",
+      "details": "Payment failed for user test_empire_user_1792878090849_inzi. Account flagged as past_due."
+    },
+    {
+      "id": "7e99e9ea-7211-4cf2-a03f-f5b986b3e4c3",
+      "eventId": "evt_no_key_1792878090874",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:41:30.875Z",
+      "status": "processed",
+      "details": "Payment succeeded for user test_empire_user_1792878090849_inzi lacks reliable payment or billing-period identifier. Flagged for reconciliation without speculative credit allocation."
+    },
+    {
+      "id": "ea8941e1-17f6-4f34-a424-030bade8c782",
+      "eventId": "evt_ord_upd_1792878090872",
+      "eventType": "membership.updated",
+      "timestamp": "2026-10-24T21:41:30.873Z",
+      "status": "processed",
+      "details": "Non-billing membership update for user test_empire_user_1792878090849_inzi. Plan empire and balance of 400 credits preserved."
+    },
+    {
+      "id": "8e38f858-9cbf-456a-97ec-4eb6d26b4623",
+      "eventId": "evt_event_B_different_1792878090870",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:41:30.871Z",
+      "status": "duplicate",
+      "details": "Payment succeeded: $79 for user test_empire_user_1792878090849_inzi. Billing key pay_pay_shared_cycle_1792878090866 already credited; duplicate credit grant prevented."
+    },
+    {
+      "id": "10552cd2-0ebc-4b62-9400-ba4c6d44b159",
+      "eventId": "evt_event_A_1792878090866",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:41:30.868Z",
+      "status": "processed",
+      "details": "Renewal payment succeeded: $79 for user test_empire_user_1792878090849_inzi. Quota refreshed to 500 credits."
+    },
+    {
+      "id": "019a526d-a886-4998-af86-1f7ac710d574",
+      "eventId": "evt_renew_same_1792878090862",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:41:30.866Z",
+      "status": "duplicate",
+      "details": "Duplicate event evt_renew_same_1792878090862 safely ignored."
+    },
+    {
+      "id": "765c022f-7a7a-4c33-b135-d9a4ce9fc0de",
+      "eventId": "evt_renew_same_1792878090862",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:41:30.864Z",
+      "status": "processed",
+      "details": "Renewal payment succeeded: $79 for user test_empire_user_1792878090849_inzi. Quota refreshed to 500 credits."
+    },
+    {
+      "id": "4ea8238e-fc7e-4b8a-9fef-6e3dfc2ee5d2",
+      "eventId": "evt_renew_1_1792878090859",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:41:30.861Z",
+      "status": "processed",
+      "details": "Renewal payment succeeded: $79 for user test_empire_user_1792878090849_inzi. Quota refreshed to 500 credits."
+    },
+    {
+      "id": "cafe3143-9cb4-417a-a890-fc1179d48073",
+      "eventId": "evt_emp_act_dup_1792878090856",
+      "eventType": "membership.went_valid",
+      "timestamp": "2026-10-24T21:41:30.857Z",
+      "status": "duplicate",
+      "details": "Membership valid confirmation for user test_empire_user_1792878090849_inzi: EMPIRE tier (already activated; balance preserved at 200)."
+    },
+    {
+      "id": "ae001f83-cd8e-4cf4-8ac3-48edfec1a524",
+      "eventId": "evt_emp_upd_1792878090854",
+      "eventType": "membership.updated",
+      "timestamp": "2026-10-24T21:41:30.855Z",
+      "status": "processed",
+      "details": "Non-billing membership update for user test_empire_user_1792878090849_inzi. Plan empire and balance of 200 credits preserved."
+    },
+    {
+      "id": "040e0941-240b-4b71-a87e-719f50359af3",
+      "eventId": "evt_emp_act_1792878090849",
+      "eventType": "membership.went_valid",
+      "timestamp": "2026-10-24T21:41:30.852Z",
+      "status": "processed",
+      "details": "Membership activated for user test_empire_user_1792878090849_inzi: EMPIRE tier with 500 credits."
+    },
+    {
+      "id": "ab62c281-78e1-4f5d-969d-0064f5d0ce03",
+      "eventId": "evt_pro_act_1792878090843",
+      "eventType": "membership.went_valid",
+      "timestamp": "2026-10-24T21:41:30.848Z",
+      "status": "processed",
+      "details": "Membership activated for user test_pro_user_1792878090843_n1fk: PRO tier with 100 credits."
+    },
+    {
+      "id": "1be9d6ce-6529-4cc5-b308-8237843fffd5",
+      "eventId": "evt_emp_act_dup_1792878066212",
+      "eventType": "membership.went_valid",
+      "timestamp": "2026-10-24T21:41:06.214Z",
+      "status": "processed",
+      "details": "Membership activated for user test_empire_user_1792878066206_v07z: EMPIRE tier with 500 credits."
+    },
+    {
+      "id": "e0567cd7-1bdf-47d3-bbc3-b068f18135be",
+      "eventId": "evt_emp_upd_1792878066210",
+      "eventType": "membership.updated",
+      "timestamp": "2026-10-24T21:41:06.211Z",
+      "status": "processed",
+      "details": "Non-billing membership update for user test_empire_user_1792878066206_v07z. Plan empire and balance of 200 credits preserved."
+    },
+    {
+      "id": "71a36542-f199-4b1f-aa2c-348b03d93e8c",
+      "eventId": "evt_emp_act_1792878066206",
+      "eventType": "membership.went_valid",
+      "timestamp": "2026-10-24T21:41:06.209Z",
+      "status": "processed",
+      "details": "Membership activated for user test_empire_user_1792878066206_v07z: EMPIRE tier with 500 credits."
+    },
+    {
+      "id": "ecdd05c2-8179-41e3-b84f-02bd13f3f65c",
+      "eventId": "evt_pro_act_1792878066201",
+      "eventType": "membership.went_valid",
+      "timestamp": "2026-10-24T21:41:06.205Z",
+      "status": "processed",
+      "details": "Membership activated for user test_pro_user_1792878066201_n291: PRO tier with 100 credits."
+    },
+    {
+      "id": "11b30351-479c-4546-a2af-825e7a2e1205",
+      "eventId": "evt_upg_exec_1792877269160",
+      "eventType": "membership.updated",
+      "timestamp": "2026-10-24T21:27:49.161Z",
+      "status": "processed",
+      "details": "Plan upgraded for user test_upgrade_user_1792877269158 from pro to empire. Added +400 credits (new balance: 460)."
+    },
+    {
+      "id": "4501083e-ee2a-4cb8-9b23-c5e2ad22b06d",
+      "eventId": "evt_upg_init_1792877269158",
+      "eventType": "membership.went_valid",
+      "timestamp": "2026-10-24T21:27:49.160Z",
+      "status": "processed",
+      "details": "Membership activated for user test_upgrade_user_1792877269158: PRO tier with 100 credits."
+    },
+    {
+      "id": "c1f7ed31-8b25-4492-8a58-2c5ed1328d26",
+      "eventId": "evt_fail_1792877269155",
+      "eventType": "payment.failed",
+      "timestamp": "2026-10-24T21:27:49.156Z",
+      "status": "processed",
+      "details": "Payment failed for user test_empire_user_1792877269143_q2f3. Account flagged as past_due."
+    },
+    {
+      "id": "b65db08c-e2ca-4904-af14-25e87015c79f",
+      "eventId": "evt_event_B_different_1792877269154",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:27:49.155Z",
+      "status": "processed",
+      "details": "Payment succeeded: $79 for user test_empire_user_1792877269143_q2f3. Billing key pay_pay_shared_cycle_1792877269153 already credited; duplicate credit grant prevented."
+    },
+    {
+      "id": "610130c3-58f6-45d2-9bb8-c2bc33821f4a",
+      "eventId": "evt_event_A_1792877269153",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:27:49.154Z",
+      "status": "processed",
+      "details": "Renewal payment succeeded: $79 for user test_empire_user_1792877269143_q2f3. Quota refreshed to 500 credits."
+    },
+    {
+      "id": "66979c08-d845-48d2-978b-4ab027f1a6e1",
+      "eventId": "evt_renew_same_1792877269148",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:27:49.152Z",
+      "status": "duplicate",
+      "details": "Duplicate event evt_renew_same_1792877269148 safely ignored."
+    },
+    {
+      "id": "d2a152f7-a9af-46cd-8459-3deb11a9f130",
+      "eventId": "evt_renew_same_1792877269148",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:27:49.152Z",
+      "status": "processed",
+      "details": "Renewal payment succeeded: $79 for user test_empire_user_1792877269143_q2f3. Quota refreshed to 500 credits."
+    },
+    {
+      "id": "0a4ccbec-9dbe-4631-b22d-a877874b3daf",
+      "eventId": "evt_renew_1_1792877269147",
+      "eventType": "payment.succeeded",
+      "timestamp": "2026-10-24T21:27:49.148Z",
+      "status": "processed",
+      "details": "Renewal payment succeeded: $79 for user test_empire_user_1792877269143_q2f3. Quota refreshed to 500 credits."
+    },
+    {
+      "id": "c845fef1-c6b2-463d-9064-877ef5d5c4e0",
+      "eventId": "evt_emp_upd_dup_1792877269146",
+      "eventType": "membership.updated",
+      "timestamp": "2026-10-24T21:27:49.146Z",
+      "status": "processed",
+      "details": "Non-billing membership update for user test_empire_user_1792877269143_q2f3. Plan empire and balance of 200 credits preserved."
+    },
+    {
+      "id": "1f533589-481a-42de-8b2d-2137d12583ac",
+      "eventId": "evt_emp_upd_1792877269145",
+      "eventType": "membership.updated",
+      "timestamp": "2026-10-24T21:27:49.146Z",
+      "status": "processed",
+      "details": "Non-billing membership update for user test_empire_user_1792877269143_q2f3. Plan empire and balance of 200 credits preserved."
+    },
+    {
+      "id": "702f0259-174c-4e7a-9b2a-71d9ec55aaf7",
+      "eventId": "evt_emp_act_1792877269143",
+      "eventType": "membership.went_valid",
+      "timestamp": "2026-10-24T21:27:49.144Z",
+      "status": "processed",
+      "details": "Membership activated for user test_empire_user_1792877269143_q2f3: EMPIRE tier with 500 credits."
+    },
+    {
+      "id": "5e79e0b8-0ada-4aa0-b5f9-6b69f6bf6a50",
+      "eventId": "evt_pro_act_1792877269140",
+      "eventType": "membership.went_valid",
+      "timestamp": "2026-10-24T21:27:49.143Z",
+      "status": "processed",
+      "details": "Membership activated for user test_pro_user_1792877269140_6x2b: PRO tier with 100 credits."
+    },
+    {
+      "id": "unverified_1792874539989",
+      "eventId": "unverified_1792874539989",
+      "eventType": "unknown",
+      "timestamp": "2026-10-24T20:42:19.989Z",
+      "status": "rejected",
+      "details": "Signature verification failed: WHOP_WEBHOOK_SECRET is not configured in environment. Webhook rejected for security."
+    },
+    {
+      "id": "unverified_1790653550236",
+      "eventId": "unverified_1790653550236",
+      "eventType": "unknown",
+      "timestamp": "2026-09-29T03:45:50.236Z",
+      "status": "rejected",
+      "details": "Signature verification failed: WHOP_WEBHOOK_SECRET is not configured in environment. Webhook rejected for security."
+    }
+  ],
+  "processedWebhookIds": [
+    "evt_pro_act_1792877269140",
+    "evt_emp_act_1792877269143",
+    "evt_emp_upd_1792877269145",
+    "evt_emp_upd_dup_1792877269146",
+    "evt_renew_1_1792877269147",
+    "evt_renew_same_1792877269148",
+    "evt_event_A_1792877269153",
+    "evt_event_B_different_1792877269154",
+    "evt_fail_1792877269155",
+    "evt_upg_init_1792877269158",
+    "evt_upg_exec_1792877269160",
+    "evt_pro_act_1792878066201",
+    "evt_emp_act_1792878066206",
+    "evt_emp_upd_1792878066210",
+    "evt_emp_act_dup_1792878066212",
+    "evt_pro_act_1792878090843",
+    "evt_emp_act_1792878090849",
+    "evt_emp_upd_1792878090854",
+    "evt_renew_1_1792878090859",
+    "evt_renew_same_1792878090862",
+    "evt_event_A_1792878090866",
+    "evt_ord_upd_1792878090872",
+    "evt_no_key_1792878090874",
+    "evt_fail_1792878090877",
+    "evt_transient_1792878090881",
+    "evt_pro_act_1792878106781",
+    "evt_emp_act_1792878106788",
+    "evt_emp_upd_1792878106794",
+    "evt_renew_1_1792878106799",
+    "evt_renew_same_1792878106803",
+    "evt_event_A_1792878106808",
+    "evt_ord_upd_1792878106814",
+    "evt_no_key_1792878106817",
+    "evt_fail_1792878106819",
+    "evt_conc_A_1792878106837",
+    "evt_conc_B_1792878106837",
+    "evt_pro_act_1792878151287",
+    "evt_emp_act_1792878151294",
+    "evt_emp_upd_1792878151300",
+    "evt_renew_1_1792878151306",
+    "evt_renew_same_1792878151309",
+    "evt_event_A_1792878151315",
+    "evt_ord_upd_1792878151321",
+    "evt_no_key_1792878151324",
+    "evt_fail_1792878151326",
+    "evt_conc_A_1792878151345",
+    "evt_upg_A_1792878151361",
+    "evt_ref_1_1792878151368",
+    "evt_pro_act_1792878164757",
+    "evt_emp_act_1792878164764",
+    "evt_emp_upd_1792878164772",
+    "evt_renew_1_1792878164777",
+    "evt_renew_same_1792878164782",
+    "evt_event_A_1792878164787",
+    "evt_ord_upd_1792878164795",
+    "evt_no_key_1792878164798",
+    "evt_fail_1792878164801",
+    "evt_conc_A_1792878164826",
+    "evt_upg_A_1792878164834",
+    "evt_ref_1_1792878164842",
+    "evt_pro_act_1792878191527",
+    "evt_emp_act_1792878191535",
+    "evt_emp_upd_1792878191543",
+    "evt_renew_1_1792878191550",
+    "evt_renew_same_1792878191554",
+    "evt_event_A_1792878191561",
+    "evt_ord_upd_1792878191569",
+    "evt_no_key_1792878191572",
+    "evt_fail_1792878191575",
+    "evt_conc_A_1792878191603",
+    "evt_upg_A_1792878191612",
+    "evt_ref_1_1792878191621"
+  ],
+  "processedBillingKeys": [
+    "pay_pay_pro_1792877269140",
+    "pay_pay_emp_1792877269143",
+    "pay_pay_renewal_1792877269147",
+    "pay_pay_new_cycle_1792877269148",
+    "pay_pay_shared_cycle_1792877269153",
+    "key_concurrent_1792877269158",
+    "activation_mem_upg_1792877269158",
+    "pay_pay_pro_1792878066201",
+    "pay_pay_emp_1792878066206",
+    "pay_pay_emp_1792878066212",
+    "act_mem_pro_1792878090843",
+    "pay_pay_pro_1792878090843",
+    "act_mem_emp_1792878090849",
+    "pay_pay_emp_1792878090849",
+    "pay_pay_renewal_1792878090859",
+    "pay_pay_new_cycle_1792878090862",
+    "pay_pay_shared_cycle_1792878090866",
+    "pay_pay_transient_1792878090881",
+    "act_mem_pro_1792878106781",
+    "pay_pay_pro_1792878106781",
+    "act_mem_emp_1792878106788",
+    "pay_pay_emp_1792878106788",
+    "pay_pay_renewal_1792878106799",
+    "pay_pay_new_cycle_1792878106803",
+    "pay_pay_shared_cycle_1792878106808",
+    "pay_pay_conc_1792878106837",
+    "act_mem_pro_1792878151287",
+    "pay_pay_pro_1792878151287",
+    "act_mem_emp_1792878151294",
+    "pay_pay_emp_1792878151294",
+    "pay_pay_renewal_1792878151306",
+    "pay_pay_new_cycle_1792878151309",
+    "pay_pay_shared_cycle_1792878151315",
+    "pay_pay_conc_1792878151345",
+    "upg_pay_upg_1792878151361",
+    "refund_ref_event_1792878151368",
+    "act_mem_pro_1792878164757",
+    "pay_pay_pro_1792878164757",
+    "act_mem_emp_1792878164764",
+    "pay_pay_emp_1792878164764",
+    "pay_pay_renewal_1792878164777",
+    "pay_pay_new_cycle_1792878164782",
+    "pay_pay_shared_cycle_1792878164787",
+    "pay_pay_conc_1792878164826",
+    "upg_pay_upg_1792878164834",
+    "refund_ref_event_1792878164842",
+    "act_mem_pro_1792878191527",
+    "pay_pay_pro_1792878191527",
+    "act_mem_emp_1792878191535",
+    "pay_pay_emp_1792878191535",
+    "pay_pay_renewal_1792878191550",
+    "pay_pay_new_cycle_1792878191554",
+    "pay_pay_shared_cycle_1792878191561",
+    "pay_pay_conc_1792878191603",
+    "upg_pay_upg_1792878191612",
+    "refund_ref_event_1792878191621"
+  ],
+  "transactions": [
+    {
+      "userId": "test_ref_user_1792878191619",
+      "amount": -79,
+      "currency": "USD",
+      "plan": "Refund",
+      "status": "refunded",
+      "whopPaymentId": "ref_event_1792878191621",
+      "id": "tx_1792878191623_a2b8d5f8",
+      "createdAt": "2026-10-24T21:43:11.623Z"
+    },
+    {
+      "userId": "test_upg_user_1792878191610",
+      "amount": 50,
+      "currency": "USD",
+      "plan": "Upgrade: EMPIRE",
+      "status": "succeeded",
+      "whopPaymentId": "pay_upg_1792878191612",
+      "id": "tx_1792878191613_e0a40f3f",
+      "createdAt": "2026-10-24T21:43:11.613Z"
+    },
+    {
+      "userId": "test_conc_renew_1792878191601",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "empire",
+      "status": "succeeded",
+      "whopPaymentId": "pay_conc_1792878191603",
+      "id": "tx_1792878191605_8e45e315",
+      "createdAt": "2026-10-24T21:43:11.605Z"
+    },
+    {
+      "userId": "test_empire_user_1792878191535_hndm",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "Empire Pass",
+      "status": "pending_reconciliation",
+      "id": "tx_1792878191572_fe4f61f3",
+      "createdAt": "2026-10-24T21:43:11.573Z"
+    },
+    {
+      "userId": "test_empire_user_1792878191535_hndm",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "empire",
+      "status": "succeeded",
+      "whopPaymentId": "pay_shared_cycle_1792878191561",
+      "id": "tx_1792878191562_4807df50",
+      "createdAt": "2026-10-24T21:43:11.562Z"
+    },
+    {
+      "userId": "test_empire_user_1792878191535_hndm",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "empire",
+      "status": "succeeded",
+      "whopPaymentId": "pay_new_cycle_1792878191554",
+      "id": "tx_1792878191556_41f47d80",
+      "createdAt": "2026-10-24T21:43:11.556Z"
+    },
+    {
+      "userId": "test_empire_user_1792878191535_hndm",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "Empire Pass",
+      "status": "succeeded",
+      "whopPaymentId": "pay_renewal_1792878191550",
+      "id": "tx_1792878191551_210202b5",
+      "createdAt": "2026-10-24T21:43:11.551Z"
+    },
+    {
+      "userId": "test_empire_user_1792878191535_hndm",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "empire",
+      "status": "succeeded",
+      "whopPaymentId": "pay_emp_1792878191535",
+      "id": "tx_1792878191539_d838a142",
+      "createdAt": "2026-10-24T21:43:11.539Z"
+    },
+    {
+      "userId": "test_pro_user_1792878191527_ck23",
+      "amount": 29,
+      "currency": "USD",
+      "plan": "pro",
+      "status": "succeeded",
+      "whopPaymentId": "pay_pro_1792878191527",
+      "id": "tx_1792878191531_6332432a",
+      "createdAt": "2026-10-24T21:43:11.531Z"
+    },
+    {
+      "userId": "test_ref_user_1792878164841",
+      "amount": -79,
+      "currency": "USD",
+      "plan": "Refund",
+      "status": "refunded",
+      "whopPaymentId": "ref_event_1792878164842",
+      "id": "tx_1792878164844_40cc3de7",
+      "createdAt": "2026-10-24T21:42:44.844Z"
+    },
+    {
+      "userId": "test_upg_user_1792878164833",
+      "amount": 50,
+      "currency": "USD",
+      "plan": "Upgrade: EMPIRE",
+      "status": "succeeded",
+      "whopPaymentId": "pay_upg_1792878164834",
+      "id": "tx_1792878164836_d8525dd4",
+      "createdAt": "2026-10-24T21:42:44.836Z"
+    },
+    {
+      "userId": "test_conc_renew_1792878164825",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "empire",
+      "status": "succeeded",
+      "whopPaymentId": "pay_conc_1792878164826",
+      "id": "tx_1792878164829_43d5510a",
+      "createdAt": "2026-10-24T21:42:44.829Z"
+    },
+    {
+      "userId": "test_empire_user_1792878164764_58iu",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "Empire Pass",
+      "status": "pending_reconciliation",
+      "id": "tx_1792878164798_f1c98f3b",
+      "createdAt": "2026-10-24T21:42:44.798Z"
+    },
+    {
+      "userId": "test_empire_user_1792878164764_58iu",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "empire",
+      "status": "succeeded",
+      "whopPaymentId": "pay_shared_cycle_1792878164787",
+      "id": "tx_1792878164789_79c7528f",
+      "createdAt": "2026-10-24T21:42:44.789Z"
+    },
+    {
+      "userId": "test_empire_user_1792878164764_58iu",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "empire",
+      "status": "succeeded",
+      "whopPaymentId": "pay_new_cycle_1792878164782",
+      "id": "tx_1792878164783_e1986c64",
+      "createdAt": "2026-10-24T21:42:44.783Z"
+    },
+    {
+      "userId": "test_empire_user_1792878164764_58iu",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "Empire Pass",
+      "status": "succeeded",
+      "whopPaymentId": "pay_renewal_1792878164777",
+      "id": "tx_1792878164778_633cd2b5",
+      "createdAt": "2026-10-24T21:42:44.779Z"
+    },
+    {
+      "userId": "test_empire_user_1792878164764_58iu",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "empire",
+      "status": "succeeded",
+      "whopPaymentId": "pay_emp_1792878164764",
+      "id": "tx_1792878164767_b7d76cbb",
+      "createdAt": "2026-10-24T21:42:44.767Z"
+    },
+    {
+      "userId": "test_pro_user_1792878164757_k3j7",
+      "amount": 29,
+      "currency": "USD",
+      "plan": "pro",
+      "status": "succeeded",
+      "whopPaymentId": "pay_pro_1792878164757",
+      "id": "tx_1792878164761_9530bcbe",
+      "createdAt": "2026-10-24T21:42:44.761Z"
+    },
+    {
+      "userId": "test_ref_user_1792878151367",
+      "amount": -79,
+      "currency": "USD",
+      "plan": "Refund",
+      "status": "refunded",
+      "whopPaymentId": "ref_event_1792878151368",
+      "id": "tx_1792878151370_86e5d8d0",
+      "createdAt": "2026-10-24T21:42:31.370Z"
+    },
+    {
+      "userId": "test_upg_user_1792878151359",
+      "amount": 50,
+      "currency": "USD",
+      "plan": "Upgrade: EMPIRE",
+      "status": "succeeded",
+      "whopPaymentId": "pay_upg_1792878151361",
+      "id": "tx_1792878151363_0a1463c1",
+      "createdAt": "2026-10-24T21:42:31.363Z"
+    },
+    {
+      "userId": "test_conc_renew_1792878151344",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "empire",
+      "status": "succeeded",
+      "whopPaymentId": "pay_conc_1792878151345",
+      "id": "tx_1792878151355_e78c4c93",
+      "createdAt": "2026-10-24T21:42:31.355Z"
+    },
+    {
+      "userId": "test_empire_user_1792878151294_6717",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "Empire Pass",
+      "status": "pending_reconciliation",
+      "id": "tx_1792878151324_4b8b6506",
+      "createdAt": "2026-10-24T21:42:31.324Z"
+    },
+    {
+      "userId": "test_empire_user_1792878151294_6717",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "empire",
+      "status": "succeeded",
+      "whopPaymentId": "pay_shared_cycle_1792878151315",
+      "id": "tx_1792878151316_24bfc903",
+      "createdAt": "2026-10-24T21:42:31.316Z"
+    },
+    {
+      "userId": "test_empire_user_1792878151294_6717",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "empire",
+      "status": "succeeded",
+      "whopPaymentId": "pay_new_cycle_1792878151309",
+      "id": "tx_1792878151311_48742aff",
+      "createdAt": "2026-10-24T21:42:31.311Z"
+    },
+    {
+      "userId": "test_empire_user_1792878151294_6717",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "Empire Pass",
+      "status": "succeeded",
+      "whopPaymentId": "pay_renewal_1792878151306",
+      "id": "tx_1792878151307_e56d5624",
+      "createdAt": "2026-10-24T21:42:31.307Z"
+    },
+    {
+      "userId": "test_empire_user_1792878151294_6717",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "empire",
+      "status": "succeeded",
+      "whopPaymentId": "pay_emp_1792878151294",
+      "id": "tx_1792878151297_406f4928",
+      "createdAt": "2026-10-24T21:42:31.297Z"
+    },
+    {
+      "userId": "test_pro_user_1792878151287_gepl",
+      "amount": 29,
+      "currency": "USD",
+      "plan": "pro",
+      "status": "succeeded",
+      "whopPaymentId": "pay_pro_1792878151287",
+      "id": "tx_1792878151291_1a6e0651",
+      "createdAt": "2026-10-24T21:42:31.291Z"
+    },
+    {
+      "userId": "test_conc_renew_1792878106836",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "empire",
+      "status": "succeeded",
+      "whopPaymentId": "pay_conc_1792878106837",
+      "id": "tx_1792878106840_d66d6406",
+      "createdAt": "2026-10-24T21:41:46.840Z"
+    },
+    {
+      "userId": "test_conc_renew_1792878106836",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "empire",
+      "status": "succeeded",
+      "whopPaymentId": "pay_conc_1792878106837",
+      "id": "tx_1792878106839_431daa57",
+      "createdAt": "2026-10-24T21:41:46.839Z"
+    },
+    {
+      "userId": "test_empire_user_1792878106788_mkmg",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "Empire Pass",
+      "status": "pending_reconciliation",
+      "id": "tx_1792878106817_3a27aa01",
+      "createdAt": "2026-10-24T21:41:46.817Z"
+    },
+    {
+      "userId": "test_empire_user_1792878106788_mkmg",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "empire",
+      "status": "succeeded",
+      "whopPaymentId": "pay_shared_cycle_1792878106808",
+      "id": "tx_1792878106809_cf0f8e3a",
+      "createdAt": "2026-10-24T21:41:46.809Z"
+    },
+    {
+      "userId": "test_empire_user_1792878106788_mkmg",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "empire",
+      "status": "succeeded",
+      "whopPaymentId": "pay_new_cycle_1792878106803",
+      "id": "tx_1792878106804_5b51fca5",
+      "createdAt": "2026-10-24T21:41:46.804Z"
+    },
+    {
+      "userId": "test_empire_user_1792878106788_mkmg",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "Empire Pass",
+      "status": "succeeded",
+      "whopPaymentId": "pay_renewal_1792878106799",
+      "id": "tx_1792878106800_4dc33fbe",
+      "createdAt": "2026-10-24T21:41:46.800Z"
+    },
+    {
+      "userId": "test_empire_user_1792878106788_mkmg",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "empire",
+      "status": "succeeded",
+      "whopPaymentId": "pay_emp_1792878106788",
+      "id": "tx_1792878106790_5e78975d",
+      "createdAt": "2026-10-24T21:41:46.790Z"
+    },
+    {
+      "userId": "test_pro_user_1792878106781_ae0t",
+      "amount": 29,
+      "currency": "USD",
+      "plan": "pro",
+      "status": "succeeded",
+      "whopPaymentId": "pay_pro_1792878106781",
+      "id": "tx_1792878106785_dfd40a17",
+      "createdAt": "2026-10-24T21:41:46.785Z"
+    },
+    {
+      "userId": "test_retry_user_1792878090879",
+      "amount": 29,
+      "currency": "USD",
+      "plan": "pro",
+      "status": "succeeded",
+      "whopPaymentId": "pay_transient_1792878090881",
+      "id": "tx_1792878090882_92cd917b",
+      "createdAt": "2026-10-24T21:41:30.882Z"
+    },
+    {
+      "userId": "test_empire_user_1792878090849_inzi",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "Empire Pass",
+      "status": "pending_reconciliation",
+      "id": "tx_1792878090875_2cafea33",
+      "createdAt": "2026-10-24T21:41:30.875Z"
+    },
+    {
+      "userId": "test_empire_user_1792878090849_inzi",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "empire",
+      "status": "succeeded",
+      "whopPaymentId": "pay_shared_cycle_1792878090866",
+      "id": "tx_1792878090867_981d28d9",
+      "createdAt": "2026-10-24T21:41:30.867Z"
+    },
+    {
+      "userId": "test_empire_user_1792878090849_inzi",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "empire",
+      "status": "succeeded",
+      "whopPaymentId": "pay_new_cycle_1792878090862",
+      "id": "tx_1792878090863_b9d960c7",
+      "createdAt": "2026-10-24T21:41:30.863Z"
+    },
+    {
+      "userId": "test_empire_user_1792878090849_inzi",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "Empire Pass",
+      "status": "succeeded",
+      "whopPaymentId": "pay_renewal_1792878090859",
+      "id": "tx_1792878090859_3b1eb181",
+      "createdAt": "2026-10-24T21:41:30.859Z"
+    },
+    {
+      "userId": "test_empire_user_1792878090849_inzi",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "empire",
+      "status": "succeeded",
+      "whopPaymentId": "pay_emp_1792878090849",
+      "id": "tx_1792878090851_34137543",
+      "createdAt": "2026-10-24T21:41:30.851Z"
+    },
+    {
+      "userId": "test_pro_user_1792878090843_n1fk",
+      "amount": 29,
+      "currency": "USD",
+      "plan": "pro",
+      "status": "succeeded",
+      "whopPaymentId": "pay_pro_1792878090843",
+      "id": "tx_1792878090847_b8c1a9fc",
+      "createdAt": "2026-10-24T21:41:30.847Z"
+    },
+    {
+      "userId": "test_empire_user_1792878066206_v07z",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "empire",
+      "status": "succeeded",
+      "whopPaymentId": "pay_emp_1792878066212",
+      "id": "tx_1792878066213_703d15f1",
+      "createdAt": "2026-10-24T21:41:06.213Z"
+    },
+    {
+      "userId": "test_empire_user_1792878066206_v07z",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "empire",
+      "status": "succeeded",
+      "whopPaymentId": "pay_emp_1792878066206",
+      "id": "tx_1792878066207_18727d53",
+      "createdAt": "2026-10-24T21:41:06.207Z"
+    },
+    {
+      "userId": "test_pro_user_1792878066201_n291",
+      "amount": 29,
+      "currency": "USD",
+      "plan": "pro",
+      "status": "succeeded",
+      "whopPaymentId": "pay_pro_1792878066201",
+      "id": "tx_1792878066203_bc1807f7",
+      "createdAt": "2026-10-24T21:41:06.204Z"
+    },
+    {
+      "userId": "test_upgrade_user_1792877269158",
+      "amount": 29,
+      "currency": "USD",
+      "plan": "pro",
+      "status": "succeeded",
+      "whopPaymentId": "init_mem_upg_1792877269158",
+      "id": "tx_1792877269159_64a74a33",
+      "createdAt": "2026-10-24T21:27:49.159Z"
+    },
+    {
+      "userId": "test_empire_user_1792877269143_q2f3",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "pro",
+      "status": "succeeded",
+      "whopPaymentId": "pay_shared_cycle_1792877269153",
+      "id": "tx_1792877269154_d0f40e50",
+      "createdAt": "2026-10-24T21:27:49.154Z"
+    },
+    {
+      "userId": "test_empire_user_1792877269143_q2f3",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "pro",
+      "status": "succeeded",
+      "whopPaymentId": "pay_shared_cycle_1792877269153",
+      "id": "tx_1792877269153_46dc3799",
+      "createdAt": "2026-10-24T21:27:49.153Z"
+    },
+    {
+      "userId": "test_empire_user_1792877269143_q2f3",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "pro",
+      "status": "succeeded",
+      "whopPaymentId": "pay_new_cycle_1792877269148",
+      "id": "tx_1792877269148_41ddbed3",
+      "createdAt": "2026-10-24T21:27:49.148Z"
+    },
+    {
+      "userId": "test_empire_user_1792877269143_q2f3",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "Empire Pass",
+      "status": "succeeded",
+      "whopPaymentId": "pay_renewal_1792877269147",
+      "id": "tx_1792877269147_b3fe7429",
+      "createdAt": "2026-10-24T21:27:49.147Z"
+    },
+    {
+      "userId": "test_empire_user_1792877269143_q2f3",
+      "amount": 79,
+      "currency": "USD",
+      "plan": "empire",
+      "status": "succeeded",
+      "whopPaymentId": "pay_emp_1792877269143",
+      "id": "tx_1792877269144_80beca92",
+      "createdAt": "2026-10-24T21:27:49.144Z"
+    },
+    {
+      "userId": "test_pro_user_1792877269140_6x2b",
+      "amount": 29,
+      "currency": "USD",
+      "plan": "pro",
+      "status": "succeeded",
+      "whopPaymentId": "pay_pro_1792877269140",
+      "id": "tx_1792877269141_f3aba3f9",
+      "createdAt": "2026-10-24T21:27:49.142Z"
+    }
+  ]
+}
