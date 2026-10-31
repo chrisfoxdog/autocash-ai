@@ -1003,6 +1003,9 @@ export class FileDatabase implements IDatabase {
           }
         }
         for (const entry of Object.values(parsed.settings || {})) {
+          // Settings storage mixes legacy flat string values (e.g. storeName)
+          // with per-user settings objects — only migrate object entries.
+          if (!entry || typeof entry !== 'object') continue;
           const s = entry as any;
           if (!s.whopFoundersCheckoutUrl && s.whopEmpireCheckoutUrl) {
             s.whopFoundersCheckoutUrl = s.whopEmpireCheckoutUrl;

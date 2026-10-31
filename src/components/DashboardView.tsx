@@ -119,11 +119,11 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           </div>
 
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white mb-3 text-balance">
-            Turn Ideas Into Passive Cashflow On Whop Without Capital.
+            Turn Ideas Into Digital Products You Can Sell On Whop.
           </h1>
 
           <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed mb-6">
-            Generate turnkey sellable digital products with instant deliverables, audit your offers with AI conversion analysis, and launch viral organic traffic funnels that generate real revenue.
+            Generate sellable digital products with instant deliverables, audit your offers with AI conversion analysis, and create organic traffic content to promote them — no ad spend required. Results vary; nothing here is a promise of sales or income.
           </p>
 
           <div className="flex flex-wrap items-center gap-3">
