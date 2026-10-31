@@ -294,7 +294,7 @@ export default function App() {
           <div className="flex items-center gap-2">
             <span className="font-semibold text-neutral-400">AutoCash AI</span>
             <span aria-hidden="true">·</span>
-            <span>Whop Autopilot Monetization Architecture</span>
+            <span>Whop Monetization Architecture for Creators</span>
           </div>
 
           <div className="flex items-center gap-4 text-neutral-400">

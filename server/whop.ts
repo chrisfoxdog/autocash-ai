@@ -205,13 +205,40 @@ export async function handleWhopEvent(
     return { success: false, status: 'ignored', message: 'No user ID present in event data' };
   }
 
-  const defaultEmpireCredits = Number(process.env.EMPIRE_TIER_CREDITS) || 500;
-  const isEmpire = Boolean(
-    (planId && String(planId).toLowerCase().includes('empire')) ||
-    (data.plan_name && String(data.plan_name).toLowerCase().includes('empire'))
-  );
-  const targetPlan = isEmpire ? 'empire' : 'pro';
-  const tierQuota = isEmpire ? defaultEmpireCredits : 100;
+  // Tier architecture — Chris's real Whop offers:
+  //   free     = unpaid free trial (NOT a Whop offer), 5 credits
+  //   starter  = Starter, $9.99/month, 25 credits per period
+  //   pro      = Pro, $29.99/month, 100 credits per period
+  //   founders = Lifetime Founders, $99.99 ONE-TIME, 500 credits per period (top tier)
+  // FOUNDERS_TIER_CREDITS is the current override; EMPIRE_TIER_CREDITS is a deprecated fallback.
+  const foundersCredits =
+    Number(process.env.FOUNDERS_TIER_CREDITS) || Number(process.env.EMPIRE_TIER_CREDITS) || 500;
+  const PLAN_QUOTAS: Record<string, number> = {
+    free: 5,
+    starter: 25,
+    pro: 100,
+    founders: foundersCredits,
+  };
+  const PLAN_PRICES: Record<string, number> = {
+    starter: 9.99,
+    pro: 29.99,
+    founders: 99.99,
+  };
+
+  // Resolve the paid plan from Whop plan_id / plan_name keywords.
+  // 'founder' or 'lifetime' -> founders, 'starter' -> starter, otherwise pro.
+  const planHaystack = `${planId || ''} ${data.plan_name || ''}`.toLowerCase();
+  const targetPlan: 'starter' | 'pro' | 'founders' =
+    planHaystack.includes('founder') || planHaystack.includes('lifetime')
+      ? 'founders'
+      : planHaystack.includes('starter')
+        ? 'starter'
+        : 'pro';
+  const tierQuota = PLAN_QUOTAS[targetPlan];
+
+  // Normalise a legacy stored plan value to its current tier name.
+  const normalizeStoredPlan = (plan: string): string =>
+    plan === 'empire' ? 'founders' : plan;
 
   try {
     return await database.withTransaction(async (txDb) => {
@@ -252,7 +279,7 @@ export async function handleWhopEvent(
             }
             await txDb.recordTransaction({
               userId: whopUserId,
-              amount: isEmpire ? 79 : 29,
+              amount: PLAN_PRICES[targetPlan],
               currency: 'USD',
               plan: targetPlan,
               status: 'succeeded',
@@ -295,7 +322,8 @@ export async function handleWhopEvent(
             handledMessage = `Non-billing membership update for user ${whopUserId}. Plan ${targetPlan} and balance of ${user.credits} credits preserved.`;
           } else {
             // Plan change (upgrade or downgrade)
-            const oldQuota = oldPlan === 'empire' ? defaultEmpireCredits : (oldPlan === 'pro' ? 100 : 5);
+            const oldPlanKey = normalizeStoredPlan(oldPlan);
+            const oldQuota = PLAN_QUOTAS[oldPlanKey] ?? 5;
 
             if (tierQuota > oldQuota) {
               // Upgrade: ensure upgrade delta is not applied twice via upgrade billing key
@@ -314,7 +342,10 @@ export async function handleWhopEvent(
 
                 await txDb.recordTransaction({
                   userId: whopUserId,
-                  amount: isEmpire ? 50 : 20,
+                  amount: Math.max(
+                    0,
+                    (PLAN_PRICES[targetPlan] ?? 0) - (PLAN_PRICES[oldPlanKey] ?? 0)
+                  ),
                   currency: 'USD',
                   plan: `Upgrade: ${targetPlan.toUpperCase()}`,
                   status: 'succeeded',
@@ -358,7 +389,7 @@ export async function handleWhopEvent(
             resultStatus = 'reconciliation_needed';
             await txDb.recordTransaction({
               userId: whopUserId,
-              amount: (data.final_amount || data.amount || 2900) / 100,
+              amount: (data.final_amount || data.amount || 2999) / 100,
               currency: data.currency || 'USD',
               plan: data.plan_name || 'Unidentified Payment',
               status: 'pending_reconciliation',
@@ -371,7 +402,7 @@ export async function handleWhopEvent(
             ? `pay_${paymentId}`
             : `period_${membershipId || whopUserId}_${billingPeriodEnd}`;
 
-          const amount = (data.final_amount || data.amount || 2900) / 100;
+          const amount = (data.final_amount || data.amount || 2999) / 100;
 
           // Atomically claim the billing key
           const claimed = await txDb.recordBillingPeriod(billingKey, whopUserId);
@@ -381,9 +412,17 @@ export async function handleWhopEvent(
             resultStatus = 'duplicate';
           } else {
             const user = await txDb.getUser(whopUserId);
-            const isEmpireUser = isEmpire || user.plan === 'empire';
-            const renewalPlan = isEmpireUser ? 'empire' : 'pro';
-            const renewalQuota = isEmpireUser ? defaultEmpireCredits : 100;
+            // Prefer the plan named by this event; when the event carries no plan
+            // signal, fall back to the paid plan already on the account (a renewal
+            // keeps the member on their existing tier and refreshes its quota).
+            const storedPlan = normalizeStoredPlan(user.plan);
+            const hasPlanSignal = Boolean(planId || data.plan_name);
+            const renewalPlan: 'starter' | 'pro' | 'founders' = hasPlanSignal
+              ? targetPlan
+              : storedPlan === 'starter' || storedPlan === 'founders'
+                ? storedPlan
+                : 'pro';
+            const renewalQuota = PLAN_QUOTAS[renewalPlan] ?? 100;
 
             await txDb.recordTransaction({
               userId: whopUserId,
@@ -435,7 +474,7 @@ export async function handleWhopEvent(
             handledMessage = `Refund event for user ${whopUserId} already processed under key ${refundKey}; duplicate refund prevented.`;
             resultStatus = 'duplicate';
           } else {
-            const refundAmount = (data.amount || 2900) / 100;
+            const refundAmount = (data.amount || 2999) / 100;
             await txDb.updateUser(whopUserId, { plan: 'free', status: 'cancelled', credits: 5 });
             await txDb.recordTransaction({
               userId: whopUserId,

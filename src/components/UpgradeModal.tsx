@@ -21,8 +21,9 @@ export const UpgradeModal: React.FC<UpgradeModalProps> = ({
   onClose,
   user,
 }) => {
+  const [starterLink, setStarterLink] = useState('');
   const [proLink, setProLink] = useState('');
-  const [empireLink, setEmpireLink] = useState('');
+  const [foundersLink, setFoundersLink] = useState('');
   const [checkoutError, setCheckoutError] = useState<string | null>(null);
 
   React.useEffect(() => {
@@ -31,8 +32,9 @@ export const UpgradeModal: React.FC<UpgradeModalProps> = ({
       fetch('/api/whop/config')
         .then((res) => res.json())
         .then((data) => {
+          if (data.checkoutLinks?.starterMonthly) setStarterLink(data.checkoutLinks.starterMonthly);
           if (data.checkoutLinks?.proMonthly) setProLink(data.checkoutLinks.proMonthly);
-          if (data.checkoutLinks?.empireMonthly) setEmpireLink(data.checkoutLinks.empireMonthly);
+          if (data.checkoutLinks?.foundersOneTime) setFoundersLink(data.checkoutLinks.foundersOneTime);
         })
         .catch(console.error);
     }
@@ -49,10 +51,10 @@ export const UpgradeModal: React.FC<UpgradeModalProps> = ({
     }
   };
 
-  const handleOpenCheckout = (url: string, tierName: string) => {
+  const handleOpenCheckout = (url: string, tierName: string, envVarName: string) => {
     if (!url || url.trim() === '' || !isValidWhopUrl(url) || url.includes('plan_pro_growth_29')) {
       setCheckoutError(
-        `Live Whop checkout URL for ${tierName} is not yet configured or is not an official https://whop.com checkout link. Please configure your live Whop checkout link in Settings or supply WHOP_${tierName === 'Pro Growth' ? 'PRO' : 'EMPIRE'}_CHECKOUT_URL in your server environment.`
+        `Live Whop checkout URL for ${tierName} is not yet configured or is not an official https://whop.com checkout link. Please configure your live Whop checkout link in Settings or supply ${envVarName} in your server environment.`
       );
       return;
     }
@@ -63,11 +65,11 @@ export const UpgradeModal: React.FC<UpgradeModalProps> = ({
   const tiers = [
     {
       id: 'free',
-      name: 'Starter Hustle',
+      name: 'Free Trial',
       price: '$0',
-      period: 'forever',
-      description: 'Test the waters and create your first basic digital asset.',
-      credits: '5 credits / day',
+      period: 'trial',
+      description: 'Try the tools and create your first basic digital asset. This free trial is not a Whop plan.',
+      credits: '5 credits',
       features: [
         'Basic Digital Playbook generator',
         'Standard organic viral scripts',
@@ -75,53 +77,77 @@ export const UpgradeModal: React.FC<UpgradeModalProps> = ({
         'Community access',
       ],
       cta: 'Current Active Tier',
+      envVarName: '',
       isCurrent: user?.plan === 'free',
       highlight: false,
     },
     {
-      id: 'pro',
-      name: 'Pro Growth',
-      price: '$29',
+      id: 'starter',
+      name: 'Starter',
+      price: '$9.99',
       period: 'per month',
-      description: 'For creators ready to generate reliable monthly passive income.',
+      description: 'For creators getting their first digital products and content out the door.',
+      credits: '25 AI generation credits/mo',
+      features: [
+        '25 AI Generation Credits/mo',
+        'Digital Product generator',
+        'Whop Store sales copy & FAQ generator',
+        'Markdown copy-paste export',
+        'Community access',
+      ],
+      cta: 'Checkout with Whop ($9.99/mo)',
+      whopCheckoutUrl: starterLink,
+      envVarName: 'WHOP_STARTER_CHECKOUT_URL',
+      isCurrent: user?.plan === 'starter',
+      highlight: false,
+    },
+    {
+      id: 'pro',
+      name: 'Pro',
+      price: '$29.99',
+      period: 'per month',
+      description: 'For creators publishing content and products every week who need more generation volume.',
       credits: '100 AI generation credits/mo',
       features: [
         '100 Fast AI Generation Credits',
         'Full 3-Module Playbooks + SOP Bundles',
         'Viral TikTok & Instagram Reels Scripts',
-        'High-Yield Recurring Affiliate Bridge Pages',
+        'Recurring Affiliate Bridge Pages',
         '1-Click Downloadable Markdown & Print PDF',
         'Whop Store sales copy & FAQ generator',
       ],
-      cta: 'Checkout with Whop ($29/mo)',
+      cta: 'Checkout with Whop ($29.99/mo)',
       whopCheckoutUrl: proLink,
+      envVarName: 'WHOP_PRO_CHECKOUT_URL',
       isCurrent: user?.plan === 'pro',
       highlight: true,
     },
     {
-      id: 'empire',
-      name: 'Autopilot Empire',
-      price: '$79',
-      period: 'per month',
-      description: 'High-volume generation and automated Whop store scaling.',
-      credits: '500 credits / mo',
+      id: 'founders',
+      name: 'Lifetime Founders',
+      price: '$99.99',
+      period: 'one-time',
+      description: 'One payment for lifetime access — no monthly bill. For high-volume creators.',
+      credits: '500 credits / period',
       features: [
-        '500 High-Volume AI Generation Credits/mo',
+        '500 High-Volume AI Generation Credits per period',
         'Priority Gemini Flash High-Speed Pipeline',
         'Reseller Rights on all generated digital products',
         'Real-time Whop Webhook sync & automation',
         'Priority feature requests & VIP mastermind',
+        'Lifetime access — pay once',
       ],
-      cta: 'Checkout with Whop ($79/mo)',
-      whopCheckoutUrl: empireLink,
-      isCurrent: user?.plan === 'empire',
+      cta: 'Checkout with Whop ($99.99 one-time)',
+      whopCheckoutUrl: foundersLink,
+      envVarName: 'WHOP_FOUNDERS_CHECKOUT_URL',
+      isCurrent: user?.plan === 'founders',
       highlight: false,
     },
   ];
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-950/80 backdrop-blur-sm">
-      <div className="w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl border border-neutral-800 bg-neutral-900 p-6 sm:p-8 space-y-6">
+      <div className="w-full max-w-6xl max-h-[90vh] overflow-y-auto rounded-2xl border border-neutral-800 bg-neutral-900 p-6 sm:p-8 space-y-6">
         <div className="flex items-start justify-between">
           <div>
             <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 mb-1">
@@ -129,7 +155,7 @@ export const UpgradeModal: React.FC<UpgradeModalProps> = ({
               <span>Official Whop Memberships</span>
             </div>
             <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-              Unlock Unlimited Autopilot Income Assets
+              More AI Tools To Build & Sell Your Products
             </h2>
             <p className="text-xs sm:text-sm text-neutral-400 mt-1">
               Select your plan. All subscriptions and payments are handled securely through Whop.
@@ -151,7 +177,7 @@ export const UpgradeModal: React.FC<UpgradeModalProps> = ({
         )}
 
         {/* Tier Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 pt-2">
           {tiers.map((tier) => {
             const isSelected = tier.isCurrent;
             return (
@@ -179,7 +205,9 @@ export const UpgradeModal: React.FC<UpgradeModalProps> = ({
                     <span className="text-3xl font-extrabold text-white font-mono tabular-nums">
                       {tier.price}
                     </span>
-                    <span className="text-xs text-neutral-400 ml-1">/{tier.period}</span>
+                    <span className="text-xs text-neutral-400 ml-1">
+                      {tier.period === 'one-time' ? 'one-time payment' : `/${tier.period}`}
+                    </span>
                     <div className="text-xs text-cyan-400 font-mono mt-1">
                       {tier.credits}
                     </div>
@@ -202,7 +230,7 @@ export const UpgradeModal: React.FC<UpgradeModalProps> = ({
                     </div>
                   ) : (
                     <button
-                      onClick={() => handleOpenCheckout(tier.whopCheckoutUrl || '', tier.name)}
+                      onClick={() => handleOpenCheckout(tier.whopCheckoutUrl || '', tier.name, tier.envVarName || '')}
                       className={`w-full py-2.5 text-xs font-bold rounded-lg transition-colors flex items-center justify-center gap-1.5 ${
                         tier.highlight
                           ? 'bg-cyan-400 hover:bg-cyan-300 text-neutral-950 shadow-md'
@@ -219,7 +247,7 @@ export const UpgradeModal: React.FC<UpgradeModalProps> = ({
           })}
         </div>
 
-        {/* Security / Whop Guarantee Banner */}
+        {/* Security / Whop Banner */}
         <div className="p-4 rounded-xl bg-neutral-950 border border-neutral-800 flex items-center gap-3 text-xs text-neutral-400">
           <ShieldCheck className="h-5 w-5 text-emerald-400 shrink-0" />
           <span>

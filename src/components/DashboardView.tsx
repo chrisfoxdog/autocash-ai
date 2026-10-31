@@ -101,8 +101,8 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
       <div className="relative overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900">
         <div className="absolute inset-0 z-0">
           <img
-            src="/src/assets/images/autopilot_income_hero_1790382807339.jpg"
-            alt="Creator Autopilot Studio"
+            src="/src/assets/images/creator_studio_hero_1790382807339.jpg"
+            alt="Creator Studio"
             referrerPolicy="no-referrer"
             className="h-full w-full object-cover opacity-20"
           />
@@ -111,7 +111,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
 
         <div className="relative z-10 p-6 sm:p-8 lg:p-10 max-w-2xl">
           <div className="flex items-center gap-2 text-xs text-neutral-400 mb-3 font-mono">
-            <span>Whop Autopilot Engine</span>
+            <span>AutoCash AI Creator Studio</span>
             <span aria-hidden="true">·</span>
             <span>Zero Ad Spend Architecture</span>
             <span aria-hidden="true">·</span>
@@ -197,11 +197,11 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             <Zap className="h-4 w-4 text-amber-400" />
           </div>
           <div className="text-2xl font-bold text-white font-mono tabular-nums">
-            {user?.plan === 'empire' ? 'Unlimited' : user?.credits ?? 0}
+            {user?.credits ?? 0}
           </div>
           <div className="text-xs text-neutral-500 mt-1">
-            {user?.plan === 'empire'
-              ? 'Autopilot Empire Tier Active'
+            {user?.plan === 'founders'
+              ? 'Lifetime Founders Tier Active'
               : `${user?.plan?.toUpperCase()} Tier Active`}
           </div>
         </div>
@@ -446,7 +446,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         </div>
       </div>
 
-      {/* Interactive Autopilot MRR Simulator & Profit Forecaster */}
+      {/* Interactive MRR Simulator & Profit Forecaster (estimates only) */}
       <div className="p-6 sm:p-8 rounded-2xl border border-neutral-800 bg-neutral-900/80 space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-neutral-800">
           <div>
@@ -457,7 +457,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
               <span className="text-emerald-400 font-bold">Dynamic Revenue Modeling</span>
             </div>
             <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight mt-1">
-              Whop Autopilot MRR Simulator
+              Whop MRR Simulator
             </h2>
             <p className="text-xs text-neutral-400 mt-0.5">
               Adjust your product retail price, weekly sales volume, and community subscribers to calculate net payout and traffic required.
@@ -599,7 +599,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         </div>
       </div>
 
-      {/* 3 Core Autopilot Income Stream Channels */}
+      {/* 3 Core Monetization Channels */}
       <div>
         <div className="mb-4">
           <h2 className="text-lg font-semibold text-white tracking-tight">
@@ -668,7 +668,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                 Recurring Affiliate Bridge Pages
               </h3>
               <p className="text-xs text-neutral-400 leading-relaxed mb-4">
-                Build honest high-converting comparison reviews and bridge email blasts for top recurring SaaS tools that pay 30% to 50% monthly passive revenue.
+                Build honest high-converting comparison reviews and bridge email blasts for top recurring SaaS tools that pay 30% to 50% monthly recurring commissions.
               </p>
             </div>
             <button
@@ -708,7 +708,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
               No revenue assets generated yet.
             </p>
             <p className="text-xs text-neutral-500 mt-1 max-w-sm mx-auto">
-              Start by building your first digital product or viral script to launch your autopilot income stream.
+              Start by building your first digital product or viral script to launch your first offer.
             </p>
             <button
               onClick={() => setActiveTab('products')}

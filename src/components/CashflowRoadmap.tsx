@@ -75,7 +75,7 @@ export const CashflowRoadmap: React.FC<CashflowRoadmapProps> = ({ setActiveTab }
         },
         {
           id: 't_2_3',
-          label: 'Paste the generated Whop Sales Copy (Headline, Bullets, Guarantee)',
+          label: 'Paste the generated Whop Sales Copy (Headline, Bullets, Money-Back Guarantee)',
           tip: 'Copy directly from the "Whop Store Sales Copy" tab in your generated asset.',
           tabTarget: 'products',
         },
@@ -107,7 +107,7 @@ export const CashflowRoadmap: React.FC<CashflowRoadmapProps> = ({ setActiveTab }
         {
           id: 't_3_3',
           label: 'Put your Whop store checkout link in your TikTok / Instagram bio',
-          tip: 'Use a clear bio CTA: "Grab the $39 Autopilot Systems Playbook 👇".',
+          tip: 'Use a clear bio CTA: "Grab the $39 AI Systems Playbook 👇".',
         },
         {
           id: 't_3_4',

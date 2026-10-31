@@ -9,14 +9,15 @@ export interface CreatorSettings {
   whopStoreUrl: string;
   supportEmail: string;
   currency: string;
+  whopStarterCheckoutUrl: string;
   whopProCheckoutUrl: string;
-  whopEmpireCheckoutUrl: string;
+  whopFoundersCheckoutUrl: string;
 }
 
 export interface UserAccount {
   id: string;
   email: string;
-  plan: 'free' | 'pro' | 'empire';
+  plan: 'free' | 'starter' | 'pro' | 'founders';
   credits: number;
   creditsResetAt: string;
   whopUserId?: string;
@@ -172,7 +173,7 @@ export const CATALOG_PRODUCTS: GeneratedAsset[] = [
     userId: 'system_catalog',
     isCatalog: true,
     type: 'digital_product',
-    title: 'The 2026 AI Solopreneur Workflow Playbook: $0 to $5K/Mo With Automated Digital Micro-Services',
+    title: 'The 2026 AI Solopreneur Workflow Playbook: Package & Sell Digital Micro-Services',
     niche: 'AI Productivity & Automation',
     content: {
       subtitle: 'Complete Step-By-Step Systems To Package, Automate, and Sell In-Demand Digital Workflows on Whop',
@@ -180,7 +181,7 @@ export const CATALOG_PRODUCTS: GeneratedAsset[] = [
       estimatedTimeToComplete: '75 minutes to set up, runs permanently',
       summary: 'A 100% turnkey, battle-tested operational guide designed for someone starting with zero capital. Explains exactly how to package free AI automation tools into high-margin $39–$199 digital products and micro-services, launch on Whop in under 45 minutes, and secure paying clients with zero upfront advertising.',
       whopSalesCopy: {
-        headline: 'Stop Trading Hours For Pennies. Deploy The Turnkey AI Systems Generating $3,000–$5,000/Month On Autopilot.',
+        headline: 'Stop Trading Hours For Pennies. Deploy Turnkey AI Systems To Build And Sell Digital Products Faster.',
         bullets: [
           '4 Deep Technical Modules detailing exact copy-paste AI prompt chains and no-code webhook setups',
           'Complete Whop Store Configuration Checklist: From $0 to live checkout in under 30 minutes',
@@ -188,7 +189,7 @@ export const CATALOG_PRODUCTS: GeneratedAsset[] = [
           'Zero-Ad-Spend Customer Acquisition Playbook: How to get your first 10 buyers in 72 hours organically',
           'Includes Commercial Resale License: Rebrand, adapt, and resell as your own digital product'
         ],
-        guarantee: '14-Day 100% Action Guarantee. Follow the step-by-step launch checklist. If you do not have your product live and receiving traffic within 14 days, contact support for an immediate, no-questions-asked refund.',
+        guarantee: '14-Day Money-Back Guarantee. Follow the step-by-step launch checklist, and if the playbook is not right for you within 14 days, contact support for a no-questions-asked refund.',
         faq: [
           {
             question: 'Do I need coding experience or paid software to use this?',
@@ -248,8 +249,11 @@ const DEFAULT_SETTINGS: CreatorSettings = {
   whopStoreUrl: 'https://whop.com',
   supportEmail: 'support@whop.com',
   currency: 'USD',
+  whopStarterCheckoutUrl: process.env.WHOP_STARTER_CHECKOUT_URL || '',
   whopProCheckoutUrl: process.env.WHOP_PRO_CHECKOUT_URL || '',
-  whopEmpireCheckoutUrl: process.env.WHOP_EMPIRE_CHECKOUT_URL || '',
+  // WHOP_EMPIRE_CHECKOUT_URL is a deprecated fallback for the renamed Founders URL.
+  whopFoundersCheckoutUrl:
+    process.env.WHOP_FOUNDERS_CHECKOUT_URL || process.env.WHOP_EMPIRE_CHECKOUT_URL || '',
 };
 
 /**
@@ -296,8 +300,12 @@ class PostgresDatabase implements IDatabase {
           currency VARCHAR(10) NOT NULL DEFAULT 'USD',
           whop_pro_checkout_url TEXT,
           whop_empire_checkout_url TEXT,
+          whop_starter_checkout_url TEXT,
+          whop_founders_checkout_url TEXT,
           updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
         );
+        ALTER TABLE creator_settings ADD COLUMN IF NOT EXISTS whop_starter_checkout_url TEXT;
+        ALTER TABLE creator_settings ADD COLUMN IF NOT EXISTS whop_founders_checkout_url TEXT;
 
         CREATE TABLE IF NOT EXISTS assets (
           id VARCHAR(255) PRIMARY KEY,
@@ -555,8 +563,8 @@ class PostgresDatabase implements IDatabase {
     const res = await this.pool.query('SELECT * FROM creator_settings WHERE user_id = $1', [userId]);
     if (res.rows.length === 0) {
       await this.pool.query(
-        `INSERT INTO creator_settings (user_id, store_name, creator_name, whop_store_url, support_email, currency, whop_pro_checkout_url, whop_empire_checkout_url)
-         VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+        `INSERT INTO creator_settings (user_id, store_name, creator_name, whop_store_url, support_email, currency, whop_pro_checkout_url, whop_starter_checkout_url, whop_founders_checkout_url)
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
          ON CONFLICT (user_id) DO NOTHING`,
         [
           userId,
@@ -566,7 +574,8 @@ class PostgresDatabase implements IDatabase {
           DEFAULT_SETTINGS.supportEmail,
           DEFAULT_SETTINGS.currency,
           DEFAULT_SETTINGS.whopProCheckoutUrl,
-          DEFAULT_SETTINGS.whopEmpireCheckoutUrl,
+          DEFAULT_SETTINGS.whopStarterCheckoutUrl,
+          DEFAULT_SETTINGS.whopFoundersCheckoutUrl,
         ]
       );
       return { ...DEFAULT_SETTINGS };
@@ -578,17 +587,24 @@ class PostgresDatabase implements IDatabase {
       whopStoreUrl: r.whop_store_url,
       supportEmail: r.support_email,
       currency: r.currency,
+      whopStarterCheckoutUrl: r.whop_starter_checkout_url || '',
       whopProCheckoutUrl: r.whop_pro_checkout_url || '',
-      whopEmpireCheckoutUrl: r.whop_empire_checkout_url || '',
+      // Tolerate the legacy whop_empire_checkout_url column for pre-rename rows.
+      whopFoundersCheckoutUrl: r.whop_founders_checkout_url || r.whop_empire_checkout_url || '',
     };
   }
 
   public async updateSettings(userId: string, updates: Partial<CreatorSettings>): Promise<CreatorSettings> {
     const current = await this.getSettings(userId);
     const merged = { ...current, ...updates };
+    // Tolerate the legacy field name if an older client posts it.
+    const legacyFoundersUrl = (updates as any).whopEmpireCheckoutUrl as string | undefined;
+    if (legacyFoundersUrl && !updates.whopFoundersCheckoutUrl) {
+      merged.whopFoundersCheckoutUrl = legacyFoundersUrl;
+    }
     await this.pool.query(
-      `INSERT INTO creator_settings (user_id, store_name, creator_name, whop_store_url, support_email, currency, whop_pro_checkout_url, whop_empire_checkout_url, updated_at)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, NOW())
+      `INSERT INTO creator_settings (user_id, store_name, creator_name, whop_store_url, support_email, currency, whop_pro_checkout_url, whop_starter_checkout_url, whop_founders_checkout_url, updated_at)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, NOW())
        ON CONFLICT (user_id) DO UPDATE SET
          store_name = EXCLUDED.store_name,
          creator_name = EXCLUDED.creator_name,
@@ -596,7 +612,8 @@ class PostgresDatabase implements IDatabase {
          support_email = EXCLUDED.support_email,
          currency = EXCLUDED.currency,
          whop_pro_checkout_url = EXCLUDED.whop_pro_checkout_url,
-         whop_empire_checkout_url = EXCLUDED.whop_empire_checkout_url,
+         whop_starter_checkout_url = EXCLUDED.whop_starter_checkout_url,
+         whop_founders_checkout_url = EXCLUDED.whop_founders_checkout_url,
          updated_at = NOW()`,
       [
         userId,
@@ -606,7 +623,8 @@ class PostgresDatabase implements IDatabase {
         merged.supportEmail,
         merged.currency,
         merged.whopProCheckoutUrl,
-        merged.whopEmpireCheckoutUrl,
+        merged.whopStarterCheckoutUrl,
+        merged.whopFoundersCheckoutUrl,
       ]
     );
     return merged;
@@ -976,6 +994,23 @@ export class FileDatabase implements IDatabase {
       if (fs.existsSync(this.filePath)) {
         const raw = fs.readFileSync(this.filePath, 'utf-8');
         const parsed = JSON.parse(raw);
+        // Normalise pre-rename stored data so old store.json files keep working:
+        // plan 'empire' becomes 'founders', and the legacy settings field
+        // whopEmpireCheckoutUrl is read as whopFoundersCheckoutUrl.
+        for (const user of Object.values(parsed.users || {})) {
+          if ((user as any).plan === 'empire') {
+            (user as any).plan = 'founders';
+          }
+        }
+        for (const entry of Object.values(parsed.settings || {})) {
+          const s = entry as any;
+          if (!s.whopFoundersCheckoutUrl && s.whopEmpireCheckoutUrl) {
+            s.whopFoundersCheckoutUrl = s.whopEmpireCheckoutUrl;
+          }
+          if (s.whopStarterCheckoutUrl === undefined) {
+            s.whopStarterCheckoutUrl = '';
+          }
+        }
         return {
           users: parsed.users || {},
           settings: parsed.settings || {},
@@ -1109,6 +1144,11 @@ export class FileDatabase implements IDatabase {
   public async updateSettings(userId: string, updates: Partial<CreatorSettings>): Promise<CreatorSettings> {
     const current = await this.getSettings(userId);
     const updated = { ...current, ...updates };
+    // Tolerate the legacy field name if an older client posts it.
+    const legacyFoundersUrl = (updates as any).whopEmpireCheckoutUrl as string | undefined;
+    if (legacyFoundersUrl && !updates.whopFoundersCheckoutUrl) {
+      updated.whopFoundersCheckoutUrl = legacyFoundersUrl;
+    }
     this.data.settings[userId] = updated;
     this.save();
     return { ...updated };

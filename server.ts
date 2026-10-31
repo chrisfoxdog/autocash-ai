@@ -268,7 +268,7 @@ app.post('/api/assets/generate-digital-product', requireWhopAuth, async (req: Au
     if (!creditCheck.success) {
       return res.status(402).json({
         error: 'Insufficient generation credits',
-        message: 'You have run out of AI generation credits. Please upgrade your Whop membership to Pro or Empire.',
+        message: 'You have run out of AI generation credits. Please upgrade your Whop membership to Starter, Pro, or Lifetime Founders.',
         remainingCredits: creditCheck.remaining
       });
     }
@@ -470,7 +470,7 @@ app.post('/api/assets/generate-autonomous-bundle', requireWhopAuth, async (req: 
     const cleanPrice = Number(pricePoint) || 47;
     const cleanTopic = topic && typeof topic === 'string' && topic.trim().length > 0
       ? topic.trim()
-      : `The ${niche} Autopilot Cashflow Playbook`;
+      : `The ${niche} AI Systems Playbook`;
 
     // Concurrently generate the 3 coordinated assets
     const [productContent, scriptContent, affiliateContent] = await Promise.all([
@@ -873,8 +873,8 @@ app.get('/api/assets/:id/whop-listing-kit', requireWhopAuth, async (req: AuthReq
   ${(whopSalesCopy.bullets || []).map((b: string) => `<li>${b}</li>`).join('')}
 </ul>
 
-<h3>Guaranteed Satisfaction:</h3>
-<p>${whopSalesCopy.guarantee || '14-Day 100% Action Guarantee.'}</p>
+<h3>Money-Back Guarantee:</h3>
+<p>${whopSalesCopy.guarantee || '14-Day money-back guarantee.'}</p>
 
 <h3>Frequently Asked Questions:</h3>
 ${(whopSalesCopy.faq || []).map((f: any) => `
@@ -928,8 +928,18 @@ app.post('/api/whop/simulate-webhook', requireWhopAuth, async (req: AuthRequest,
       user_id: userId,
       email: `${userId}@whop.user`,
       plan_id: planId || 'plan_pro',
-      plan_name: planId?.includes('empire') ? 'Autopilot Empire' : 'Pro Growth',
-      amount: amount || (planId?.includes('empire') ? 7900 : 2900),
+      plan_name: planId?.includes('founder') || planId?.includes('lifetime')
+        ? 'Lifetime Founders'
+        : planId?.includes('starter')
+          ? 'Starter'
+          : 'Pro',
+      amount:
+        amount ||
+        (planId?.includes('founder') || planId?.includes('lifetime')
+          ? 9999
+          : planId?.includes('starter')
+            ? 999
+            : 2999),
       currency: 'USD',
       id: `mem_${Date.now()}`,
       membership_id: `mem_${Date.now()}`,
@@ -973,15 +983,22 @@ export function isValidWhopCheckoutUrl(url: string | undefined | null): boolean 
 app.get('/api/whop/config', requireWhopAuth, async (req: AuthRequest, res) => {
   const appUrl = process.env.APP_URL || `http://localhost:${PORT}`;
   const settings = await db.getSettings(req.userId!);
+  const starterUrl = isValidWhopCheckoutUrl(settings.whopStarterCheckoutUrl)
+    ? settings.whopStarterCheckoutUrl
+    : isValidWhopCheckoutUrl(process.env.WHOP_STARTER_CHECKOUT_URL)
+    ? process.env.WHOP_STARTER_CHECKOUT_URL!
+    : '';
   const proUrl = isValidWhopCheckoutUrl(settings.whopProCheckoutUrl)
     ? settings.whopProCheckoutUrl
     : isValidWhopCheckoutUrl(process.env.WHOP_PRO_CHECKOUT_URL)
     ? process.env.WHOP_PRO_CHECKOUT_URL!
     : '';
-  const empireUrl = isValidWhopCheckoutUrl(settings.whopEmpireCheckoutUrl)
-    ? settings.whopEmpireCheckoutUrl
-    : isValidWhopCheckoutUrl(process.env.WHOP_EMPIRE_CHECKOUT_URL)
-    ? process.env.WHOP_EMPIRE_CHECKOUT_URL!
+  // WHOP_EMPIRE_CHECKOUT_URL is a deprecated fallback for the Founders URL.
+  const foundersEnvUrl = process.env.WHOP_FOUNDERS_CHECKOUT_URL || process.env.WHOP_EMPIRE_CHECKOUT_URL;
+  const foundersUrl = isValidWhopCheckoutUrl(settings.whopFoundersCheckoutUrl)
+    ? settings.whopFoundersCheckoutUrl
+    : isValidWhopCheckoutUrl(foundersEnvUrl)
+    ? foundersEnvUrl!
     : '';
 
   return res.json({
@@ -993,38 +1010,56 @@ app.get('/api/whop/config', requireWhopAuth, async (req: AuthRequest, res) => {
     geminiApiKeySet: Boolean(process.env.GEMINI_API_KEY),
     settings,
     checkoutLinks: {
+      starterMonthly: starterUrl,
       proMonthly: proUrl,
-      empireMonthly: empireUrl,
+      foundersOneTime: foundersUrl,
     },
     tierFeatures: {
       free: {
-        name: 'Starter Hustle',
+        name: 'Free Trial',
         price: 0,
         credits: 5,
-        features: ['5 AI generations per day', 'Basic Playbook templates', 'Community access'],
+        billing: 'trial',
+        features: ['5 AI generations to try the tools', 'Basic Playbook templates', 'Community access'],
+      },
+      starter: {
+        name: 'Starter',
+        price: 9.99,
+        credits: 25,
+        billing: 'monthly',
+        features: [
+          '25 AI generation credits/mo',
+          'Digital Product generator',
+          'Whop Store sales copy & FAQ generator',
+          'Markdown copy-paste export',
+          'Community access',
+        ],
       },
       pro: {
-        name: 'Pro Growth',
-        price: 29,
+        name: 'Pro',
+        price: 29.99,
         credits: 100,
+        billing: 'monthly',
         features: [
           '100 AI generation credits/mo',
           'Full Digital Products & Whop Store copy',
           'Viral Social Content scripts (Reels, TikTok, X)',
-          'High-Yield Affiliate Bridge pages',
+          'Affiliate Bridge pages',
           'Formatted 1-Click Markdown & PDF export',
         ],
       },
-      empire: {
-        name: 'Autopilot Empire',
-        price: 79,
-        credits: Number(process.env.EMPIRE_TIER_CREDITS) || 500,
+      founders: {
+        name: 'Lifetime Founders',
+        price: 99.99,
+        credits: Number(process.env.FOUNDERS_TIER_CREDITS) || Number(process.env.EMPIRE_TIER_CREDITS) || 500,
+        billing: 'one-time',
         features: [
-          '500 High-Volume Generation Credits/mo',
+          '500 Generation Credits per period',
           'Priority Gemini Engine',
           'Direct Whop Webhook automation sync',
           'Reseller Rights on all generated digital assets',
           'VIP Private Mastermind access',
+          'Lifetime access — one payment, no monthly bill',
         ],
       },
     },
@@ -1037,10 +1072,14 @@ app.get('/api/whop/checkout-url', requireWhopAuth, async (req: AuthRequest, res)
   const settings = await db.getSettings(req.userId!);
   let targetUrl: string | undefined;
 
-  if (plan === 'empire') {
-    targetUrl = isValidWhopCheckoutUrl(settings.whopEmpireCheckoutUrl)
-      ? settings.whopEmpireCheckoutUrl
-      : process.env.WHOP_EMPIRE_CHECKOUT_URL;
+  if (plan === 'founders') {
+    targetUrl = isValidWhopCheckoutUrl(settings.whopFoundersCheckoutUrl)
+      ? settings.whopFoundersCheckoutUrl
+      : process.env.WHOP_FOUNDERS_CHECKOUT_URL || process.env.WHOP_EMPIRE_CHECKOUT_URL;
+  } else if (plan === 'starter') {
+    targetUrl = isValidWhopCheckoutUrl(settings.whopStarterCheckoutUrl)
+      ? settings.whopStarterCheckoutUrl
+      : process.env.WHOP_STARTER_CHECKOUT_URL;
   } else {
     targetUrl = isValidWhopCheckoutUrl(settings.whopProCheckoutUrl)
       ? settings.whopProCheckoutUrl
@@ -1048,8 +1087,14 @@ app.get('/api/whop/checkout-url', requireWhopAuth, async (req: AuthRequest, res)
   }
 
   if (!targetUrl || !isValidWhopCheckoutUrl(targetUrl)) {
+    const envVarName =
+      plan === 'founders'
+        ? 'WHOP_FOUNDERS_CHECKOUT_URL'
+        : plan === 'starter'
+          ? 'WHOP_STARTER_CHECKOUT_URL'
+          : 'WHOP_PRO_CHECKOUT_URL';
     return res.status(400).json({
-      error: `Checkout link for ${plan || 'requested plan'} is not configured or is not an official https://whop.com URL. Please set WHOP_${plan === 'empire' ? 'EMPIRE' : 'PRO'}_CHECKOUT_URL in your environment.`,
+      error: `Checkout link for ${plan || 'requested plan'} is not configured or is not an official https://whop.com URL. Please set ${envVarName} in your environment.`,
     });
   }
 

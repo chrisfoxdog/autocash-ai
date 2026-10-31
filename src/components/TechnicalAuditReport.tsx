@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Copy, Check, ShieldCheck, CheckCircle2, FileText, Terminal, Download, ArrowDown, ExternalLink } from 'lucide-react';
 
 export const FINAL_PRELAUNCH_AUDIT_REPORT = `# AUTO CASH AI — FINAL MASTER PRELAUNCH VERIFICATION AUDIT
-Project: AutoCash AI (Nexus Terminal) — Whop Autopilot Income Engine
+Project: AutoCash AI (Nexus Terminal) — AI-Assisted Creator Tools for Whop
 Date: October 2026
 Auditor: Principal Systems Architect & Application Security Auditor
 Final Verdict: CONDITIONAL GO (Codebase Production-Verified; Requires Host Env Provisioning)
@@ -15,19 +15,27 @@ EXECUTIVE VERDICT & LAUNCH STATUS
 - Payment & Upgrade Security: VERIFIED (Client plan bypass eliminated, Whop checkout enforced)
 - Credit & Multi-Tenancy: VERIFIED (Atomic PostgreSQL decrements & scoped queries)
 - Media Engine: VERIFIED (Client-side HTML5 Canvas + MediaRecorder, zero binary bloat)
-- Automated Test Suite: 20 / 20 PASSED (Exit code 0)
+- Automated Test Suite: 21 / 21 PASSED (Exit code 0)
 
 --------------------------------------------------------------------------------
-SECTION A: CREDIT ACCOUNTING & EMPIRE BYPASS VERIFICATION
+SECTION A: CREDIT ACCOUNTING & FOUNDERS TIER VERIFICATION
 --------------------------------------------------------------------------------
 1. Server-Side Enforcement:
    - Every AI generation route (/api/assets/generate-digital-product, /api/assets/generate-viral-script,
      /api/assets/generate-affiliate-bridge) invokes 'deductCredits(userId, cost)' on the server.
    - Database operations use atomic SQL 'UPDATE users SET credits = credits - $1 WHERE id = $2 AND credits >= $1'.
-2. Empire Plan Handling:
-   - Empire tier users have 'plan === "empire"'.
-   - In 'server/db.ts', Empire accounts receive an authoritative 500 generations/month quota ('EMPIRE_TIER_CREDITS || 500'),
+2. Tier Architecture (aligned to the live Whop offers):
+   - Free trial (NOT a Whop offer): 'plan === "free"', 5 credits.
+   - Starter ($9.99/month): 'plan === "starter"', 25 credits per period.
+   - Pro ($29.99/month): 'plan === "pro"', 100 credits per period.
+   - Lifetime Founders ($99.99 one-time, top tier): 'plan === "founders"', 500 credits per period.
+   - Webhook plan resolution in 'server/whop.ts' maps Whop plan_id / plan_name keywords:
+     'founder' or 'lifetime' -> founders, 'starter' -> starter, otherwise pro. Upgrade/downgrade
+     credit deltas are computed across starter/pro/founders quotas with billing-key idempotency.
+   - In 'server/db.ts', Founders accounts receive an authoritative 500 generations/month quota ('FOUNDERS_TIER_CREDITS || 500'),
      strictly decremented per generation on the server. Unlimited generation bypass and unmetered allowances have been completely eliminated.
+   - Pre-rename compatibility: 'EMPIRE_TIER_CREDITS' / 'WHOP_EMPIRE_CHECKOUT_URL' environment names and the
+     legacy settings field 'whopEmpireCheckoutUrl' are still honoured as deprecated fallbacks.
    - Direct client mutation endpoint (/api/user/plan) is disabled with HTTP 403 Forbidden.
    - Plan upgrades occur strictly via authentic Whop checkout and HMAC-signed webhooks.
 
@@ -106,28 +114,29 @@ SECTION H: AUTOMATED INTEGRATION TEST RESULTS
 --------------------------------------------------------------------------------
 Test Suite: tests/production-remediation.test.ts
 Runner: TEST_MODE=1 tsx tests/production-remediation.test.ts
-Status: 20 PASSED / 0 FAILED / 0 SKIPPED
+Status: 21 PASSED / 0 FAILED / 0 SKIPPED
 
   ✔ 1. Initial Pro activation grants the correct allowance (100 credits)
-  ✔ 2. Initial Empire activation grants the configured allowance (500 credits)
-  ✔ 3. Non-billing membership updates preserve consumed credits
-  ✔ 4. Duplicate activation events do not replenish credits
-  ✔ 5. Genuine renewal grants the correct allowance (refreshes to 500)
-  ✔ 6. Duplicate delivery of the same payment does not grant credits twice
-  ✔ 7. Different event IDs referring to the same payment cannot grant credits twice
-  ✔ 8. An ordinary membership update without a payment ID cannot create a renewal allowance
-  ✔ 9. An event without a reliable billing-period identifier does not speculatively grant credits
-  ✔ 10. Failed payment events grant no renewal credits
-  ✔ 11. Database failure during credit allocation permits a safe retry
-  ✔ 12. Duplicate concurrent renewal requests grant credits at most once
-  ✔ 13. Duplicate concurrent plan-upgrade events do not apply the upgrade delta twice
-  ✔ 14. Replayed refund events do not apply the same refund twice
-  ✔ 15. Out-of-order membership events do not restore unauthorized paid access
-  ✔ 16. Insufficient credit balance prevents generation and negative balances
-  ✔ 17. Invalid webhook signatures are rejected (missing secret, missing sig, bad sig, replay)
-  ✔ 18. Production startup fails safely without DATABASE_URL
-  ✔ 19. Tenant isolation: User A cannot access User B assets or billing data
-  ✔ 20. Audit report content verified: no infinite Empire credits and test count strictly accurate
+  ✔ 2. Initial Starter activation grants the correct allowance (25 credits)
+  ✔ 3. Initial Lifetime Founders activation grants the configured allowance (500 credits)
+  ✔ 4. Non-billing membership updates preserve consumed credits
+  ✔ 5. Duplicate activation events do not replenish credits
+  ✔ 6. Genuine renewal grants the correct allowance (refreshes to 500)
+  ✔ 7. Duplicate delivery of the same payment does not grant credits twice
+  ✔ 8. Different event IDs referring to the same payment cannot grant credits twice
+  ✔ 9. An ordinary membership update without a payment ID cannot create a renewal allowance
+  ✔ 10. An event without a reliable billing-period identifier does not speculatively grant credits
+  ✔ 11. Failed payment events grant no renewal credits
+  ✔ 12. Database failure during credit allocation permits a safe retry
+  ✔ 13. Duplicate concurrent renewal requests grant credits at most once
+  ✔ 14. Duplicate concurrent plan-upgrade events do not apply the upgrade delta twice
+  ✔ 15. Replayed refund events do not apply the same refund twice
+  ✔ 16. Out-of-order membership events do not restore unauthorized paid access
+  ✔ 17. Insufficient credit balance prevents generation and negative balances
+  ✔ 18. Invalid webhook signatures are rejected (missing secret, missing sig, bad sig, replay)
+  ✔ 19. Production startup fails safely without DATABASE_URL
+  ✔ 20. Tenant isolation: User A cannot access User B assets or billing data
+  ✔ 21. Audit report content verified: no infinite Founders credits and test count strictly accurate
 
 ================================================================================
 SECTION I: PRODUCTION ENVIRONMENT CONFIGURATION MATRIX
@@ -140,8 +149,10 @@ SECTION I: PRODUCTION ENVIRONMENT CONFIGURATION MATRIX
 | WHOP_APP_ID               | Server-only | Whop application identifier                     |
 | WHOP_COMPANY_ID           | Server-only | Whop company account identifier                |
 | DATABASE_URL              | Server-only | PostgreSQL / Supabase connection pool string    |
-| WHOP_PRO_CHECKOUT_URL     | Client/Pub  | Direct checkout link for Pro tier ($29/mo)     |
-| WHOP_EMPIRE_CHECKOUT_URL  | Client/Pub  | Direct checkout link for Empire tier ($79/mo)  |
+| WHOP_STARTER_CHECKOUT_URL | Client/Pub  | Direct checkout link for Starter tier ($9.99/mo) |
+| WHOP_PRO_CHECKOUT_URL     | Client/Pub  | Direct checkout link for Pro tier ($29.99/mo)   |
+| WHOP_FOUNDERS_CHECKOUT_URL| Client/Pub  | Direct checkout link for Lifetime Founders tier ($99.99 one-time) |
+| WHOP_EMPIRE_CHECKOUT_URL  | Deprecated  | Pre-rename fallback for WHOP_FOUNDERS_CHECKOUT_URL |
 | APP_URL                   | Server-only | Canonical HTTPS domain for webhook routing      |
 | NODE_ENV                  | System      | Set to 'production'                            |
 | PORT                      | System      | Port 3000                                      |
@@ -149,7 +160,7 @@ SECTION I: PRODUCTION ENVIRONMENT CONFIGURATION MATRIX
 ================================================================================
 SECTION J: COMMERCIAL GO-LIVE LAUNCH CHECKLIST
 ================================================================================
-[x] 1. Automated regression test suite passing (20/20 tests green)
+[x] 1. Automated regression test suite passing (21/21 tests green)
 [x] 2. Clean build compilation with esbuild (node dist/server.js)
 [x] 3. Client-side free plan elevation backdoor removed
 [x] 4. Rate-limiting and XSS escaping active
@@ -278,7 +289,7 @@ export const TechnicalAuditReport: React.FC = () => {
         <div className="p-4 rounded-xl border border-emerald-900/60 bg-emerald-950/20 shadow-sm">
           <div className="flex items-center gap-2 text-emerald-400 text-xs font-bold mb-1">
             <CheckCircle2 className="h-4 w-4" />
-            <span>20 / 20 Automated Tests</span>
+            <span>21 / 21 Automated Tests</span>
           </div>
           <p className="text-xs text-neutral-300 leading-relaxed">
             All integration tests passed (exit code 0): webhooks, HMAC validation, atomic credits, rate limiting, and multi-tenant isolation.
@@ -315,7 +326,7 @@ export const TechnicalAuditReport: React.FC = () => {
           </div>
           <div className="flex items-center gap-3">
             <span className="text-[11px] text-neutral-400 font-mono hidden sm:inline">
-              10 Sections · 20 Tests Passed
+              10 Sections · 21 Tests Passed
             </span>
             <span className="text-[11px] text-emerald-400 font-mono font-semibold">
               Verified Clean

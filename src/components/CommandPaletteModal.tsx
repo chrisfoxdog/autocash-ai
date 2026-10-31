@@ -87,7 +87,7 @@ const COMMAND_ACTIONS: ActionItem[] = [
   },
   {
     id: 'dashboard',
-    title: 'Autopilot MRR Simulator & Cockpit',
+    title: 'MRR Simulator & Forecaster',
     category: 'Finance',
     description: 'Model price, weekly sales, VIP recurring members, and net payouts',
     icon: TrendingUp,

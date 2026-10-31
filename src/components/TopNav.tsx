@@ -19,7 +19,7 @@ export const TopNav: React.FC<TopNavProps> = ({
 }) => {
   const navItems = [
     { id: 'dashboard', label: 'Dashboard' },
-    { id: 'warroom', label: '⚡ Autopilot War Room' },
+    { id: 'warroom', label: '⚡ Launch War Room' },
     { id: 'media', label: '🎬 Video & Image Studio' },
     { id: 'catalog', label: 'Turnkey Catalog' },
     { id: 'products', label: 'Product Studio' },
@@ -33,9 +33,9 @@ export const TopNav: React.FC<TopNavProps> = ({
     { id: 'audit', label: '📋 Audit' },
   ];
 
-  const planLabel = user?.plan === 'empire' ? 'Empire' : user?.plan === 'pro' ? 'Pro' : 'Free';
+  const planLabel = user?.plan === 'founders' ? 'Founders' : user?.plan === 'pro' ? 'Pro' : user?.plan === 'starter' ? 'Starter' : 'Free Trial';
   const planColor =
-    user?.plan === 'empire'
+    user?.plan === 'founders'
       ? 'text-cyan-400 bg-cyan-950/60 border-cyan-800'
       : user?.plan === 'pro'
       ? 'text-blue-400 bg-blue-950/60 border-blue-800'
@@ -96,7 +96,7 @@ export const TopNav: React.FC<TopNavProps> = ({
           <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono tabular-nums text-neutral-300 bg-neutral-900 border border-neutral-800 rounded-md">
             <Zap className="h-3.5 w-3.5 text-cyan-400" />
             <span>
-              {user?.plan === 'empire' ? '∞' : user?.credits ?? 0}
+              {user?.credits ?? 0}
             </span>
             <span className="text-neutral-500 font-sans text-[11px]">credits</span>
           </div>

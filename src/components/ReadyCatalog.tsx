@@ -263,7 +263,7 @@ export const ReadyCatalog: React.FC<ReadyCatalogProps> = ({
                 </div>
 
                 <div className="pt-3 border-t border-neutral-800 text-xs text-neutral-400">
-                  <strong className="text-white">Guarantee:</strong>{' '}
+                  <strong className="text-white">Money-Back Guarantee:</strong>{' '}
                   {activeProduct.content.whopSalesCopy.guarantee}
                 </div>
               </div>

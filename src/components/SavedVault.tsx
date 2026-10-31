@@ -123,7 +123,7 @@ export const SavedVault: React.FC<SavedVaultProps> = ({
           headline ? `## ${headline}\n` : '',
           c.summary ? `### Overview:\n${c.summary}\n` : '',
           bullets ? `### What You Receive Inside:\n${bullets}\n` : '',
-          guarantee ? `### Action Guarantee:\n${guarantee}\n` : '',
+          guarantee ? `### Money-Back Guarantee:\n${guarantee}\n` : '',
           salesCopy.faq && Array.isArray(salesCopy.faq)
             ? `### Frequently Asked Questions:\n` +
               salesCopy.faq.map((f: any) => `Q: ${f.question}\nA: ${f.answer}`).join('\n\n')

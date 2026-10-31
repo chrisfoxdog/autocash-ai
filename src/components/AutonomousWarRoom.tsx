@@ -165,7 +165,7 @@ export const AutonomousWarRoom: React.FC<AutonomousWarRoomProps> = ({
     setIsLaunching(true);
     setLaunchedBundle(null);
     setLogs([
-      `[0.0s] ⚡ INITIATING AUTOPILOT LAUNCH PIPELINE...`,
+      `[0.0s] ⚡ INITIATING LAUNCH PIPELINE...`,
       `[0.4s] Target Niche: "${selectedNiche}" | Price: $${pricePoint}`,
     ]);
 
@@ -216,7 +216,7 @@ export const AutonomousWarRoom: React.FC<AutonomousWarRoomProps> = ({
         `[4.9s] ✓ Product Asset Saved: "${data.productAsset?.title}"`,
         `[5.1s] ✓ Viral Script Saved: "${data.scriptAsset?.title}"`,
         `[5.3s] ✓ Affiliate Bridge Saved: "${data.affiliateAsset?.title}"`,
-        `[5.5s] 🚀 AUTOPILOT DIGITAL BUSINESS BUNDLE READY FOR SALE!`,
+        `[5.5s] 🚀 DIGITAL BUSINESS BUNDLE READY FOR SALE!`,
       ]);
 
       setLaunchedBundle(data);
@@ -235,14 +235,14 @@ export const AutonomousWarRoom: React.FC<AutonomousWarRoomProps> = ({
   const activeProduct = launchedBundle?.productAsset || assets.find((a) => a.type === 'digital_product');
   const activeScript = launchedBundle?.scriptAsset || assets.find((a) => a.type === 'viral_script');
 
-  const embedCode = `<!-- Whop Autopilot Instant Buy Badge -->
+  const embedCode = `<!-- Whop Instant Buy Badge -->
 <div style="background:#09090b;border:1px solid #27272a;border-radius:16px;padding:24px;max-width:380px;font-family:sans-serif;color:#fff;">
   <div style="font-size:11px;font-family:monospace;color:#06b6d4;font-weight:bold;text-transform:uppercase;">⚡ Instant Digital Delivery</div>
   <h3 style="font-size:18px;font-weight:bold;margin:8px 0;">${activeProduct?.title || 'Tactical Digital Playbook'}</h3>
   <div style="font-size:13px;color:#a1a1aa;margin-bottom:16px;">Downloadable masterclass deliverable with interactive checklists and master prompts.</div>
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
     <span style="font-size:24px;font-weight:bold;color:#10b981;font-family:monospace;">$${activeProduct?.content?.suggestedPrice || pricePoint} USD</span>
-    <span style="font-size:11px;background:#052e16;color:#34d399;padding:3px 8px;border-radius:20px;border:1px solid #065f46;">Code: AUTOPILOT20</span>
+    <span style="font-size:11px;background:#052e16;color:#34d399;padding:3px 8px;border-radius:20px;border:1px solid #065f46;">Code: LAUNCH20</span>
   </div>
   <a href="${user?.whopMembershipId ? 'https://whop.com' : 'https://whop.com/hub'}" target="_blank" style="display:block;text-align:center;background:#06b6d4;color:#09090b;font-weight:bold;font-size:13px;padding:12px;border-radius:10px;text-decoration:none;">Claim Instant Access Now →</a>
 </div>`;
@@ -260,7 +260,7 @@ export const AutonomousWarRoom: React.FC<AutonomousWarRoomProps> = ({
         <div className="relative z-10 space-y-1">
           <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 font-bold">
             <Radio className="w-3.5 h-3.5 animate-pulse text-rose-500" />
-            <span>NEXUS AUTOPILOT COMMAND</span>
+            <span>NEXUS COMMAND CENTER</span>
             <span>·</span>
             <span className="text-emerald-400">REAL-TIME REVENUE WAR ROOM</span>
           </div>
@@ -494,7 +494,7 @@ export const AutonomousWarRoom: React.FC<AutonomousWarRoomProps> = ({
                       03. Whop Store Kit
                     </span>
                     <h4 className="text-xs font-bold text-white line-clamp-2">
-                      Markdown Description & Guarantee
+                      Markdown Description & Money-Back Guarantee
                     </h4>
                   </div>
                   <button
@@ -616,7 +616,7 @@ export const AutonomousWarRoom: React.FC<AutonomousWarRoomProps> = ({
                   ⚡ Verified Digital Delivery
                 </span>
                 <span className="bg-emerald-950 text-emerald-400 px-2 py-0.5 rounded border border-emerald-800 font-bold">
-                  Code: AUTOPILOT20
+                  Code: LAUNCH20
                 </span>
               </div>
 

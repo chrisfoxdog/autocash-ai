@@ -102,7 +102,7 @@ Appreciate you! 🙌`;
 
 Hey operator! Since you invested in **${productName}**, you've already experienced our tactical implementation guides.
 
-Starting this month, we are opening 25 spots for our private **Autopilot Mastermind & Weekly Sprint Room**:
+Starting this month, we are opening 25 spots for our private **Creator Mastermind & Weekly Sprint Room**:
 
 **What VIP Members Get Every Single Month:**
 ✅ Weekly 30-minute live breakdown sessions & live Q&As

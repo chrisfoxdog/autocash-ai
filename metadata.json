@@ -1,6 +1,1 @@
-{
-  "name": "AutoCash AI - Whop Autopilot Income Engine",
-  "description": "Production-ready Whop income stream app for creators to build, launch, and monetize automated digital products, viral funnels, and affiliate assets.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
+{"description":"AI-assisted tools for creators to build, launch, and sell digital products, marketing content, and community offers on Whop — saving time on the repetitive work of running a creator business.","majorCapabilities":["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"],"name":"AutoCash AI","requestFramePermissions":[]}

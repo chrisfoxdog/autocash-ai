@@ -135,13 +135,13 @@ export const AffiliateDealEngine: React.FC<AffiliateDealEngineProps> = ({
           <span aria-hidden="true">·</span>
           <span>Monthly Recurring Commissions</span>
           <span aria-hidden="true">·</span>
-          <span className="text-blue-400 font-medium">True Autopilot Yield</span>
+          <span className="text-blue-400 font-medium">Recurring Commission Potential</span>
         </div>
         <h1 className="text-2xl font-bold tracking-tight text-white">
           Recurring Affiliate Programs & Bridge Engine
         </h1>
         <p className="text-xs sm:text-sm text-neutral-400 mt-1 max-w-3xl">
-          Promote verified software tools that pay you 20% to 50% lifetime monthly recurring revenue. One referral equals passive monthly income deposited directly to your bank account.
+          Promote verified software tools that pay 20% to 50% recurring commissions. Each active referral can add monthly recurring commission — amounts vary by program and referral activity.
         </p>
       </div>
 
@@ -335,7 +335,7 @@ export const AffiliateDealEngine: React.FC<AffiliateDealEngineProps> = ({
             <div className="pt-4 border-t border-neutral-800/80 text-xs text-neutral-400 space-y-1">
               <span className="font-semibold text-neutral-200">The Power of Recurring Math:</span>
               <p className="text-[11px] text-neutral-500">
-                10 active users referred at $40/month commission = $400/mo guaranteed cashflow every month without any customer support.
+                Example only: 10 active users referred at $40/month commission would total $400/mo in recurring commissions. Actual earnings vary and depend on referrals staying subscribed.
               </p>
             </div>
           </div>

@@ -69,14 +69,15 @@ export interface CreatorSettings {
   whopStoreUrl: string;
   supportEmail: string;
   currency: string;
+  whopStarterCheckoutUrl: string;
   whopProCheckoutUrl: string;
-  whopEmpireCheckoutUrl: string;
+  whopFoundersCheckoutUrl: string;
 }
 
 export interface UserAccount {
   id: string;
   email: string;
-  plan: 'free' | 'pro' | 'empire';
+  plan: 'free' | 'starter' | 'pro' | 'founders';
   credits: number;
   creditsResetAt: string;
   whopUserId?: string;
@@ -189,8 +190,9 @@ export interface WhopConfig {
   geminiApiKeySet: boolean;
   settings?: CreatorSettings;
   checkoutLinks: {
+    starterMonthly: string;
     proMonthly: string;
-    empireMonthly: string;
+    foundersOneTime: string;
   };
   tierFeatures: {
     [key: string]: {

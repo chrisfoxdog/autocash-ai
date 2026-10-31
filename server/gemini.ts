@@ -101,7 +101,7 @@ The response MUST be valid JSON adhering to this structure:
   "whopSalesCopy": {
     "headline": "High-converting hook for Whop Store listing matching the persona style",
     "bullets": ["3-5 concrete high-impact benefit bullets written in the persona style"],
-    "guarantee": "Action-oriented guarantee statement matching the persona style",
+    "guarantee": "Money-back guarantee statement matching the persona style (a refund policy only — never promise income, revenue, or results)",
     "faq": [
       {"question": "Q1", "answer": "A1 in persona style"},
       {"question": "Q2", "answer": "A2 in persona style"}
@@ -222,7 +222,7 @@ export async function generateAffiliateBridge(params: GenerateAffiliateBridgePar
   const personaId = params.aiPersona || 'aggressive_salesman';
   const persona = PERSONA_DIRECTIVES[personaId] || PERSONA_DIRECTIVES.aggressive_salesman;
 
-  const prompt = `You are a passive income affiliate marketing architect and conversion copywriter.
+  const prompt = `You are an affiliate marketing strategist and conversion copywriter.
 
 AI WRITING PERSONA: ${persona.name}
 WRITING STYLE DIRECTIVE: ${persona.directive}
@@ -293,14 +293,14 @@ Output JSON format:
 function generateFallbackDigitalProduct(params: GenerateDigitalProductParams) {
   const persona = params.aiPersona || 'aggressive_salesman';
 
-  let title = `The 2026 ${params.niche} Autopilot Cashflow Playbook`;
-  let headline = `Finally: The Exact Blueprint To Monetize ${params.niche} On Autopilot`;
+  let title = `The 2026 ${params.niche} AI Systems Playbook`;
+  let headline = `Finally: A Step-By-Step Blueprint To Build And Sell ${params.niche} Offers`;
   let guarantee = '14-Day 100% money-back guarantee. If you follow the checklist and do not get value, we refund you immediately.';
 
   if (persona === 'aggressive_salesman') {
     title = `THE BRUTAL TRUTH: ${params.niche} Cashflow Domination Vault`;
     headline = `Stop Making Excuses: The No-BS System To Take Over ${params.niche} Before Doors Close`;
-    guarantee = 'Take immediate action: follow this protocol for 14 days. If your revenue does not jump, get every cent back instantly.';
+    guarantee = 'Take immediate action: follow this protocol for 14 days. If it is not for you, get every cent back — no questions asked.';
   } else if (persona === 'empathetic_creator') {
     title = `The Honest Creator Guide: Real, Sustainable Cashflow in ${params.niche}`;
     headline = `Tired of Empty Hype? Here Is The Authentic, Step-by-Step Way To Earn In ${params.niche}`;
@@ -308,15 +308,15 @@ function generateFallbackDigitalProduct(params: GenerateDigitalProductParams) {
   } else if (persona === 'technical_expert') {
     title = `The Algorithmic ${params.niche} Systems & Architecture Protocol`;
     headline = `Deterministic Yield Specification: Engineering High-Margin Predictable MRR in ${params.niche}`;
-    guarantee = 'Systematic Guarantee: Deploy the modular execution steps. Guaranteed operational repeatability or complete refund.';
+    guarantee = 'Money-Back Guarantee: Deploy the modular execution steps, and if the system does not fit your workflow, request a complete refund.';
   } else if (persona === 'contrarian_disruptor') {
     title = `Why 99% Of People Fail At ${params.niche} (And The Anti-Guru Fix)`;
     headline = `Exposing The Fake Industry Playbook: What Actually Drives Cashflow In ${params.niche}`;
-    guarantee = 'Zero-Bullshit Guarantee: No fluff, no useless theory, just pure unfiltered tactical leverage.';
+    guarantee = 'Zero-Bullshit Money-Back Promise: No fluff, no useless theory — and a full refund if it is not for you.';
   } else if (persona === 'executive_strategist') {
     title = `The Institutional ${params.niche} Digital Asset Matrix`;
     headline = `Capital-Efficient Digital Assets: Maximizing LTV and Compressing CAC in ${params.niche}`;
-    guarantee = 'Enterprise ROI Guarantee: Designed for serious operators seeking asymmetric digital cashflow.';
+    guarantee = 'Enterprise Money-Back Guarantee: Designed for serious operators; full refund if it does not fit your operation.';
   }
 
   return {
@@ -448,11 +448,11 @@ function generateFallbackViralScript(params: GenerateViralScriptParams) {
     hook,
     hookVariations,
     visualDirection: `Film handheld in natural room light. Open your laptop screen showing the dashboard, then flip to front camera with high eye contact. Text on screen appears within 0.5s.`,
-    mainScript: `(0:00 - 0:04) "${hook}"\n(0:05 - 0:15) "Most people tell you to learn coding or start a physical ecommerce store. That takes thousands of dollars and months of work. Instead, I packaged a simple high-value resource guide in ${params.niche}."\n(0:16 - 0:32) "I used free AI to structure the entire playbook, listed it on Whop in 20 minutes, and used this exact video script formula to get 14 sales in my first 4 days."\n(0:33 - 0:45) "You don't need inventory, you don't need a team, and you don't need ads."`,
+    mainScript: `(0:00 - 0:04) "${hook}"\n(0:05 - 0:15) "Most people tell you to learn coding or start a physical ecommerce store. That takes thousands of dollars and months of work. Instead, I packaged a simple high-value resource guide in ${params.niche}."\n(0:16 - 0:32) "I used free AI to structure the entire playbook, listed it on Whop in 20 minutes, and used this exact video script formula to promote it."\n(0:33 - 0:45) "You don't need inventory, you don't need a team, and you don't need ads."`,
     callToActionScript: callToAction,
-    pinnedComment: `Grab the exact step-by-step blueprint here with 20% off using code 'AUTOPILOT': link in bio! 👇`,
+    pinnedComment: `Grab the exact step-by-step blueprint here with 20% off using code 'LAUNCH': link in bio! 👇`,
     recommendedAudioStyle: `Low-tempo ambient synth or Lo-Fi deep focus beat at 15% volume.`,
-    hashtags: [`#sidehustle`, `#makemoneyonline`, `#passiveincome`, `#whopcreator`, `#entrepreneurship`],
+    hashtags: [`#sidehustle`, `#makemoneyonline`, `#digitalproducts`, `#whopcreator`, `#entrepreneurship`],
     aiPersonaUsed: persona,
   };
 }
@@ -465,8 +465,8 @@ function generateFallbackAffiliateBridge(params: GenerateAffiliateBridgeParams) 
     slug: `top-recurring-tools-${params.niche.toLowerCase().replace(/[^a-z0-9]/g, '-')}`,
     targetNiche: params.niche,
     verdictRating: '9.7 / 10',
-    keyBenefitHeadline: `How To Earn 30% to 50% Lifetime Monthly Passive Income Promoting Software People Already Need`,
-    executiveSummary: `Affiliate marketing with high-churn $10 products is dead. The true autopilot income model is recurring SaaS subscriptions: refer a customer once, and receive $30 to $120 every single month for years.`,
+    keyBenefitHeadline: `How Recurring 30% to 50% Commissions Work When You Promote Software People Already Need`,
+    executiveSummary: `Affiliate marketing with high-churn $10 products rarely lasts. Recurring SaaS subscriptions are different: refer a customer once, and you can earn commission for as long as they stay subscribed. Amounts vary by program — typically $30 to $120 per active referral per month — and are never guaranteed.`,
     pros: [
       'Lifetime recurring commissions paid directly to Stripe/PayPal monthly',
       'High conversion rate because business owners need these tools daily',
@@ -573,7 +573,7 @@ Return ONLY a valid JSON object matching this TypeScript interface:
     },
     {
       "angle": "Speed-to-Result & Zero-Risk",
-      "headline": "Outcome-focused headline guaranteeing quick result",
+      "headline": "Outcome-focused headline (never promise or guarantee results)",
       "subhook": "Subheadline eliminating tech or time obstacles",
       "whopStoreCopy": "3-sentence description ready to copy into Whop product description",
       "ctaButton": "e.g. Start Building Cashflow Today"
@@ -644,20 +644,20 @@ function generateFallbackWhopAnalysis(params: AnalyzeWhopOfferParams): WhopOffer
       {
         angle: 'High-Status No-Brainer Value Stack',
         headline: `The Ultimate ${params.niche} Operator Kit: Complete Blueprints & Resource Vault`,
-        subhook: `Everything you need to package, monetize, and scale digital assets on complete autopilot.`,
+        subhook: `Everything you need to package, monetize, and scale digital assets in one place.`,
         whopStoreCopy: `Built for creators who value their time. Includes comprehensive step-by-step modules, turnkey launch templates, and the exact viral organic traffic distribution framework.`,
         ctaButton: `Claim Access & Start Today ($${recommendedPrice})`
       },
       {
         angle: 'Speed-to-Result & Zero-Tech',
-        headline: `How To Turn ${params.title} Into Passive Cashflow Starting This Weekend`,
+        headline: `How To Package ${params.title} As A Paid Offer This Weekend`,
         subhook: `No coding, no inventory, and no paid ad budget required.`,
         whopStoreCopy: `A battle-tested tactical masterclass giving you the exact blueprint to build recurring digital income on Whop. Includes full downloadable deliverables and commercial licensing rights.`,
         ctaButton: `Get Instant Deliverable Access ($${recommendedPrice})`
       }
     ],
     quickWinChecklist: [
-      `Add a bold guarantee line: "Take 14 days to deploy this system — if you don't save 10 hours and build a live product, get a 100% courteous refund."`,
+      `Add a bold money-back guarantee line: "Take 14 days to try this system — if it is not for you, get a 100% courteous refund."`,
       `Upload the standalone formatted HTML deliverable directly into your Whop product files tab.`,
       `Set up a custom Whop checkout CTA button reading "Instant Download Access" instead of generic "Buy".`,
       `Add an automated Whop community welcome message pointing buyers to Module 1 within 5 minutes.`,

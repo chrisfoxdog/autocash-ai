@@ -43,8 +43,9 @@ export const WhopIntegrationModal: React.FC<WhopIntegrationModalProps> = ({
     whopStoreUrl: 'https://whop.com',
     supportEmail: 'chrisfoxdog33@gmail.com',
     currency: 'USD',
-    whopProCheckoutUrl: 'https://whop.com/checkout/plan_pro_growth_29',
-    whopEmpireCheckoutUrl: 'https://whop.com/checkout/plan_empire_autopilot_79',
+    whopStarterCheckoutUrl: '',
+    whopProCheckoutUrl: '',
+    whopFoundersCheckoutUrl: '',
   });
   const [savingSettings, setSavingSettings] = useState(false);
   const [savedSettingsNotice, setSavedSettingsNotice] = useState(false);
@@ -117,8 +118,13 @@ export const WhopIntegrationModal: React.FC<WhopIntegrationModalProps> = ({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           eventType: simulatedEventType,
-          planId: simulatedPlan === 'empire' ? 'plan_whop_empire_79' : 'plan_whop_pro_29',
-          amount: simulatedPlan === 'empire' ? 7900 : 2900,
+          planId:
+            simulatedPlan === 'founders'
+              ? 'plan_whop_founders_lifetime'
+              : simulatedPlan === 'starter'
+                ? 'plan_whop_starter'
+                : 'plan_whop_pro',
+          amount: simulatedPlan === 'founders' ? 9999 : simulatedPlan === 'starter' ? 999 : 2999,
         }),
       });
 
@@ -234,7 +240,20 @@ export const WhopIntegrationModal: React.FC<WhopIntegrationModalProps> = ({
 
             <div>
               <label className="block text-xs font-medium text-neutral-300 mb-1.5">
-                Custom Whop Pro Checkout URL ($29/mo)
+                Custom Whop Starter Checkout URL ($9.99/mo)
+              </label>
+              <input
+                type="url"
+                value={settings.whopStarterCheckoutUrl}
+                onChange={(e) => setSettings({ ...settings, whopStarterCheckoutUrl: e.target.value })}
+                placeholder="https://whop.com/checkout/plan_..."
+                className="w-full px-3 py-2 text-xs bg-neutral-950 border border-neutral-800 rounded-md text-white focus:outline-none focus:border-cyan-500 font-mono text-xs"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-medium text-neutral-300 mb-1.5">
+                Custom Whop Pro Checkout URL ($29.99/mo)
               </label>
               <input
                 type="url"
@@ -247,12 +266,12 @@ export const WhopIntegrationModal: React.FC<WhopIntegrationModalProps> = ({
 
             <div>
               <label className="block text-xs font-medium text-neutral-300 mb-1.5">
-                Custom Whop Empire Checkout URL ($79/mo)
+                Custom Whop Lifetime Founders Checkout URL ($99.99 one-time)
               </label>
               <input
                 type="url"
-                value={settings.whopEmpireCheckoutUrl}
-                onChange={(e) => setSettings({ ...settings, whopEmpireCheckoutUrl: e.target.value })}
+                value={settings.whopFoundersCheckoutUrl}
+                onChange={(e) => setSettings({ ...settings, whopFoundersCheckoutUrl: e.target.value })}
                 placeholder="https://whop.com/checkout/plan_..."
                 className="w-full px-3 py-2 text-xs bg-neutral-950 border border-neutral-800 rounded-md text-white focus:outline-none focus:border-cyan-500 font-mono text-xs"
               />
@@ -435,8 +454,9 @@ export const WhopIntegrationModal: React.FC<WhopIntegrationModalProps> = ({
               onChange={(e) => setSimulatedPlan(e.target.value)}
               className="w-full px-3 py-2 text-xs bg-neutral-950 border border-neutral-800 rounded-md text-white focus:outline-none focus:border-cyan-500"
             >
-              <option value="pro">Pro Growth ($29/mo - 100 Credits)</option>
-              <option value="empire">Autopilot Empire ($79/mo - Unlimited)</option>
+              <option value="starter">Starter ($9.99/mo - 25 Credits)</option>
+              <option value="pro">Pro ($29.99/mo - 100 Credits)</option>
+              <option value="founders">Lifetime Founders ($99.99 one-time - 500 Credits)</option>
             </select>
           </div>
 

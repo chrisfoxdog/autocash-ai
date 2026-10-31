@@ -208,7 +208,7 @@ export const DigitalProductGenerator: React.FC<DigitalProductGeneratorProps> = (
       activeResult.whopSalesCopy.bullets?.forEach((b: string) => {
         md += `- ${b}\n`;
       });
-      md += `\n**Guarantee:** ${activeResult.whopSalesCopy.guarantee}\n`;
+      md += `\n**Money-Back Guarantee:** ${activeResult.whopSalesCopy.guarantee}\n`;
     }
 
     return md;
