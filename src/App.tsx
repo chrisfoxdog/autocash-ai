@@ -146,7 +146,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-neutral-100 flex flex-col font-sans selection:bg-cyan-500 selection:text-neutral-950">
+    <div className="min-h-screen bg-neutral-950 text-neutral-100 flex flex-col font-sans overflow-x-clip selection:bg-cyan-500 selection:text-neutral-950">
       {/* 3-Zone Top Navigation Contract */}
       <TopNav
         user={user}

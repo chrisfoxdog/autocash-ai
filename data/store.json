@@ -24,7 +24,7 @@
       "id": "dev_creator_preview",
       "email": "dev_creator_preview@whop.user",
       "plan": "free",
-      "credits": 0,
+      "credits": 5,
       "creditsResetAt": "2026-10-01T12:20:16.095Z",
       "status": "active",
       "createdAt": "2026-09-30T12:20:16.095Z",
@@ -468,8 +468,8 @@
     "whopStoreUrl": "https://whop.com",
     "supportEmail": "chrisfoxdog33@gmail.com",
     "currency": "USD",
-    "whopProCheckoutUrl": "https://whop.com/checkout/plan_pro_growth_29",
-    "whopEmpireCheckoutUrl": "https://whop.com/checkout/plan_empire_autopilot_79",
+    "whopProCheckoutUrl": "",
+    "whopEmpireCheckoutUrl": "",
     "system_catalog": {
       "storeName": "AutoCash Systems Studio",
       "creatorName": "Creator",
@@ -598,16 +598,16 @@
     {
       "userId": "dev_creator_preview",
       "type": "digital_product",
-      "title": "The 2026 AI Voice Agents Autopilot Cashflow Playbook",
+      "title": "The 2026 AI Voice Agents Playbook: Build & Sell AI Voice Services Faster",
       "niche": "AI Voice Agents",
       "content": {
-        "title": "The 2026 AI Voice Agents Autopilot Cashflow Playbook",
-        "subtitle": "Step-by-step systems to build a reliable monthly revenue stream in Turnkey AI Voice Agent Agency Playbook",
+        "title": "The 2026 AI Voice Agents Playbook: Build & Sell AI Voice Services Faster",
+        "subtitle": "Step-by-step systems to build reliable, repeatable client workflows in Turnkey AI Voice Agent Agency Playbook",
         "suggestedPrice": 47,
         "estimatedTimeToComplete": "60 minutes",
         "summary": "A complete tactical blueprint designed for Self-directed digital creators, solopreneurs, and remote operators to achieve measurable results in Turnkey AI Voice Agent Agency Playbook without upfront advertising budget.",
         "whopSalesCopy": {
-          "headline": "Finally: The Exact Blueprint To Monetize AI Voice Agents On Autopilot",
+          "headline": "The Step-By-Step System To Package And Sell AI Voice Agent Services",
           "bullets": [
             "Complete turnkey workflows tested with real paying customers",
             "Includes copy-paste prompt templates, Notion tracking sheets, and launch checklist",
@@ -716,16 +716,16 @@
     {
       "userId": "dev_creator_preview",
       "type": "digital_product",
-      "title": "The 2026 AI Productivity & Automation Autopilot Cashflow Playbook",
+      "title": "The 2026 AI Productivity & Automation Playbook: Save Hours Every Week With Turnkey AI Workflows",
       "niche": "AI Productivity & Automation",
       "content": {
-        "title": "The 2026 AI Productivity & Automation Autopilot Cashflow Playbook",
-        "subtitle": "Step-by-step systems to build a reliable monthly revenue stream in Automated Lead Generation & Client Onboarding Systems",
+        "title": "The 2026 AI Productivity & Automation Playbook: Save Hours Every Week With Turnkey AI Workflows",
+        "subtitle": "Step-by-step systems to build reliable, repeatable client workflows in Automated Lead Generation & Client Onboarding Systems",
         "suggestedPrice": 39,
         "estimatedTimeToComplete": "60 minutes",
         "summary": "A complete tactical blueprint designed for Solopreneurs, remote freelancers, and boutique agencies to achieve measurable results in Automated Lead Generation & Client Onboarding Systems without upfront advertising budget.",
         "whopSalesCopy": {
-          "headline": "Finally: The Exact Blueprint To Monetize AI Productivity & Automation On Autopilot",
+          "headline": "The Step-By-Step System To Automate Repetitive Work And Package It Into Sellable Templates",
           "bullets": [
             "Complete turnkey workflows tested with real paying customers",
             "Includes copy-paste prompt templates, Notion tracking sheets, and launch checklist",
@@ -789,16 +789,16 @@
     {
       "userId": "user_alice",
       "type": "digital_product",
-      "title": "The 2026 Real Estate AI Autopilot Cashflow Playbook",
+      "title": "The 2026 Real Estate AI Playbook: Automate Lead Follow-Up And Save Hours Every Week",
       "niche": "Real Estate AI",
       "content": {
-        "title": "The 2026 Real Estate AI Autopilot Cashflow Playbook",
-        "subtitle": "Step-by-step systems to build a reliable monthly revenue stream in Seller Lead Nurture",
+        "title": "The 2026 Real Estate AI Playbook: Automate Lead Follow-Up And Save Hours Every Week",
+        "subtitle": "Step-by-step systems to build reliable, repeatable client workflows in Seller Lead Nurture",
         "suggestedPrice": 49,
         "estimatedTimeToComplete": "60 minutes",
         "summary": "A complete tactical blueprint designed for Aspiring entrepreneurs and creators to achieve measurable results in Seller Lead Nurture without upfront advertising budget.",
         "whopSalesCopy": {
-          "headline": "Finally: The Exact Blueprint To Monetize Real Estate AI On Autopilot",
+          "headline": "The Step-By-Step System To Automate Real Estate Lead Nurture With AI",
           "bullets": [
             "Complete turnkey workflows tested with real paying customers",
             "Includes copy-paste prompt templates, Notion tracking sheets, and launch checklist",
@@ -863,7 +863,7 @@
       "id": "prod_solopreneur_playbook",
       "userId": "user_creator_default",
       "type": "digital_product",
-      "title": "The 2026 AI Solopreneur Workflow Playbook: $0 to $5K/Mo With Automated Digital Micro-Services",
+      "title": "The 2026 AI Solopreneur Workflow Playbook: Package & Sell Digital Micro-Services",
       "niche": "AI Productivity & Automation",
       "content": {
         "subtitle": "Complete Step-By-Step Systems To Package, Automate, and Sell In-Demand Digital Workflows on Whop",
@@ -871,7 +871,7 @@
         "estimatedTimeToComplete": "75 minutes to set up, runs permanently",
         "summary": "A 100% turnkey, battle-tested operational guide designed for someone starting with zero capital. Explains exactly how to package free AI automation tools into high-margin $39–$199 digital products and micro-services, launch on Whop in under 45 minutes, and secure paying clients with zero upfront advertising.",
         "whopSalesCopy": {
-          "headline": "Stop Trading Hours For Pennies. Deploy The Turnkey AI Systems Generating $3,000–$5,000/Month On Autopilot.",
+          "headline": "Stop Trading Hours For Pennies. Deploy Turnkey AI Systems To Build And Sell Digital Products Faster.",
           "bullets": [
             "4 Deep Technical Modules detailing exact copy-paste AI prompt chains and no-code webhook setups",
             "Complete Whop Store Configuration Checklist: From $0 to live checkout in under 30 minutes",
@@ -957,7 +957,7 @@
       "title": "High-Ticket B2B Cold Outreach & Client Acquisition Vault",
       "niche": "Remote Freelancing & Agency",
       "content": {
-        "subtitle": "Copy-Paste Cold Email Scripts, LinkedIn InMail Sequences, and Loom Audit Formulas That Book $2,000–$5,000 Retainers",
+        "subtitle": "Copy-Paste Cold Email Scripts, LinkedIn InMail Sequences, and Loom Audit Formulas For Turning Cold Prospects Into Booked Discovery Calls",
         "suggestedPrice": 49,
         "estimatedTimeToComplete": "90 minutes setup",
         "summary": "A complete, battle-tested client acquisition machine. Contains 12 proven cold email templates, 5 multi-touch LinkedIn follow-up cadences, a 3-minute video audit script framework, and objection handling scripts that convert cold business owners into booked discovery calls.",
@@ -1018,7 +1018,7 @@
         "estimatedTimeToComplete": "45 minutes setup",
         "summary": "A complete faceless content generation architecture. Includes 30 days of plug-and-play short-form video scripts, viral retention pacing rules, CapCut editing workflows, royalty-free B-roll asset sources, and bio funnel conversion strategies.",
         "whopSalesCopy": {
-          "headline": "Build A 6-Figure Digital Audience Without Ever Filming Your Face Or Speaking On Camera.",
+          "headline": "Grow A Faceless Short-Form Audience Without Ever Filming Your Face Or Speaking On Camera.",
           "bullets": [
             "30 Complete Done-For-You Scripts with visual B-roll cues and on-screen text instructions",
             "The 3-Second Visual Hook Rule: Stop the endless scroll with psychological pattern interrupts",
@@ -1054,7 +1054,7 @@
       "id": "prod_whop_community_recurring",
       "userId": "user_creator_default",
       "type": "digital_product",
-      "title": "The Recurring Whop Community Launch Playbook: From $0 to $2,000/Mo Recurring Memberships",
+      "title": "The Recurring Whop Community Launch Playbook: Launch A Paid Subscription Community On Whop, Step By Step",
       "niche": "Whop & Community Monetization",
       "content": {
         "subtitle": "How To Launch A Paid Subscription Community on Whop That Members Never Cancel",

@@ -43,9 +43,9 @@ export const TopNav: React.FC<TopNavProps> = ({
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-neutral-800 bg-neutral-950/90 backdrop-blur-md">
-      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-14 max-w-7xl min-w-0 items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Zone 1: Single text wordmark in display face */}
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-2">
           <button
             onClick={() => setActiveTab('dashboard')}
             className="flex items-center gap-2 text-left font-semibold tracking-tight text-white hover:text-cyan-400 transition-colors"
@@ -57,8 +57,10 @@ export const TopNav: React.FC<TopNavProps> = ({
           </button>
         </div>
 
-        {/* Zone 2: Navigation links, single-line text */}
-        <nav className="hidden md:flex items-center gap-1 lg:gap-2">
+        {/* Zone 2: Navigation links, single-line text — scrolls inside the
+            header instead of stretching the whole page. Without this, the
+            13 nowrap tabs forced the page to ~2156px wide. */}
+        <nav className="hidden md:flex min-w-0 flex-1 items-center gap-1 lg:gap-2 overflow-x-auto scrollbar-none">
           {navItems.map((item) => {
             const isActive = activeTab === item.id;
             return (
@@ -78,7 +80,7 @@ export const TopNav: React.FC<TopNavProps> = ({
         </nav>
 
         {/* Zone 3: 1-2 primary actions */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
           {/* Quick Command Launcher */}
           <button
             onClick={onOpenCommandPalette}

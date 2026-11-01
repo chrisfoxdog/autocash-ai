@@ -142,7 +142,7 @@ export const WhopIntegrationModal: React.FC<WhopIntegrationModalProps> = ({
   };
 
   return (
-    <div className="space-y-8 max-w-5xl">
+    <div className="space-y-8 max-w-5xl min-w-0 w-full">
       {/* Header */}
       <div>
         <div className="flex items-center gap-2 text-xs text-neutral-400 mb-1">
@@ -510,8 +510,8 @@ export const WhopIntegrationModal: React.FC<WhopIntegrationModalProps> = ({
             No webhook logs recorded yet. Send a test webhook above or trigger a live Whop checkout to view event logs.
           </div>
         ) : (
-          <div className="border border-neutral-800 rounded-lg overflow-hidden bg-neutral-900/40">
-            <table className="w-full text-left text-xs">
+          <div className="border border-neutral-800 rounded-lg overflow-x-auto bg-neutral-900/40">
+            <table className="w-full min-w-[720px] text-left text-xs">
               <thead className="bg-neutral-900 text-neutral-400 border-b border-neutral-800">
                 <tr>
                   <th className="py-2 px-3 font-medium">Timestamp</th>
