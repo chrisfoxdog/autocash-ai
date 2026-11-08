@@ -32,7 +32,7 @@ export const WhopIntegrationModal: React.FC<WhopIntegrationModalProps> = ({
   const [logs, setLogs] = useState<WebhookLog[]>([]);
   const [loading, setLoading] = useState(false);
   const [copiedUrl, setCopiedUrl] = useState(false);
-  const [simulatedEventType, setSimulatedEventType] = useState('membership.went_valid');
+  const [simulatedEventType, setSimulatedEventType] = useState('membership.activated');
   const [simulatedPlan, setSimulatedPlan] = useState('pro');
   const [simulationResult, setSimulationResult] = useState<any>(null);
 
@@ -395,10 +395,10 @@ export const WhopIntegrationModal: React.FC<WhopIntegrationModalProps> = ({
           <span className="font-semibold text-neutral-200">Whop Events Listened:</span>
           <div className="flex flex-wrap gap-2 text-[11px] font-mono text-neutral-300">
             <span className="bg-neutral-950 px-2 py-0.5 rounded border border-neutral-800">
-              membership.went_valid
+              membership.activated
             </span>
             <span className="bg-neutral-950 px-2 py-0.5 rounded border border-neutral-800">
-              membership.went_invalid
+              membership.deactivated
             </span>
             <span className="bg-neutral-950 px-2 py-0.5 rounded border border-neutral-800">
               payment.succeeded
@@ -438,9 +438,9 @@ export const WhopIntegrationModal: React.FC<WhopIntegrationModalProps> = ({
               onChange={(e) => setSimulatedEventType(e.target.value)}
               className="w-full px-3 py-2 text-xs bg-neutral-950 border border-neutral-800 rounded-md text-white focus:outline-none focus:border-cyan-500"
             >
-              <option value="membership.went_valid">membership.went_valid (Upgrade)</option>
+              <option value="membership.activated">membership.activated (Upgrade)</option>
               <option value="payment.succeeded">payment.succeeded (Record Payment)</option>
-              <option value="membership.went_invalid">membership.went_invalid (Cancellation)</option>
+              <option value="membership.deactivated">membership.deactivated (Cancellation)</option>
               <option value="refund.created">refund.created (Revocation)</option>
             </select>
           </div>

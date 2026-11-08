@@ -922,7 +922,7 @@ app.post('/api/whop/simulate-webhook', requireWhopAuth, async (req: AuthRequest,
 
   const payload = {
     id: simulatedEventId,
-    action: eventType || 'membership.went_valid',
+    action: eventType || 'membership.activated',
     timestamp: Math.floor(Date.now() / 1000),
     data: {
       user_id: userId,

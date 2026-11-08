@@ -35,7 +35,7 @@ async function runTests() {
   const starterUserId = `test_starter_user_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`;
   const starterActivationRes = await handleWhopEvent({
     id: `evt_starter_act_${Date.now()}`,
-    action: 'membership.went_valid',
+    action: 'membership.activated',
     data: {
       id: `mem_starter_${Date.now()}`,
       user_id: starterUserId,

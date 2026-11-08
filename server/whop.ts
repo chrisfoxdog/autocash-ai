@@ -251,6 +251,7 @@ export async function handleWhopEvent(
       let resultStatus: 'processed' | 'duplicate' | 'reconciliation_needed' = 'processed';
 
       switch (eventType) {
+        case 'membership.activated':
         case 'membership.went_valid':
         case 'membership.created': {
           // Authoritative activation billing key
@@ -452,6 +453,7 @@ export async function handleWhopEvent(
           break;
         }
 
+        case 'membership.deactivated':
         case 'membership.went_invalid':
         case 'membership.cancelled':
         case 'membership.terminated': {
