@@ -87,9 +87,9 @@ export const UpgradeModal: React.FC<UpgradeModalProps> = ({
       price: '$9.99',
       period: 'per month',
       description: 'For creators getting their first digital products and content out the door.',
-      credits: '25 AI generation credits/mo',
+      credits: '50 AI generation credits/mo',
       features: [
-        '25 AI Generation Credits/mo',
+        '50 AI Generation Credits/mo',
         'Digital Product generator',
         'Whop Store sales copy & FAQ generator',
         'Markdown copy-paste export',

@@ -47,7 +47,7 @@ async function runTests() {
   assert.strictEqual(starterActivationRes.success, true, 'Starter activation must succeed');
   const starterUser = await db.getUser(starterUserId);
   assert.strictEqual(starterUser.plan, 'starter', 'Plan must be starter');
-  assert.strictEqual(starterUser.credits, 25, 'Initial Starter activation must grant exactly 25 credits');
+  assert.strictEqual(starterUser.credits, 50, 'Initial Starter activation must grant exactly 50 credits');
   console.log(`✓ PASS: User ${starterUserId} activated Starter plan with exactly ${starterUser.credits} credits.`);
 
   // Test 3: Initial Founders activation grants the configured allowance

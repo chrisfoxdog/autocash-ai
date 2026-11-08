@@ -207,7 +207,7 @@ export async function handleWhopEvent(
 
   // Tier architecture — Chris's real Whop offers:
   //   free     = unpaid free trial (NOT a Whop offer), 5 credits
-  //   starter  = Starter, $9.99/month, 25 credits per period
+  //   starter  = Starter, $9.99/month, 50 credits per period
   //   pro      = Pro, $29.99/month, 100 credits per period
   //   founders = Lifetime Founders, $99.99 ONE-TIME, 500 credits per period (top tier)
   // FOUNDERS_TIER_CREDITS is the current override; EMPIRE_TIER_CREDITS is a deprecated fallback.
@@ -215,7 +215,7 @@ export async function handleWhopEvent(
     Number(process.env.FOUNDERS_TIER_CREDITS) || Number(process.env.EMPIRE_TIER_CREDITS) || 500;
   const PLAN_QUOTAS: Record<string, number> = {
     free: 5,
-    starter: 25,
+    starter: 50,
     pro: 100,
     founders: foundersCredits,
   };

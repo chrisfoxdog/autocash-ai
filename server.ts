@@ -1025,10 +1025,10 @@ app.get('/api/whop/config', requireWhopAuth, async (req: AuthRequest, res) => {
       starter: {
         name: 'Starter',
         price: 9.99,
-        credits: 25,
+        credits: 50,
         billing: 'monthly',
         features: [
-          '25 AI generation credits/mo',
+          '50 AI generation credits/mo',
           'Digital Product generator',
           'Whop Store sales copy & FAQ generator',
           'Markdown copy-paste export',

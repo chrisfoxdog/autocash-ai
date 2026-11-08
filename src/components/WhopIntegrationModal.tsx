@@ -454,7 +454,7 @@ export const WhopIntegrationModal: React.FC<WhopIntegrationModalProps> = ({
               onChange={(e) => setSimulatedPlan(e.target.value)}
               className="w-full px-3 py-2 text-xs bg-neutral-950 border border-neutral-800 rounded-md text-white focus:outline-none focus:border-cyan-500"
             >
-              <option value="starter">Starter ($9.99/mo - 25 Credits)</option>
+              <option value="starter">Starter ($9.99/mo - 50 Credits)</option>
               <option value="pro">Pro ($29.99/mo - 100 Credits)</option>
               <option value="founders">Lifetime Founders ($99.99 one-time - 500 Credits)</option>
             </select>

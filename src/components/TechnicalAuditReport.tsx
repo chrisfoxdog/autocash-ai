@@ -26,7 +26,7 @@ SECTION A: CREDIT ACCOUNTING & FOUNDERS TIER VERIFICATION
    - Database operations use atomic SQL 'UPDATE users SET credits = credits - $1 WHERE id = $2 AND credits >= $1'.
 2. Tier Architecture (aligned to the live Whop offers):
    - Free trial (NOT a Whop offer): 'plan === "free"', 5 credits.
-   - Starter ($9.99/month): 'plan === "starter"', 25 credits per period.
+   - Starter ($9.99/month): 'plan === "starter"', 50 credits per period.
    - Pro ($29.99/month): 'plan === "pro"', 100 credits per period.
    - Lifetime Founders ($99.99 one-time, top tier): 'plan === "founders"', 500 credits per period.
    - Webhook plan resolution in 'server/whop.ts' maps Whop plan_id / plan_name keywords:
@@ -117,7 +117,7 @@ Runner: TEST_MODE=1 tsx tests/production-remediation.test.ts
 Status: 21 PASSED / 0 FAILED / 0 SKIPPED
 
   ✔ 1. Initial Pro activation grants the correct allowance (100 credits)
-  ✔ 2. Initial Starter activation grants the correct allowance (25 credits)
+  ✔ 2. Initial Starter activation grants the correct allowance (50 credits)
   ✔ 3. Initial Lifetime Founders activation grants the configured allowance (500 credits)
   ✔ 4. Non-billing membership updates preserve consumed credits
   ✔ 5. Duplicate activation events do not replenish credits
