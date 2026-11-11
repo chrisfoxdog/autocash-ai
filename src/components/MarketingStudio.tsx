@@ -1453,6 +1453,12 @@ export const MarketingStudio: React.FC<MarketingStudioProps> = ({
                       referrerPolicy="no-referrer"
                       className="max-h-[440px] w-auto object-contain rounded-lg shadow-2xl"
                     />
+                    {activeGeneratedImage.source === 'template' && (
+                      <div className="mt-3 w-full rounded-lg border border-amber-500/40 bg-amber-500/10 px-3 py-2 text-center text-[11px] leading-relaxed text-amber-200">
+                        <span className="font-bold">Template design</span> — AI image generation isn't enabled on this
+                        workspace yet, so this is a ready-to-use template with your text, not an AI-generated image.
+                      </div>
+                    )}
                   </div>
                 ) : (
                   <div className="text-center p-8 space-y-3">

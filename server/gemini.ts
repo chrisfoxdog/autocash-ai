@@ -714,6 +714,7 @@ Aesthetic: Polished, professional digital business marketing asset, vibrant ligh
             purpose,
             title: params.title || params.prompt.slice(0, 40),
             createdAt: new Date().toISOString(),
+            source: 'gemini' as const,
           };
         }
       }
@@ -792,7 +793,7 @@ function generateFallbackMarketingImage(params: GenerateMarketingImageParams) {
 
   <!-- Badge Tag -->
   <rect x="${width * 0.16}" y="${height * 0.25}" width="${width * 0.32}" height="${height * 0.05}" rx="12" fill="#082f49" stroke="#0284c7" stroke-width="1.5" />
-  <text x="${width * 0.32}" y="${height * 0.285}" fill="#38bdf8" font-family="system-ui, -apple-system, sans-serif" font-size="${height * 0.022}" font-weight="800" text-anchor="middle" letter-spacing="2">WHOP VERIFIED ASSET</text>
+  <text x="${width * 0.32}" y="${height * 0.285}" fill="#38bdf8" font-family="system-ui, -apple-system, sans-serif" font-size="${height * 0.022}" font-weight="800" text-anchor="middle" letter-spacing="2">AUTOCASH TEMPLATE</text>
 
   <!-- Icon / Visual Emblem -->
   <circle cx="${width / 2}" cy="${height * 0.42}" r="${height * 0.08}" fill="#0369a1" fill-opacity="0.3" stroke="#38bdf8" stroke-width="2" />
@@ -805,7 +806,7 @@ function generateFallbackMarketingImage(params: GenerateMarketingImageParams) {
   <!-- Metrics / Features Pill Strip -->
   <g transform="translate(${width * 0.18}, ${height * 0.70})">
     <rect x="0" y="0" width="${width * 0.64}" height="${height * 0.07}" rx="16" fill="#020617" fill-opacity="0.8" stroke="#334155" stroke-width="1.5" />
-    <text x="${width * 0.16}" y="${height * 0.043}" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="${height * 0.022}" font-weight="700" text-anchor="middle">★ TOP SELLER</text>
+    <text x="${width * 0.16}" y="${height * 0.043}" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="${height * 0.022}" font-weight="700" text-anchor="middle">✦ DESIGN TEMPLATE</text>
     <text x="${width * 0.32}" y="${height * 0.043}" fill="#10b981" font-family="system-ui, sans-serif" font-size="${height * 0.022}" font-weight="700" text-anchor="middle">✔ INSTANT ACCESS</text>
     <text x="${width * 0.48}" y="${height * 0.043}" fill="#fbbf24" font-family="system-ui, sans-serif" font-size="${height * 0.022}" font-weight="700" text-anchor="middle">⚡ 100% ROYALTY FREE</text>
   </g>
@@ -820,6 +821,11 @@ function generateFallbackMarketingImage(params: GenerateMarketingImageParams) {
     purpose,
     title: params.title || params.prompt.slice(0, 40),
     createdAt: new Date().toISOString(),
+    // Honest labeling: this is a locally rendered template, NOT an AI image.
+    // The client shows a "Template design" notice whenever source is
+    // 'template'. (Gemini image models have no free tier; when the API
+    // call is unavailable the fallback must never pose as AI output.)
+    source: 'template' as const,
   };
 }
 

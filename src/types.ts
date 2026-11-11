@@ -134,6 +134,8 @@ export interface MarketingImageResult {
   purpose: 'whop_banner' | 'product_mockup' | 'social_ad' | 'community_badge' | 'custom';
   title?: string;
   createdAt: string;
+  /** 'gemini' = real AI-generated image; 'template' = local template fallback. */
+  source?: 'gemini' | 'template';
 }
 
 export interface WebhookLog {

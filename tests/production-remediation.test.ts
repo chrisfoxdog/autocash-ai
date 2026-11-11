@@ -3,11 +3,12 @@ import crypto from 'crypto';
 import { isValidWhopCheckoutUrl } from '../server.ts';
 import { FileDatabase, db, IDatabase } from '../server/db.ts';
 import { handleWhopEvent, verifyWhopWebhookSignature } from '../server/whop.ts';
+import { generateMarketingImage } from '../server/gemini.ts';
 import { FINAL_PRELAUNCH_AUDIT_REPORT } from '../src/components/TechnicalAuditReport.tsx';
 
 async function runTests() {
   console.log('================================================================================');
-  console.log('AUTO CASH AI — PRODUCTION REMEDIATION & BILLING IDEMPOTENCY TEST SUITE (25 TESTS)');
+  console.log('AUTO CASH AI — PRODUCTION REMEDIATION & BILLING IDEMPOTENCY TEST SUITE (26 TESTS)');
   console.log('================================================================================\n');
 
   // Test 1: Initial Pro activation grants the correct allowance
@@ -625,8 +626,24 @@ async function runTests() {
   console.log('  ✓ 25b: Forged id, tampered body, and wrong-key signatures all fail closed.');
   delete process.env.WHOP_WEBHOOK_SECRET;
 
+  // Test 26: Image fallback is honestly labeled as a template, never as AI
+  // output, and carries no fabricated badges. (Gemini image models have no
+  // free tier — when the API is unavailable the app serves a local template;
+  // since 2026-11-11 that template identifies itself as one.)
+  console.log('\n[TEST 26] Testing image fallback honesty labeling:');
+  const originalKey26 = process.env.GEMINI_API_KEY;
+  delete process.env.GEMINI_API_KEY;
+  const img26 = await generateMarketingImage({ prompt: 'A coffee brand banner', aspectRatio: '16:9' });
+  assert.strictEqual((img26 as any).source, 'template', 'Fallback image must be labeled source=template');
+  const svg26 = Buffer.from(img26.imageUrl.split(',')[1], 'base64').toString('utf-8');
+  assert.ok(!svg26.includes('TOP SELLER'), 'Template must not claim TOP SELLER');
+  assert.ok(!svg26.includes('WHOP VERIFIED'), 'Template must not claim WHOP VERIFIED');
+  assert.ok(svg26.includes('AUTOCASH TEMPLATE'), 'Template must identify itself as a template');
+  delete process.env.GEMINI_API_KEY;
+  console.log('  ✓ 26: Fallback image is labeled a template and carries no fabricated badges.');
+
   console.log('\n================================================================================');
-  console.log('ALL 25 INTEGRATION & REGRESSION TESTS PASSED SUCCESSFULLY! (EXIT CODE 0)');
+  console.log('ALL 26 INTEGRATION & REGRESSION TESTS PASSED SUCCESSFULLY! (EXIT CODE 0)');
   console.log('================================================================================\n');
 }
 
