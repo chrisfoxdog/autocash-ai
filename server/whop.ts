@@ -197,9 +197,25 @@ export async function handleWhopEvent(
   }
 
   const data = payload.data || payload;
-  const whopUserId = data.user_id || data.userId;
-  const planId = data.plan_id || data.planId;
-  const membershipId = data.id || data.membership_id;
+  const whopUserId = data.user_id || data.userId || data.user?.id;
+  // Whop's current v1 membership payloads carry the purchased plan as
+  // `variant_id` (flat legacy payloads used `plan_id`; some events nest it
+  // under `plan.id`). The product arrives as `product_id` / `product.id`.
+  const planId =
+    data.plan_id ||
+    data.planId ||
+    data.variant_id ||
+    data.variantId ||
+    data.plan?.id ||
+    data.variant?.id;
+  const productId = data.product_id || data.productId || data.product?.id;
+  // For payment/refund events data.id is the payment's own ID, not a
+  // membership ID — never store it as the membership ID.
+  const membershipId =
+    data.membership_id ||
+    data.membership?.id ||
+    (typeof data.id === 'string' && data.id.startsWith('mem_') ? data.id : undefined) ||
+    (eventType.startsWith('membership.') ? data.id : undefined);
 
   if (!whopUserId) {
     return { success: false, status: 'ignored', message: 'No user ID present in event data' };
@@ -225,15 +241,44 @@ export async function handleWhopEvent(
     founders: 99.99,
   };
 
-  // Resolve the paid plan from Whop plan_id / plan_name keywords.
-  // 'founder' or 'lifetime' -> founders, 'starter' -> starter, otherwise pro.
-  const planHaystack = `${planId || ''} ${data.plan_name || ''}`.toLowerCase();
+  // Resolve the paid plan. Real Whop plan IDs are opaque (they carry no tier
+  // keywords), so exact ID matches against the verified production plans and
+  // products win first; keyword matching on plan/product names is the
+  // fallback for legacy or simulated payloads.
+  const PLAN_ID_TIERS: Record<string, 'starter' | 'pro' | 'founders'> = {
+    plan_z8zyXrQ4JZmYs: 'starter', // AutoCash AI Starter $9.99/mo
+    plan_kXOcm7vv6lU0y: 'pro', // AutoCash AI Pro $29.99/mo
+    plan_9uwm7lipebyma: 'pro', // Main AutoCash AI product $29/mo
+    plan_Hp3tLtknQ45rJ: 'founders', // Lifetime Founders $99.99 one-time
+  };
+  const PRODUCT_ID_TIERS: Record<string, 'starter' | 'pro' | 'founders'> = {
+    prod_nHSHb7ywUTXCZ: 'starter',
+    prod_pxGdCam3Jyk8B: 'pro',
+    prod_2Nn1Eur3xFfyw: 'pro',
+    prod_DaADqEe5QIBfB: 'founders',
+  };
+  const planHaystack =
+    `${planId || ''} ${data.plan_name || ''} ${data.plan?.title || data.plan?.name || ''} ${data.product?.title || ''}`.toLowerCase();
   const targetPlan: 'starter' | 'pro' | 'founders' =
-    planHaystack.includes('founder') || planHaystack.includes('lifetime')
+    (planId && PLAN_ID_TIERS[planId]) ||
+    (productId && PRODUCT_ID_TIERS[productId]) ||
+    (planHaystack.includes('founder') || planHaystack.includes('lifetime')
       ? 'founders'
       : planHaystack.includes('starter')
         ? 'starter'
-        : 'pro';
+        : 'pro');
+
+  // Whop v1 money fields arrive as objects ({ amount: "29.99", currency });
+  // legacy flat payloads used integer cents. Normalise both to dollars.
+  const parseAmountDollars = (value: any): number | undefined => {
+    if (value === null || value === undefined) return undefined;
+    if (typeof value === 'object') {
+      const n = Number(value.amount);
+      return Number.isNaN(n) ? undefined : n;
+    }
+    const n = Number(value);
+    return Number.isNaN(n) ? undefined : n / 100;
+  };
   const tierQuota = PLAN_QUOTAS[targetPlan];
 
   // Normalise a legacy stored plan value to its current tier name.
@@ -390,7 +435,12 @@ export async function handleWhopEvent(
             resultStatus = 'reconciliation_needed';
             await txDb.recordTransaction({
               userId: whopUserId,
-              amount: (data.final_amount || data.amount || 2999) / 100,
+              amount:
+                parseAmountDollars(data.final_amount) ??
+                parseAmountDollars(data.amount) ??
+                parseAmountDollars(data.total) ??
+                parseAmountDollars(data.subtotal) ??
+                29.99,
               currency: data.currency || 'USD',
               plan: data.plan_name || 'Unidentified Payment',
               status: 'pending_reconciliation',
@@ -403,7 +453,12 @@ export async function handleWhopEvent(
             ? `pay_${paymentId}`
             : `period_${membershipId || whopUserId}_${billingPeriodEnd}`;
 
-          const amount = (data.final_amount || data.amount || 2999) / 100;
+          const amount =
+            parseAmountDollars(data.final_amount) ??
+            parseAmountDollars(data.amount) ??
+            parseAmountDollars(data.total) ??
+            parseAmountDollars(data.subtotal) ??
+            29.99;
 
           // Atomically claim the billing key
           const claimed = await txDb.recordBillingPeriod(billingKey, whopUserId);
@@ -417,7 +472,7 @@ export async function handleWhopEvent(
             // signal, fall back to the paid plan already on the account (a renewal
             // keeps the member on their existing tier and refreshes its quota).
             const storedPlan = normalizeStoredPlan(user.plan);
-            const hasPlanSignal = Boolean(planId || data.plan_name);
+            const hasPlanSignal = Boolean(planId || productId || data.plan_name || data.product?.title);
             const renewalPlan: 'starter' | 'pro' | 'founders' = hasPlanSignal
               ? targetPlan
               : storedPlan === 'starter' || storedPlan === 'founders'
@@ -476,7 +531,8 @@ export async function handleWhopEvent(
             handledMessage = `Refund event for user ${whopUserId} already processed under key ${refundKey}; duplicate refund prevented.`;
             resultStatus = 'duplicate';
           } else {
-            const refundAmount = (data.amount || 2999) / 100;
+            const refundAmount =
+              parseAmountDollars(data.amount) ?? parseAmountDollars(data.total) ?? 29.99;
             await txDb.updateUser(whopUserId, { plan: 'free', status: 'cancelled', credits: 5 });
             await txDb.recordTransaction({
               userId: whopUserId,

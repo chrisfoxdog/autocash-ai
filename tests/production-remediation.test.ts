@@ -7,7 +7,7 @@ import { FINAL_PRELAUNCH_AUDIT_REPORT } from '../src/components/TechnicalAuditRe
 
 async function runTests() {
   console.log('================================================================================');
-  console.log('AUTO CASH AI — PRODUCTION REMEDIATION & BILLING IDEMPOTENCY TEST SUITE (21 TESTS)');
+  console.log('AUTO CASH AI — PRODUCTION REMEDIATION & BILLING IDEMPOTENCY TEST SUITE (24 TESTS)');
   console.log('================================================================================\n');
 
   // Test 1: Initial Pro activation grants the correct allowance
@@ -513,8 +513,75 @@ async function runTests() {
   );
   console.log('✓ PASS: Audit report text strictly matches verified codebase architecture.');
 
+  // Test 22: REAL Whop v1 payload shape — Starter activation via variant_id
+  // (real payloads carry NO plan_id / plan_name; plan is `variant_id`,
+  // product is `product_id` + `product.title`)
+  console.log('\n[TEST 22] Testing Real v1 payload shape: Starter activation via variant_id grants 50:');
+  const realStarterUserId = `test_real_starter_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`;
+  const realStarterRes = await handleWhopEvent({
+    id: `msg_real_starter_${Date.now()}`,
+    type: 'membership.activated',
+    data: {
+      id: `mem_real_starter_${Date.now()}`,
+      user_id: realStarterUserId,
+      variant_id: 'plan_z8zyXrQ4JZmYs',
+      product_id: 'prod_nHSHb7ywUTXCZ',
+      product: { id: 'prod_nHSHb7ywUTXCZ', title: 'AutoCash AI Starter' },
+      status: 'trialing'
+    }
+  });
+  assert.strictEqual(realStarterRes.success, true, 'Real-shape Starter activation must succeed');
+  const realStarterUser = await db.getUser(realStarterUserId);
+  assert.strictEqual(realStarterUser.plan, 'starter', 'Real-shape Starter activation must resolve the starter tier');
+  assert.strictEqual(realStarterUser.credits, 50, 'Real-shape Starter activation must grant exactly 50 credits');
+  console.log(`✓ PASS: Real v1 Starter payload activated with exactly ${realStarterUser.credits} credits.`);
+
+  // Test 23: REAL Whop v1 payload shape — Founders activation via variant_id grants 500
+  console.log('\n[TEST 23] Testing Real v1 payload shape: Founders activation via variant_id grants 500:');
+  const realFoundersUserId = `test_real_founders_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`;
+  const realFoundersRes = await handleWhopEvent({
+    id: `msg_real_founders_${Date.now()}`,
+    type: 'membership.activated',
+    data: {
+      id: `mem_real_founders_${Date.now()}`,
+      user_id: realFoundersUserId,
+      variant_id: 'plan_Hp3tLtknQ45rJ',
+      product_id: 'prod_DaADqEe5QIBfB',
+      product: { id: 'prod_DaADqEe5QIBfB', title: 'AUTO CASH AI LIFETIME FOUNDERS' },
+      status: 'active'
+    }
+  });
+  assert.strictEqual(realFoundersRes.success, true, 'Real-shape Founders activation must succeed');
+  const realFoundersUser = await db.getUser(realFoundersUserId);
+  assert.strictEqual(realFoundersUser.plan, 'founders', 'Real-shape Founders activation must resolve the founders tier');
+  assert.strictEqual(realFoundersUser.credits, 500, 'Real-shape Founders activation must grant exactly 500 credits');
+  console.log(`✓ PASS: Real v1 Founders payload activated with exactly ${realFoundersUser.credits} credits.`);
+
+  // Test 24: REAL Whop v1 payload shape — non-billing membership.updated on a
+  // Starter member must NOT re-tier them to Pro or change their balance
+  console.log('\n[TEST 24] Testing Real v1 payload shape: Starter membership.updated preserves tier and balance:');
+  const deductRealRes = await db.deductCredit(realStarterUserId, 20);
+  assert.strictEqual(deductRealRes.success, true, 'Deducting 20 credits should succeed');
+  const realUpdateRes = await handleWhopEvent({
+    id: `msg_real_upd_${Date.now()}`,
+    type: 'membership.updated',
+    data: {
+      id: realStarterUser.whopMembershipId,
+      user_id: realStarterUserId,
+      variant_id: 'plan_z8zyXrQ4JZmYs',
+      product_id: 'prod_nHSHb7ywUTXCZ',
+      product: { id: 'prod_nHSHb7ywUTXCZ', title: 'AutoCash AI Starter' },
+      status: 'trialing'
+    }
+  });
+  assert.strictEqual(realUpdateRes.success, true, 'Real-shape membership update must succeed');
+  const realStarterAfterUpdate = await db.getUser(realStarterUserId);
+  assert.strictEqual(realStarterAfterUpdate.plan, 'starter', 'Real-shape update must keep the starter tier');
+  assert.strictEqual(realStarterAfterUpdate.credits, 30, 'Real-shape update must preserve the 30 remaining credits');
+  console.log(`✓ PASS: Real v1 Starter update preserved tier and ${realStarterAfterUpdate.credits} credits.`);
+
   console.log('\n================================================================================');
-  console.log('ALL 21 INTEGRATION & REGRESSION TESTS PASSED SUCCESSFULLY! (EXIT CODE 0)');
+  console.log('ALL 24 INTEGRATION & REGRESSION TESTS PASSED SUCCESSFULLY! (EXIT CODE 0)');
   console.log('================================================================================\n');
 }
 
