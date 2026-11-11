@@ -58,11 +58,24 @@ export async function verifyWhopUserToken(token: string): Promise<{
 /**
  * Cryptographically verifies Whop webhook signatures using HMAC SHA-256.
  * CRITICAL: Fails closed. If WHOP_WEBHOOK_SECRET is absent, rejects with error.
+ *
+ * Whop signs with the Standard Webhooks scheme:
+ *   headers: webhook-id, webhook-timestamp, webhook-signature: "v1,<base64>"
+ *   signed content: "{webhook-id}.{webhook-timestamp}.{raw body}"
+ *   key: the webhook secret's key bytes (base64-decoded when the stored
+ *        secret carries a whsec_/ws_ prefix or is itself base64)
+ * Legacy Elite payloads used "t=<ts>,v1=<hex>" over "{ts}.{body}"; those
+ * constructions are still accepted. Every candidate below is a genuine
+ * HMAC-SHA256 check against the configured secret — verification fails
+ * closed for anyone who does not hold it. (The previous implementation
+ * signed only the raw body with the raw secret string, so every real
+ * Whop delivery failed with 401 — proven by the 2026-11-11 delivery log.)
  */
 export function verifyWhopWebhookSignature(
   rawBody: Buffer | string,
   signatureHeader: string | undefined,
-  timestampHeader?: string | undefined
+  timestampHeader?: string | undefined,
+  webhookIdHeader?: string | undefined
 ): VerificationResult {
   const secret = process.env.WHOP_WEBHOOK_SECRET;
 
@@ -82,27 +95,12 @@ export function verifyWhopWebhookSignature(
     };
   }
 
-  let extractedSignature = signatureHeader;
-  let signatureTimestamp = timestampHeader;
-
-  // Handle standard t=...,v1=... format
-  if (signatureHeader.includes('t=') || signatureHeader.includes('v1=')) {
-    const parts = signatureHeader.split(',');
-    for (const part of parts) {
-      const [k, v] = part.split('=');
-      if (k && v) {
-        if (k.trim() === 't') signatureTimestamp = v.trim();
-        if (k.trim() === 'v1') extractedSignature = v.trim();
-      }
-    }
-  } else if (signatureHeader.startsWith('v1,')) {
-    extractedSignature = signatureHeader.slice(3).trim();
-  }
+  const bodyBuffer = Buffer.isBuffer(rawBody) ? rawBody : Buffer.from(rawBody, 'utf-8');
 
   // Replay attack protection: tolerance of 300 seconds (5 minutes)
-  if (signatureTimestamp) {
-    const tsNumber = Number(signatureTimestamp);
-    if (!isNaN(tsNumber)) {
+  if (timestampHeader) {
+    const tsNumber = Number(timestampHeader);
+    if (!Number.isNaN(tsNumber)) {
       const now = Math.floor(Date.now() / 1000);
       const eventTs = tsNumber > 1e11 ? Math.floor(tsNumber / 1000) : tsNumber;
       if (Math.abs(now - eventTs) > 300) {
@@ -115,46 +113,79 @@ export function verifyWhopWebhookSignature(
     }
   }
 
+  // Candidate key materials: the raw secret string, and its base64/hex
+  // decodings (Standard Webhooks secrets are base64 key bytes, often with
+  // a whsec_ or ws_ prefix).
+  const strippedSecret = secret.replace(/^(whsec_|ws_)/, '');
+  const keyMaterials: Buffer[] = [Buffer.from(secret, 'utf-8')];
+  const addKey = (buf: Buffer) => {
+    if (buf.length > 0 && !keyMaterials.some((k) => k.equals(buf))) keyMaterials.push(buf);
+  };
   try {
-    const bodyBuffer = Buffer.isBuffer(rawBody) ? rawBody : Buffer.from(rawBody, 'utf-8');
+    addKey(Buffer.from(strippedSecret, 'base64'));
+  } catch {
+    // not base64 — the raw-string candidate already covers it
+  }
+  try {
+    addKey(Buffer.from(secret, 'base64'));
+  } catch {
+    // not base64
+  }
+  if (/^[0-9a-fA-F]+$/.test(strippedSecret) && strippedSecret.length % 2 === 0) {
+    addKey(Buffer.from(strippedSecret, 'hex'));
+  }
 
-    // Compute expected HMAC SHA-256
-    const hmac = crypto.createHmac('sha256', secret);
-    if (signatureTimestamp && signatureHeader.includes('t=')) {
-      hmac.update(`${signatureTimestamp}.`);
+  // Candidate signed contents, Standard Webhooks first.
+  const signedContents: Buffer[] = [];
+  if (webhookIdHeader && timestampHeader) {
+    signedContents.push(
+      Buffer.concat([Buffer.from(`${webhookIdHeader}.${timestampHeader}.`, 'utf-8'), bodyBuffer])
+    );
+  }
+  if (timestampHeader) {
+    signedContents.push(Buffer.concat([Buffer.from(`${timestampHeader}.`, 'utf-8'), bodyBuffer]));
+  }
+  signedContents.push(bodyBuffer);
+
+  // The header may carry one or more "v1,<sig>" entries (key rotation),
+  // space-separated, or a legacy "t=...,v1=..." pair.
+  const provided: string[] = [];
+  if (signatureHeader.includes('t=') || /^v1=/.test(signatureHeader)) {
+    for (const part of signatureHeader.split(',')) {
+      const [k, v] = part.split('=');
+      if (k?.trim() === 'v1' && v) provided.push(v.trim());
     }
-    hmac.update(bodyBuffer);
-    const expectedHex = hmac.digest('hex');
-
-    // Also support base64 digest for standardwebhooks format
-    const hmacB64 = crypto.createHmac('sha256', secret);
-    if (signatureTimestamp && signatureHeader.includes('t=')) {
-      hmacB64.update(`${signatureTimestamp}.`);
+  } else {
+    for (const part of signatureHeader.split(' ')) {
+      const p = part.trim();
+      if (p.startsWith('v1,')) provided.push(p.slice(3));
+      else if (p) provided.push(p);
     }
-    hmacB64.update(bodyBuffer);
-    const expectedBase64 = hmacB64.digest('base64');
+  }
+  if (provided.length === 0) {
+    return { isValid: false, mode: 'production', reason: 'Unparseable webhook signature header' };
+  }
 
-    // Constant-time comparison for hex
-    try {
-      const sigBuf = Buffer.from(extractedSignature, 'hex');
-      const expBuf = Buffer.from(expectedHex, 'hex');
-      if (sigBuf.length === expBuf.length && crypto.timingSafeEqual(sigBuf, expBuf)) {
-        return { isValid: true, mode: 'production' };
+  try {
+    for (const sig of provided) {
+      for (const key of keyMaterials) {
+        for (const signed of signedContents) {
+          for (const encoding of ['base64', 'hex'] as const) {
+            const expected = crypto.createHmac('sha256', key).update(signed).digest(encoding);
+            try {
+              const sigBuf = Buffer.from(sig, encoding);
+              const expBuf = Buffer.from(expected, encoding);
+              if (sigBuf.length === expBuf.length && crypto.timingSafeEqual(sigBuf, expBuf)) {
+                return { isValid: true, mode: 'production' };
+              }
+            } catch {
+              // not this encoding — keep trying
+            }
+            if (sig === expected) return { isValid: true, mode: 'production' };
+          }
+        }
       }
-    } catch {
-      // not hex
     }
-
-    // Direct comparison for base64 or raw string
-    if (extractedSignature === expectedHex || extractedSignature === expectedBase64) {
-      return { isValid: true, mode: 'production' };
-    }
-
-    return {
-      isValid: false,
-      mode: 'production',
-      reason: 'Signature mismatch'
-    };
   } catch (err: any) {
     return {
       isValid: false,
@@ -162,6 +193,12 @@ export function verifyWhopWebhookSignature(
       reason: `Signature verification error: ${err.message}`
     };
   }
+
+  return {
+    isValid: false,
+    mode: 'production',
+    reason: 'Signature mismatch'
+  };
 }
 
 /**

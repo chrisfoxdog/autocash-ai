@@ -79,9 +79,11 @@ app.post(
         req.headers['signature']) as string | undefined;
       const timestamp = (req.headers['webhook-timestamp'] ||
         req.headers['x-whop-timestamp']) as string | undefined;
+      const webhookId = (req.headers['webhook-id'] ||
+        req.headers['x-whop-webhook-id']) as string | undefined;
 
       // Strict cryptographic signature verification (fails closed if secret missing)
-      const verification = verifyWhopWebhookSignature(rawBody, signature, timestamp);
+      const verification = verifyWhopWebhookSignature(rawBody, signature, timestamp, webhookId);
 
       if (!verification.isValid) {
         console.warn(`[Whop Webhook] Rejected unauthorized webhook: ${verification.reason}`);

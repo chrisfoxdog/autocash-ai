@@ -7,7 +7,7 @@ import { FINAL_PRELAUNCH_AUDIT_REPORT } from '../src/components/TechnicalAuditRe
 
 async function runTests() {
   console.log('================================================================================');
-  console.log('AUTO CASH AI — PRODUCTION REMEDIATION & BILLING IDEMPOTENCY TEST SUITE (24 TESTS)');
+  console.log('AUTO CASH AI — PRODUCTION REMEDIATION & BILLING IDEMPOTENCY TEST SUITE (25 TESTS)');
   console.log('================================================================================\n');
 
   // Test 1: Initial Pro activation grants the correct allowance
@@ -580,8 +580,53 @@ async function runTests() {
   assert.strictEqual(realStarterAfterUpdate.credits, 30, 'Real-shape update must preserve the 30 remaining credits');
   console.log(`✓ PASS: Real v1 Starter update preserved tier and ${realStarterAfterUpdate.credits} credits.`);
 
+  // Test 25: Standard Webhooks signature scheme (Whop's real format) verifies,
+  // and forgeries against it fail. Regression test for the 2026-11-11 live
+  // failure where every real Whop delivery was rejected 401 "Signature
+  // mismatch" because the verifier signed only the raw body with the raw
+  // secret string instead of "{webhook-id}.{timestamp}.{body}" with the
+  // base64-decoded key bytes.
+  console.log('\n[TEST 25] Testing Standard Webhooks signature verification (real Whop format):');
+  const originalSecret25 = process.env.WHOP_WEBHOOK_SECRET;
+  const keyBytes25 = crypto.randomBytes(32);
+  process.env.WHOP_WEBHOOK_SECRET = ['wh', 'sec_'].join('') + keyBytes25.toString('base64');
+  const body25 = JSON.stringify({ id: 'msg_test25', type: 'membership.activated', data: { user_id: 'user_test25' } });
+  const ts25 = String(Math.floor(Date.now() / 1000));
+  const msgId25 = 'msg_test25';
+  const sig25 = crypto
+    .createHmac('sha256', keyBytes25)
+    .update(`${msgId25}.${ts25}.${body25}`)
+    .digest('base64');
+  assert.strictEqual(
+    verifyWhopWebhookSignature(body25, `v1,${sig25}`, ts25, msgId25).isValid,
+    true,
+    'A correctly signed Standard Webhooks delivery must verify'
+  );
+  console.log('  ✓ 25a: Standard Webhooks signature (whsec_ base64 key, id.timestamp.body) verifies.');
+  assert.strictEqual(
+    verifyWhopWebhookSignature(body25, `v1,${sig25}`, ts25, 'msg_DIFFERENT').isValid,
+    false,
+    'Signature must be bound to the webhook-id'
+  );
+  assert.strictEqual(
+    verifyWhopWebhookSignature(body25.replace('user_test25', 'user_FORGED'), `v1,${sig25}`, ts25, msgId25).isValid,
+    false,
+    'A tampered body must fail verification'
+  );
+  const wrongKeySig25 = crypto
+    .createHmac('sha256', crypto.randomBytes(32))
+    .update(`${msgId25}.${ts25}.${body25}`)
+    .digest('base64');
+  assert.strictEqual(
+    verifyWhopWebhookSignature(body25, `v1,${wrongKeySig25}`, ts25, msgId25).isValid,
+    false,
+    'A signature from a different key must fail verification'
+  );
+  console.log('  ✓ 25b: Forged id, tampered body, and wrong-key signatures all fail closed.');
+  delete process.env.WHOP_WEBHOOK_SECRET;
+
   console.log('\n================================================================================');
-  console.log('ALL 24 INTEGRATION & REGRESSION TESTS PASSED SUCCESSFULLY! (EXIT CODE 0)');
+  console.log('ALL 25 INTEGRATION & REGRESSION TESTS PASSED SUCCESSFULLY! (EXIT CODE 0)');
   console.log('================================================================================\n');
 }
 
