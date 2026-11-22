@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { UserAccount, GeneratedAsset } from '../types';
+import React, { useState, useEffect } from 'react';
+import { UserAccount, GeneratedAsset, WhopConfig } from '../types';
 import {
   TrendingUp,
   Package,
@@ -19,6 +19,12 @@ import {
   ShieldCheck,
   Flame,
   Check,
+  PlayCircle,
+  Rocket,
+  Clapperboard,
+  LayoutGrid,
+  FolderOpen,
+  CreditCard,
 } from 'lucide-react';
 import { DeliverableReaderModal } from './DeliverableReaderModal';
 
@@ -28,7 +34,32 @@ interface DashboardViewProps {
   setActiveTab: (tab: string) => void;
   onOpenUpgrade: () => void;
   onSelectAsset: (asset: GeneratedAsset) => void;
+  onOpenWalkthrough: () => void;
 }
+
+const ASSET_TYPE_LABELS: Record<GeneratedAsset['type'], string> = {
+  digital_product: 'Digital Product',
+  viral_script: 'Viral Script',
+  affiliate_bridge: 'Affiliate Bridge',
+  whop_listing: 'Whop Listing',
+  marketing_video: 'Marketing Video',
+  marketing_image: 'Marketing Image',
+};
+
+const PLAN_NAMES: Record<string, string> = {
+  free: 'Free Trial',
+  starter: 'Starter',
+  pro: 'Pro',
+  founders: 'Lifetime Founders',
+};
+
+const formatDate = (iso?: string): string | null => {
+  if (!iso) return null;
+  const d = new Date(iso);
+  return isNaN(d.getTime())
+    ? null
+    : d.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+};
 
 export const DashboardView: React.FC<DashboardViewProps> = ({
   user,
@@ -36,7 +67,56 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
   setActiveTab,
   onOpenUpgrade,
   onSelectAsset,
+  onOpenWalkthrough,
 }) => {
+  // Live per-plan credit allotments from the server config (same source the
+  // upgrade modal uses), so the "credits this period" figures are real.
+  const [tierFeatures, setTierFeatures] = useState<WhopConfig['tierFeatures'] | null>(null);
+
+  useEffect(() => {
+    fetch('/api/whop/config')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.tierFeatures) setTierFeatures(data.tierFeatures);
+      })
+      .catch(console.error);
+  }, []);
+
+  const planKey = user?.plan ?? 'free';
+  const planName = PLAN_NAMES[planKey] ?? planKey;
+  const periodAllotment = tierFeatures?.[planKey]?.credits ?? null;
+  const creditsRemaining = user?.credits ?? 0;
+  const creditsUsed =
+    periodAllotment !== null ? Math.max(0, periodAllotment - creditsRemaining) : null;
+  const creditsUsedPercent =
+    periodAllotment && periodAllotment > 0 && creditsUsed !== null
+      ? Math.min(100, Math.round((creditsUsed / periodAllotment) * 100))
+      : 0;
+  const resetDateLabel = formatDate(user?.creditsResetAt);
+
+  const statusLine = (() => {
+    if (!user) return 'Loading your account…';
+    if (user.status === 'past_due') {
+      return 'Whop reports your membership as past due. Update your payment method in Whop to keep your plan and credits as they are.';
+    }
+    if (user.status === 'cancelled' || user.plan === 'free') {
+      return resetDateLabel
+        ? `You're on the Free Trial allowance. Your credits refresh on ${resetDateLabel}.`
+        : "You're on the Free Trial allowance.";
+    }
+    return resetDateLabel
+      ? `Your ${planName} membership is active. Your credits refresh on ${resetDateLabel}.`
+      : `Your ${planName} membership is active.`;
+  })();
+
+  const quickActions = [
+    { tab: 'warroom', icon: Rocket, label: 'Launch War Room', desc: 'Generate a full bundle in one session' },
+    { tab: 'products', icon: Package, label: 'Product Studio', desc: 'Draft a digital product (1 credit)' },
+    { tab: 'traffic', icon: Video, label: 'Viral Traffic', desc: 'Short-form scripts for your offer' },
+    { tab: 'media', icon: Clapperboard, label: 'Video & Image Studio', desc: 'Marketing media for your store' },
+    { tab: 'optimizer', icon: Gauge, label: 'Conversion Radar', desc: 'Get copy feedback on your offer' },
+    { tab: 'catalog', icon: LayoutGrid, label: 'Turnkey Catalog', desc: 'Start from a ready-made template' },
+  ];
   // Simulator State
   const [simPrice, setSimPrice] = useState<number>(39);
   const [simWeeklySales, setSimWeeklySales] = useState<number>(8);
@@ -97,6 +177,159 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
 
   return (
     <div className="space-y-8">
+      {/* Account Dashboard — plan, credits this period, honest status */}
+      <section className="space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div>
+            <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-white">
+              Your Dashboard
+            </h1>
+            <p className="text-xs sm:text-sm text-neutral-400 mt-1 flex items-start gap-1.5">
+              <ShieldCheck className="h-4 w-4 text-cyan-400 shrink-0 mt-px" />
+              <span>{statusLine}</span>
+            </p>
+          </div>
+          <div className="flex items-center gap-2 shrink-0">
+            <button
+              onClick={onOpenWalkthrough}
+              className="flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-cyan-400 bg-cyan-950/40 hover:bg-cyan-950/70 border border-cyan-900/60 rounded-lg transition-colors"
+            >
+              <PlayCircle className="h-3.5 w-3.5" />
+              Guided Tour
+            </button>
+            <button
+              onClick={() => setActiveTab('help')}
+              className="flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-neutral-200 bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 rounded-lg transition-colors"
+            >
+              <BookOpen className="h-3.5 w-3.5" />
+              How to Use
+            </button>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {/* Current plan */}
+          <div className="p-5 rounded-xl border border-neutral-800 bg-neutral-900/60 space-y-2">
+            <div className="flex items-center justify-between text-xs text-neutral-400">
+              <span>Current Plan</span>
+              <CreditCard className="h-4 w-4 text-cyan-400" />
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-xl font-bold text-white">{planName}</span>
+              <span
+                className={`text-[10px] font-mono font-bold uppercase px-1.5 py-0.5 rounded border ${
+                  user?.status === 'active'
+                    ? 'text-emerald-400 bg-emerald-950/40 border-emerald-900/60'
+                    : user?.status === 'past_due'
+                    ? 'text-amber-400 bg-amber-950/40 border-amber-900/60'
+                    : 'text-neutral-400 bg-neutral-900 border-neutral-700'
+                }`}
+              >
+                {user?.status === 'past_due'
+                  ? 'Past Due'
+                  : user?.status === 'cancelled'
+                  ? 'Cancelled'
+                  : 'Active'}
+              </span>
+            </div>
+            <p className="text-xs text-neutral-500 leading-relaxed">
+              {user?.plan === 'founders'
+                ? 'One payment, lifetime access — no monthly bill.'
+                : 'Billing runs through your Whop membership.'}
+            </p>
+            {user?.plan !== 'founders' && (
+              <button
+                onClick={onOpenUpgrade}
+                className="text-xs font-semibold text-cyan-400 hover:underline"
+              >
+                See plans & upgrade →
+              </button>
+            )}
+          </div>
+
+          {/* Credits this period */}
+          <div className="p-5 rounded-xl border border-neutral-800 bg-neutral-900/60 space-y-2">
+            <div className="flex items-center justify-between text-xs text-neutral-400">
+              <span>Credits This Period</span>
+              <Zap className="h-4 w-4 text-amber-400" />
+            </div>
+            <div className="text-xl font-bold text-white font-mono tabular-nums">
+              {creditsRemaining}
+              {periodAllotment !== null && (
+                <span className="text-sm text-neutral-500 font-sans font-normal">
+                  {' '}
+                  of {periodAllotment} remaining
+                </span>
+              )}
+            </div>
+            {periodAllotment !== null && creditsUsed !== null ? (
+              <>
+                <div className="w-full bg-neutral-950 h-2 rounded-full overflow-hidden border border-neutral-800">
+                  <div
+                    className="bg-gradient-to-r from-cyan-500 to-blue-500 h-full transition-all duration-500"
+                    style={{ width: `${creditsUsedPercent}%` }}
+                  />
+                </div>
+                <p className="text-xs text-neutral-500">
+                  {creditsUsed} used this period
+                  {resetDateLabel ? ` · refreshes ${resetDateLabel}` : ''}
+                </p>
+              </>
+            ) : (
+              <p className="text-xs text-neutral-500">
+                Each AI generation costs 1 credit.
+                {resetDateLabel ? ` Refreshes ${resetDateLabel}.` : ''}
+              </p>
+            )}
+          </div>
+
+          {/* Saved work summary */}
+          <div className="p-5 rounded-xl border border-neutral-800 bg-neutral-900/60 space-y-2">
+            <div className="flex items-center justify-between text-xs text-neutral-400">
+              <span>Saved in Your Vault</span>
+              <FolderOpen className="h-4 w-4 text-cyan-400" />
+            </div>
+            <div className="text-xl font-bold text-white font-mono tabular-nums">
+              {assets.length}
+              <span className="text-sm text-neutral-500 font-sans font-normal">
+                {' '}
+                {assets.length === 1 ? 'generation' : 'generations'}
+              </span>
+            </div>
+            <p className="text-xs text-neutral-500">
+              {productCount} Products · {scriptCount} Scripts · {affiliateCount} Deals
+            </p>
+            <button
+              onClick={() => setActiveTab('vault')}
+              className="text-xs font-semibold text-cyan-400 hover:underline"
+            >
+              Open the Vault →
+            </button>
+          </div>
+        </div>
+
+        {/* Quick actions into the real tools */}
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
+          {quickActions.map((action) => (
+            <button
+              key={action.tab}
+              onClick={() => setActiveTab(action.tab)}
+              className="flex items-start gap-3 p-4 rounded-xl border border-neutral-800 bg-neutral-900/40 hover:border-cyan-900/70 hover:bg-cyan-950/10 text-left transition-colors"
+            >
+              <action.icon className="h-5 w-5 text-cyan-400 shrink-0 mt-0.5" />
+              <span>
+                <span className="block text-sm font-semibold text-white">
+                  {action.label}
+                </span>
+                <span className="block text-xs text-neutral-500 mt-0.5 leading-relaxed">
+                  {action.desc}
+                </span>
+              </span>
+            </button>
+          ))}
+        </div>
+      </section>
+
       {/* Hero Showcase with visual asset and clean typography */}
       <div className="relative overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900">
         <div className="absolute inset-0 z-0">
@@ -682,15 +915,15 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         </div>
       </div>
 
-      {/* Recent Revenue Assets Table */}
+      {/* Recent Generations Table */}
       <div>
         <div className="flex items-center justify-between mb-4">
           <div>
             <h2 className="text-lg font-semibold text-white tracking-tight">
-              Generated Income Assets ({assets.length})
+              Recent Generations ({assets.length})
             </h2>
             <p className="text-xs text-neutral-400 mt-0.5">
-              Permanently saved on your server database and ready for export to Whop
+              Your most recent generations, saved automatically to your account
             </p>
           </div>
           <button
@@ -705,10 +938,10 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           <div className="p-8 text-center border border-dashed border-neutral-800 rounded-xl bg-neutral-900/30">
             <Package className="h-8 w-8 text-neutral-600 mx-auto mb-2" />
             <p className="text-sm font-medium text-neutral-300">
-              No revenue assets generated yet.
+              Nothing generated yet.
             </p>
             <p className="text-xs text-neutral-500 mt-1 max-w-sm mx-auto">
-              Start by building your first digital product or viral script to launch your first offer.
+              Start by drafting your first digital product or viral script — it takes about a minute and costs 1 credit.
             </p>
             <button
               onClick={() => setActiveTab('products')}
@@ -722,28 +955,22 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             <table className="w-full text-left text-xs">
               <thead className="bg-neutral-900 text-neutral-400 border-b border-neutral-800">
                 <tr>
-                  <th className="py-2.5 px-4 font-medium">Asset Title</th>
+                  <th className="py-2.5 px-4 font-medium">Title</th>
                   <th className="py-2.5 px-4 font-medium">Niche</th>
-                  <th className="py-2.5 px-4 font-medium">Stream Type</th>
-                  <th className="py-2.5 px-4 font-medium text-right">Potential Price</th>
+                  <th className="py-2.5 px-4 font-medium">Type</th>
+                  <th className="py-2.5 px-4 font-medium">Created</th>
+                  <th className="py-2.5 px-4 font-medium text-right">Suggested Price</th>
                   <th className="py-2.5 px-4 font-medium text-right">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-neutral-800/60">
                 {assets.slice(0, 5).map((asset) => {
-                  const typeLabel =
-                    asset.type === 'digital_product'
-                      ? 'Digital Product'
-                      : asset.type === 'viral_script'
-                      ? 'Viral Script'
-                      : 'Affiliate Bridge';
+                  const typeLabel = ASSET_TYPE_LABELS[asset.type] ?? asset.type;
 
                   const priceDisplay =
                     asset.type === 'digital_product' && asset.content?.suggestedPrice
                       ? `$${asset.content.suggestedPrice}`
-                      : asset.type === 'affiliate_bridge'
-                      ? '$47/mo avg'
-                      : 'Organic Funnel';
+                      : '—';
 
                   return (
                     <tr key={asset.id} className="hover:bg-neutral-800/40 transition-colors">
@@ -755,6 +982,9 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                       </td>
                       <td className="py-3 px-4 text-neutral-300">
                         {typeLabel}
+                      </td>
+                      <td className="py-3 px-4 text-neutral-400 whitespace-nowrap">
+                        {formatDate(asset.createdAt) ?? ''}
                       </td>
                       <td className="py-3 px-4 text-right font-mono tabular-nums text-emerald-400">
                         {priceDisplay}

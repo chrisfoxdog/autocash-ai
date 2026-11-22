@@ -19,6 +19,7 @@ export const TopNav: React.FC<TopNavProps> = ({
 }) => {
   const navItems = [
     { id: 'dashboard', label: 'Dashboard' },
+    { id: 'help', label: '📘 How to Use' },
     { id: 'warroom', label: '⚡ Launch War Room' },
     { id: 'media', label: '🎬 Video & Image Studio' },
     { id: 'catalog', label: 'Turnkey Catalog' },

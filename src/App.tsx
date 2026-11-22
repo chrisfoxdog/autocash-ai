@@ -16,6 +16,8 @@ import { AutonomousWarRoom } from './components/AutonomousWarRoom';
 import { WhopCommunitySuite } from './components/WhopCommunitySuite';
 import { CommandPaletteModal } from './components/CommandPaletteModal';
 import { MarketingStudio } from './components/MarketingStudio';
+import { WalkthroughModal, hasSeenWalkthrough } from './components/WalkthroughModal';
+import { HelpView } from './components/HelpView';
 import { Loader2 } from 'lucide-react';
 
 export default function App() {
@@ -25,6 +27,8 @@ export default function App() {
   const [authError, setAuthError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<string>('dashboard');
   const [isUpgradeOpen, setIsUpgradeOpen] = useState(false);
+  const [isWalkthroughOpen, setIsWalkthroughOpen] = useState(false);
+  const walkthroughAutoOpenedRef = React.useRef(false);
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
   const [selectedAssetForEdit, setSelectedAssetForEdit] = useState<GeneratedAsset | null>(null);
 
@@ -58,6 +62,14 @@ export default function App() {
       const assetsData = await assetsRes.json();
       setUser(userData.user);
       setAssets(assetsData.assets || []);
+
+      // First-run guided walkthrough: open once per browser until dismissed.
+      if (!walkthroughAutoOpenedRef.current) {
+        walkthroughAutoOpenedRef.current = true;
+        if (userData.user && !hasSeenWalkthrough()) {
+          setIsWalkthroughOpen(true);
+        }
+      }
     } catch (err) {
       console.error('Failed to load initial data:', err);
     } finally {
@@ -168,6 +180,15 @@ export default function App() {
             setActiveTab={setActiveTab}
             onOpenUpgrade={() => setIsUpgradeOpen(true)}
             onSelectAsset={handleSelectAsset}
+            onOpenWalkthrough={() => setIsWalkthroughOpen(true)}
+          />
+        )}
+
+        {activeTab === 'help' && (
+          <HelpView
+            user={user}
+            setActiveTab={setActiveTab}
+            onOpenWalkthrough={() => setIsWalkthroughOpen(true)}
           />
         )}
 
@@ -275,6 +296,16 @@ export default function App() {
         onClose={() => setIsUpgradeOpen(false)}
         user={user}
         onPlanUpdated={(updated) => setUser(updated)}
+      />
+
+      {/* First-run / replayable guided walkthrough */}
+      <WalkthroughModal
+        isOpen={isWalkthroughOpen}
+        onClose={() => setIsWalkthroughOpen(false)}
+        setActiveTab={(tab) => {
+          setSelectedAssetForEdit(null);
+          setActiveTab(tab);
+        }}
       />
 
       {/* Command Palette Modal (Cmd+K) */}
