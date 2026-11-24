@@ -50,9 +50,9 @@ export const WalkthroughModal: React.FC<WalkthroughModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-950/80 backdrop-blur-sm">
-      <div className="w-full max-w-lg rounded-2xl border border-neutral-800 bg-neutral-900 shadow-2xl shadow-cyan-950/40 overflow-hidden">
+      <div className="w-full max-w-lg rounded-2xl border border-neutral-800 bg-neutral-900 shadow-2xl shadow-cyan-950/40 overflow-hidden flex max-h-[92dvh] flex-col">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-neutral-800 bg-neutral-950/60">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-neutral-800 bg-neutral-950/60 shrink-0">
           <div className="flex items-center gap-2 text-xs font-mono text-neutral-400">
             <Zap className="h-3.5 w-3.5 text-cyan-400" />
             <span className="uppercase tracking-wider font-semibold text-cyan-400">
@@ -73,7 +73,7 @@ export const WalkthroughModal: React.FC<WalkthroughModalProps> = ({
         </div>
 
         {/* Body */}
-        <div className="px-6 py-6 space-y-4">
+        <div className="px-6 py-6 space-y-4 overflow-y-auto">
           <h2 className="text-xl font-bold tracking-tight text-white">
             {step.title}
           </h2>
@@ -99,7 +99,7 @@ export const WalkthroughModal: React.FC<WalkthroughModalProps> = ({
         </div>
 
         {/* Footer: progress + navigation */}
-        <div className="flex items-center justify-between px-6 py-4 border-t border-neutral-800 bg-neutral-950/60">
+        <div className="flex items-center justify-between px-6 py-4 border-t border-neutral-800 bg-neutral-950/60 shrink-0">
           <div className="flex items-center gap-1.5">
             {GUIDE_STEPS.map((s, i) => (
               <button
