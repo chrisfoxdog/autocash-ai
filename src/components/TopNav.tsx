@@ -61,7 +61,7 @@ export const TopNav: React.FC<TopNavProps> = ({
         {/* Zone 2: Navigation links, single-line text — scrolls inside the
             header instead of stretching the whole page. Without this, the
             13 nowrap tabs forced the page to ~2156px wide. */}
-        <nav className="hidden md:flex min-w-0 flex-1 items-center gap-1 lg:gap-2 overflow-x-auto scrollbar-none">
+        <nav className="hidden md:flex min-w-0 flex-1 items-center gap-1 lg:gap-2 overflow-x-auto scrollbar-none [mask-image:linear-gradient(to_right,black_94%,transparent)]">
           {navItems.map((item) => {
             const isActive = activeTab === item.id;
             return (
@@ -119,7 +119,7 @@ export const TopNav: React.FC<TopNavProps> = ({
       </div>
 
       {/* Mobile Horizontal Sub-Navigation Bar */}
-      <div className="flex md:hidden items-center gap-1.5 overflow-x-auto py-2 px-4 border-t border-neutral-800/80 bg-neutral-950/95 scrollbar-none">
+      <div className="flex md:hidden items-center gap-1.5 overflow-x-auto py-2 px-4 border-t border-neutral-800/80 bg-neutral-950/95 scrollbar-none [mask-image:linear-gradient(to_right,black_94%,transparent)]">
         {navItems.map((item) => {
           const isActive = activeTab === item.id;
           return (

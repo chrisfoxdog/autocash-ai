@@ -334,7 +334,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
       <div className="relative overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900">
         <div className="absolute inset-0 z-0">
           <img
-            src="/src/assets/images/creator_studio_hero_1790382807339.jpg"
+            src="/images/creator-studio-hero.jpg"
             alt="Creator Studio"
             referrerPolicy="no-referrer"
             className="h-full w-full object-cover opacity-20"
